@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch (Dispatchers.Main){
             val githubResponse = apiGithubService.getDemo().await()
-            textviewMain.text = githubResponse.toString()
+            textviewMain.text = githubResponse.avatarUrl
         }
     }
 }
