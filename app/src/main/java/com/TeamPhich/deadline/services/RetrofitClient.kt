@@ -1,13 +1,13 @@
 package com.TeamPhich.deadline.services
 
-import android.util.Base64
+
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private val AUTH = "Basic "+ Base64.encodeToString("belalkhan:123456".toByteArray(), Base64.NO_WRAP)
 
     private const val BASE_URL = "http://18.162.125.153/api/v1/accounts/"
 
@@ -16,9 +16,7 @@ object RetrofitClient {
                 val original = chain.request()
 
                 val requestBuilder = original.newBuilder()
-                        .addHeader("Authorization", AUTH)
                         .method(original.method(), original.body())
-
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }.build()
@@ -28,6 +26,7 @@ object RetrofitClient {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
 
         retrofit.create(Api::class.java)

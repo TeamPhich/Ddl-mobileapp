@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.TeamPhich.deadline.R
-import com.TeamPhich.deadline.responses.defaultRespone
 import com.TeamPhich.deadline.services.RetrofitClient
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,25 +46,26 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
-
-            RetrofitClient.instance.createUser(username, password, email)
-                .enqueue(object: Callback<defaultRespone> {
-                    override fun onFailure(call: Call<defaultRespone>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+            GlobalScope.launch (Dispatchers.Main){
+                try {
+                    val response =
+                        RetrofitClient.instance.createUser(username, password, email).await()
+                    if (response.success == true) {
+                        Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_LONG)
+                            .show()
+                    } else {
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG).show()
                     }
+                }catch (t:Throwable){
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                }
 
-                    override fun onResponse(call: Call<defaultRespone>, response: Response<defaultRespone>) {
 
-                        if(response.body()?.success==true){
-                            Toast.makeText(applicationContext,"sign up succes",Toast.LENGTH_LONG).show()
-                        }
-                        else{
-                            Toast.makeText(applicationContext, response.body()?.reason, Toast.LENGTH_LONG).show()
-                        }
-                    }
+                
 
-                })
+            }
+
+
 
         }
 

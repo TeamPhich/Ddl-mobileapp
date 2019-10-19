@@ -1,21 +1,19 @@
 package com.TeamPhich.deadline.ui
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.TeamPhich.deadline.R
-import com.TeamPhich.deadline.responses.defaultRespone
 import com.TeamPhich.deadline.saveToken.SharedPreference
 
 import com.TeamPhich.deadline.services.RetrofitClient
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main._iUserName
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 class activity_login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,28 +34,28 @@ class activity_login : AppCompatActivity() {
                 _iUserName.requestFocus()
                 return@setOnClickListener
             }
-            RetrofitClient.instance.login(username, password )
-                .enqueue(object: Callback<defaultRespone> {
-                    override fun onFailure(call: Call<defaultRespone>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+
+            GlobalScope.launch (Dispatchers.Main){
+                try {
+                    val response = RetrofitClient.instance.login(username, password).await()
+                    if(response.success==true){
+                        Toast.makeText(applicationContext,"login success",Toast.LENGTH_LONG).show()
+                        sharedPreference.resetToken()
+                        sharedPreference.setToken(response.data.token)
                     }
-
-                    override fun onResponse(call: Call<defaultRespone>, response: Response<defaultRespone>) {
-
-                        if(response.body()?.success==true){
-                            Toast.makeText(applicationContext,"sign in success", Toast.LENGTH_LONG).show()
-                            sharedPreference.resetToken()
-                            sharedPreference.setToken(response.body()?.data?.token)
-                            Log.d("thangdznhat",sharedPreference.getToken())
-
-
-                        }
-                        else{
-                            Toast.makeText(applicationContext, response.body()?.reason, Toast.LENGTH_LONG).show()
-                        }
+                    else{
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG).show()
                     }
+                }catch (t:Throwable){
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                }
 
-                })
+
+
+
+
+            }
+
 
         }
 
