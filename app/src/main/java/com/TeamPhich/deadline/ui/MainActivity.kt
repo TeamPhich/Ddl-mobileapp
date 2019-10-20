@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textLogin.setOnClickListener{
+        textLogin.setOnClickListener {
             startActivity(Intent(this@MainActivity, activity_login::class.java))
         }
         ButSignup.setOnClickListener {
@@ -27,26 +27,26 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            if(email.isEmpty()){
+            if (email.isEmpty()) {
                 _iEmail.error = "Email required"
                 _iEmail.requestFocus()
                 return@setOnClickListener
             }
 
 
-            if(password.isEmpty()){
+            if (password.isEmpty()) {
                 _iPassWord.error = "Password required"
                 _iPassWord.requestFocus()
                 return@setOnClickListener
             }
 
-            if(username.isEmpty()){
+            if (username.isEmpty()) {
                 _iUserName.error = "User Name required"
                 _iUserName.requestFocus()
                 return@setOnClickListener
             }
 
-            GlobalScope.launch (Dispatchers.Main){
+            GlobalScope.launch(Dispatchers.Main) {
                 try {
                     val response =
                         RetrofitClient.instance.createUser(username, password, email).await()
@@ -54,17 +54,15 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_LONG)
                             .show()
                     } else {
-                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                            .show()
                     }
-                }catch (t:Throwable){
+                } catch (t: Throwable) {
                     Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
                 }
 
 
-                
-
             }
-
 
 
         }

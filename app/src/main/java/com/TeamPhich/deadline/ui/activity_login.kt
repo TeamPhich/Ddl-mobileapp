@@ -19,7 +19,7 @@ class activity_login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val sharedPreference:SharedPreference=SharedPreference(this)
+        val sharedPreference: SharedPreference = SharedPreference(this)
         butSignin.setOnClickListener {
             val username = _iUserName.text.toString();
             val password = _iPassword.text.toString();
@@ -35,23 +35,21 @@ class activity_login : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            GlobalScope.launch (Dispatchers.Main){
+            GlobalScope.launch(Dispatchers.Main) {
                 try {
                     val response = RetrofitClient.instance.login(username, password).await()
-                    if(response.success==true){
-                        Toast.makeText(applicationContext,"login success",Toast.LENGTH_LONG).show()
+                    if (response.success == true) {
+                        Toast.makeText(applicationContext, "login success", Toast.LENGTH_LONG)
+                            .show()
                         sharedPreference.resetToken()
                         sharedPreference.setToken(response.data.token)
+                    } else {
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                            .show()
                     }
-                    else{
-                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG).show()
-                    }
-                }catch (t:Throwable){
+                } catch (t: Throwable) {
                     Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
                 }
-
-
-
 
 
             }
@@ -60,11 +58,6 @@ class activity_login : AppCompatActivity() {
         }
 
     }
-
-
-
-
-
 
 
 }
