@@ -4,5 +4,5 @@
     tools:showIn="navigation_view">
     <item android:icon="@drawable/ic_add"
         android:id="@+id/add_space"
-        android:title="add a space"/>
+        android:title="create a space"/>
 </menu>
