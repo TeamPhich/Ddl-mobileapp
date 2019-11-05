@@ -1,55 +1,28 @@
 package com.TeamPhich.deadline.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.saveToken.SharedPreference
+
 import com.TeamPhich.deadline.services.RetrofitClient
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main._iUserName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import android.os.Handler
-import com.TeamPhich.deadline.saveToken.SharedPreference
 
-class MainActivity : AppCompatActivity() {
-    private var doubleBackToExitPressedOnce = false
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            System.exit(-1)
-
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
-
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
-    }
+class activity_login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        textLogin.setOnClickListener {
-            startActivity(Intent(this@MainActivity, activity_login::class.java))
-        }
-        ButSignup.setOnClickListener {
-
-            val email = _iEmail.text.toString().trim()
-            val password = _iPassWord.text.toString().trim()
-            val username = _iUserName.text.toString().trim()
-
-
-
-            if (email.isEmpty()) {
-                _iEmail.error = "Email required"
-                _iEmail.requestFocus()
-                return@setOnClickListener
-            }
-
-
+        setContentView(R.layout.activity_login)
+        val sharedPreference: SharedPreference = SharedPreference(this)
+        butSignin.setOnClickListener {
+            val username = _iUserName.text.toString();
+            val password = _iPassword.text.toString();
             if (password.isEmpty()) {
                 _iPassWord.error = "Password required"
                 _iPassWord.requestFocus()
@@ -64,11 +37,12 @@ class MainActivity : AppCompatActivity() {
 
             GlobalScope.launch(Dispatchers.Main) {
                 try {
-                    val response =
-                        RetrofitClient.instance.createUser(username, password, email).await()
+                    val response = RetrofitClient.instance.login(username, password).await()
                     if (response.success == true) {
-                        Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, "login success", Toast.LENGTH_LONG)
                             .show()
+                        sharedPreference.resetToken()
+                        sharedPreference.setToken(response.data.token)
                     } else {
                         Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
                             .show()
