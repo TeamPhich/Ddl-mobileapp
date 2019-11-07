@@ -18,23 +18,21 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Handler
+import android.widget.ListView
 import android.widget.Toast
+import com.TeamPhich.deadline.responses.Space.Row
+import com.TeamPhich.deadline.responses.Space.getListSpaceRespone
+import com.TeamPhich.deadline.saveToken.SharedPreference
+import com.TeamPhich.deadline.services.RetrofitClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import android.widget.ArrayAdapter
+import kotlinx.android.synthetic.main.yourspace.*
 
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private var doubleBackToExitPressedOnce = false
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            System.exit(-1)
 
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
-
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
-    }
     var listC:List<String> = listOf("x", "y", "z")
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
@@ -50,11 +48,14 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         navView = findViewById(R.id.nav_view)
 
         val toggle = ActionBarDrawerToggle(
+
             this, drawerLayout, toolbar, 0, 0
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+        getListSpace()
+
 
 
 
@@ -90,5 +91,56 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 //        }
 
     }
+
+
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            System.exit(-1)
+
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
+
+    fun getListSpace(){
+        val sharedPreference: SharedPreference = SharedPreference(this)
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response = RetrofitClient.instance.getListSpace(sharedPreference.getToken().toString()  ).await()
+                if (response.success == true) {
+                        showListSpace(response.data.rows)
+
+
+                } else {
+                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                        .show()
+                }
+            } catch (t: Throwable) {
+                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+            }
+
+
+        }
+
+    }
+    fun showListSpace(listspace:List<Row>){
+        val listnamespace: ArrayList<String> = ArrayList()
+        listspace.forEach{
+            listnamespace.add(it.name)
+        }
+        _sListSpace.adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,listnamespace)
+        _sListSpace.setOnItemClickListener{parent, view, position, id ->
+            Toast.makeText(applicationContext,_sListSpace.getItemAtPosition(position).toString(),Toast.LENGTH_LONG).show()
+
+        }
+    }
+
+
 
 }
