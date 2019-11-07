@@ -5,8 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.saveToken.SharedPreference
-
+import android.content.Intent
 import com.TeamPhich.deadline.services.RetrofitClient
+import com.TeamPhich.deadline.ui.dashboard.dashboard
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main._iUserName
@@ -43,6 +44,8 @@ class activity_login : AppCompatActivity() {
                             .show()
                         sharedPreference.resetToken()
                         sharedPreference.setToken(response.data.token)
+                        startActivity(Intent(this@activity_login, dashboard::class.java))
+
                     } else {
                         Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
                             .show()
@@ -55,9 +58,14 @@ class activity_login : AppCompatActivity() {
             }
 
 
+
+
         }
 
+
     }
+
+
 
 
 }

@@ -1,23 +1,41 @@
-package com.TeamPhich.deadline.ui
+package com.TeamPhich.deadline.ui.dashboard
 
+import android.content.ClipData
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.ui.dashboard.space_actyvity.createSpace_activity
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activiy_showmenu.*
-import kotlinx.android.synthetic.main.add_a_space.view.*
+
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.Handler
+import android.widget.Toast
+
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            System.exit(-1)
+
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
+    var listC:List<String> = listOf("x", "y", "z")
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
@@ -40,19 +58,22 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
 
 
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.add_space -> {
-               loaddialog(frag1 = dialog_space())
+//               loaddialog(frag1 = dialog_space())
+                startActivity(Intent(this@dashboard, createSpace_activity::class.java))
+
             }
 
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-    private fun loaddialog(frag1:dialog_space){
+    private fun loaddialog(frag1: dialog_space){
         val fm= supportFragmentManager.beginTransaction()
         fm.replace(R.id.create_a_space,frag1)
         fm.commit()

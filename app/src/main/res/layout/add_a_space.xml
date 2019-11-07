@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <EditText
-        android:id="@+id/name_space"
+        android:id="@+id/_iSpaceName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.166" />
 
     <Button
-        android:id="@+id/create"
+        android:id="@+id/_bCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -35,12 +35,12 @@
         android:layout_marginBottom="16dp"
         android:text="create"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/_bCancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_space" />
+        app:layout_constraintTop_toBottomOf="@+id/_iSpaceName" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/_bCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
@@ -49,8 +49,8 @@
         android:text="cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/create"
-        app:layout_constraintTop_toBottomOf="@+id/name_space"
+        app:layout_constraintStart_toEndOf="@+id/_bCreate"
+        app:layout_constraintTop_toBottomOf="@+id/_iSpaceName"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

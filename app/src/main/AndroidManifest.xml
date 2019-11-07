@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.dialog_space"></activity>
-        <activity android:name=".ui.dashboard">
+        <activity android:name=".ui.dashboard.dashboard"></activity>
+        <activity android:name=".ui.singup_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,9 @@
         <!-- android:configChanges="orientation|keyboardHidden|screenSize" -->
         <!-- android:label="@string/title_activity_sign_up" -->
         <!-- android:theme="@style/FullscreenTheme" /> -->
-        <activity android:name=".ui.MainActivity"></activity>
+
+        <activity android:name=".ui.dashboard.dialog_space"></activity>
+        <activity android:name=".ui.dashboard.space_actyvity.createSpace_activity"></activity>
     </application>
 
 </manifest>

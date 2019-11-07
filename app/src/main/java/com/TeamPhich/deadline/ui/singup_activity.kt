@@ -11,9 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import android.os.Handler
-import com.TeamPhich.deadline.saveToken.SharedPreference
 
-class MainActivity : AppCompatActivity() {
+class singup_activity : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         textLogin.setOnClickListener {
-            startActivity(Intent(this@MainActivity, activity_login::class.java))
+            startActivity(Intent(this@singup_activity, activity_login::class.java))
         }
         ButSignup.setOnClickListener {
 
@@ -65,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.Main) {
                 try {
                     val response =
-                        RetrofitClient.instance.createUser(username, password, email).await()
+                        RetrofitClient.instance.createUser(username, password, email, "ninh thang").await()
                     if (response.success == true) {
                         Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_LONG)
                             .show()
