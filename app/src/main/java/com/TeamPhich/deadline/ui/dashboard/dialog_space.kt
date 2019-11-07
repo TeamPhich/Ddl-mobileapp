@@ -1,4 +1,4 @@
-package com.TeamPhich.deadline.ui
+package com.TeamPhich.deadline.ui.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
