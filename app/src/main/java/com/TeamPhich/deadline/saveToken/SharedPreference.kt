@@ -25,5 +25,19 @@ class SharedPreference(val cont: Context) {
         val editor = SharedPreferences.edit()
         editor.remove("token")
     }
+    fun setTokenSpace(value: String?) {
+        val editor = SharedPreferences.edit()
+        editor.putString("tokenSpace", value)
+        editor.commit()
+    }
+
+    fun getTokenSpace(): String? {
+        return SharedPreferences.getString("tokenSpace", "")
+    }
+
+    fun resetTokenSpace() {
+        val editor = SharedPreferences.edit()
+        editor.remove("tokenSpace")
+    }
 
 }

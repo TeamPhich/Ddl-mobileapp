@@ -2,10 +2,14 @@ package com.TeamPhich.deadline.services
 
 import com.TeamPhich.deadline.responses.Space.getListSpaceRespone
 import com.TeamPhich.deadline.responses.Space.regSpaceRespone
+import com.TeamPhich.deadline.responses.Space.spaceTokenRespone
 import com.TeamPhich.deadline.responses.login.loginRespone
 import com.TeamPhich.deadline.responses.signUp.signUpRespone
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
+import retrofit2.http.GET
+
+
 
 interface Api {
 
@@ -37,4 +41,12 @@ interface Api {
     fun getListSpace(
         @Header("token") token: String
     ): Deferred<getListSpaceRespone>
+
+    @GET("/api/v1/accounts/spaces/{space_id}")
+    fun getSpaceToken(
+        @Header("token") token: String,
+        @Path("space_id") space_id:Int
+
+    ): Deferred<spaceTokenRespone>
+
 }

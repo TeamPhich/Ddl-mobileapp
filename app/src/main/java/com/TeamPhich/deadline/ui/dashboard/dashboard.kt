@@ -18,6 +18,7 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Handler
+import android.util.Log
 import android.widget.ListView
 import android.widget.Toast
 import com.TeamPhich.deadline.responses.Space.Row
@@ -37,6 +38,9 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activiy_showmenu)
@@ -109,7 +113,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     fun getListSpace(){
         val sharedPreference: SharedPreference = SharedPreference(this)
-
+        Log.d("AAAAE",sharedPreference.getToken().toString())
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response = RetrofitClient.instance.getListSpace(sharedPreference.getToken().toString()  ).await()
@@ -131,14 +135,42 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
     fun showListSpace(listspace:List<Row>){
         val listnamespace: ArrayList<String> = ArrayList()
+        val sharedPreference: SharedPreference = SharedPreference(this)
         listspace.forEach{
             listnamespace.add(it.name)
         }
+
         _sListSpace.adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,listnamespace)
         _sListSpace.setOnItemClickListener{parent, view, position, id ->
             Toast.makeText(applicationContext,_sListSpace.getItemAtPosition(position).toString(),Toast.LENGTH_LONG).show()
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+
+                    val response = RetrofitClient.instance.getSpaceToken(sharedPreference.getToken().toString() ,  getspaceid(listspace,_sListSpace.getItemAtPosition(position).toString())).await()
+                    if (response.success == true) {
+                        Toast.makeText(applicationContext, response.data.tokenSpace, Toast.LENGTH_LONG)
+                            .show()
+                        sharedPreference.setTokenSpace(response.data.tokenSpace)
+
+
+                    } else {
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                            .show()
+                    }
+                } catch (t: Throwable) {
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                }
+
+
+            }
 
         }
+    }
+    fun getspaceid(listspace:List<Row>, key:String):Int{
+        listspace.forEach{
+            if (key==it.name) return it.id
+        }
+        return 0
     }
 
 
