@@ -10,7 +10,6 @@ import retrofit2.http.*
 import retrofit2.http.GET
 
 
-
 interface Api {
 
     @FormUrlEncoded
@@ -19,7 +18,7 @@ interface Api {
         @Field("user_name") user_name: String,
         @Field("password") password: String,
         @Field("email") email: String,
-        @Field("full_name") full_name:String
+        @Field("full_name") full_name: String
     ): Deferred<signUpRespone>
 
     @FormUrlEncoded
@@ -33,7 +32,7 @@ interface Api {
     @POST("api/v1/spaces/")
     fun createSpace(
         @Header("token") token: String,
-        @Field("name") name:String
+        @Field("name") name: String
     ): Deferred<regSpaceRespone>
 
 
@@ -45,7 +44,7 @@ interface Api {
     @GET("/api/v1/accounts/spaces/{space_id}")
     fun getSpaceToken(
         @Header("token") token: String,
-        @Path("space_id") space_id:Int
+        @Path("space_id") space_id: Int
 
     ): Deferred<spaceTokenRespone>
 

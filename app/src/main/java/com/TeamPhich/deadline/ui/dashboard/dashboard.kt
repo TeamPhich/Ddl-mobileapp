@@ -34,11 +34,10 @@ import kotlinx.android.synthetic.main.yourspace.*
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    var listC:List<String> = listOf("x", "y", "z")
+    var listC: List<String> = listOf("x", "y", "z")
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,9 +60,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         getListSpace()
 
 
-
-
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -78,9 +74,10 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-    private fun loaddialog(frag1: dialog_space){
-        val fm= supportFragmentManager.beginTransaction()
-        fm.replace(R.id.create_a_space,frag1)
+
+    private fun loaddialog(frag1: dialog_space) {
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.create_a_space, frag1)
         fm.commit()
 //        val mDialogView  = LayoutInflater.from(this).inflate(R.layout.add_a_space,null);
 //        val mBuilder = AlertDialog.Builder(this).setView(mDialogView)
@@ -111,14 +108,16 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    fun getListSpace(){
+    fun getListSpace() {
         val sharedPreference: SharedPreference = SharedPreference(this)
-        Log.d("AAAAE",sharedPreference.getToken().toString())
+        Log.d("AAAAE", sharedPreference.getToken().toString())
         GlobalScope.launch(Dispatchers.Main) {
             try {
-                val response = RetrofitClient.instance.getListSpace(sharedPreference.getToken().toString()  ).await()
+                val response =
+                    RetrofitClient.instance.getListSpace(sharedPreference.getToken().toString())
+                        .await()
                 if (response.success == true) {
-                        showListSpace(response.data.rows)
+                    showListSpace(response.data.rows)
 
 
                 } else {
@@ -133,22 +132,34 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         }
 
     }
-    fun showListSpace(listspace:List<Row>){
+
+    fun showListSpace(listspace: List<Row>) {
         val listnamespace: ArrayList<String> = ArrayList()
         val sharedPreference: SharedPreference = SharedPreference(this)
-        listspace.forEach{
+        listspace.forEach {
             listnamespace.add(it.name)
         }
 
-        _sListSpace.adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,listnamespace)
-        _sListSpace.setOnItemClickListener{parent, view, position, id ->
-            Toast.makeText(applicationContext,_sListSpace.getItemAtPosition(position).toString(),Toast.LENGTH_LONG).show()
+        _sListSpace.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listnamespace)
+        _sListSpace.setOnItemClickListener { parent, view, position, id ->
+            Toast.makeText(
+                applicationContext,
+                _sListSpace.getItemAtPosition(position).toString(),
+                Toast.LENGTH_LONG
+            ).show()
             GlobalScope.launch(Dispatchers.Main) {
                 try {
 
-                    val response = RetrofitClient.instance.getSpaceToken(sharedPreference.getToken().toString() ,  getspaceid(listspace,_sListSpace.getItemAtPosition(position).toString())).await()
+                    val response = RetrofitClient.instance.getSpaceToken(
+                        sharedPreference.getToken().toString(),
+                        getspaceid(listspace, _sListSpace.getItemAtPosition(position).toString())
+                    ).await()
                     if (response.success == true) {
-                        Toast.makeText(applicationContext, response.data.tokenSpace, Toast.LENGTH_LONG)
+                        Toast.makeText(
+                            applicationContext,
+                            response.data.tokenSpace,
+                            Toast.LENGTH_LONG
+                        )
                             .show()
                         sharedPreference.setTokenSpace(response.data.tokenSpace)
 
@@ -166,13 +177,13 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         }
     }
-    fun getspaceid(listspace:List<Row>, key:String):Int{
-        listspace.forEach{
-            if (key==it.name) return it.id
+
+    fun getspaceid(listspace: List<Row>, key: String): Int {
+        listspace.forEach {
+            if (key == it.name) return it.id
         }
         return 0
     }
-
 
 
 }

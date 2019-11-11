@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class createSpace_activity: AppCompatActivity() {
+class createSpace_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_a_space)
@@ -27,7 +27,10 @@ class createSpace_activity: AppCompatActivity() {
 
             GlobalScope.launch(Dispatchers.Main) {
                 try {
-                    val response = RetrofitClient.instance.createSpace(sharedPreference.getToken().toString(),spacename  ).await()
+                    val response = RetrofitClient.instance.createSpace(
+                        sharedPreference.getToken().toString(),
+                        spacename
+                    ).await()
                     if (response.success == true) {
                         Toast.makeText(applicationContext, "OK", Toast.LENGTH_LONG)
                             .show()
@@ -48,7 +51,6 @@ class createSpace_activity: AppCompatActivity() {
         }
 
     }
-
 
 
 }
