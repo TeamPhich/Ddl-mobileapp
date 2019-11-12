@@ -1,7 +1,7 @@
 package com.TeamPhich.deadline.ui.dashboard
 
-import android.content.ClipData
-import android.content.Intent
+import android.app.AlertDialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,18 +11,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.TeamPhich.deadline.R
-import com.TeamPhich.deadline.ui.dashboard.space_actyvity.createSpace_activity
 import com.google.android.material.navigation.NavigationView
 
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Handler
 import android.util.Log
-import android.widget.ListView
 import android.widget.Toast
 import com.TeamPhich.deadline.responses.Space.Row
-import com.TeamPhich.deadline.responses.Space.getListSpaceRespone
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +24,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.yourspace.*
+
+import android.widget.EditText
 
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -66,7 +62,27 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         when (item.itemId) {
             R.id.add_space -> {
 //               loaddialog(frag1 = dialog_space())
-                startActivity(Intent(this@dashboard, createSpace_activity::class.java))
+//                val builder = AlertDialog.Builder(this)
+//                builder.setTitle("Androidly Alert")
+//                builder.setMessage("We have a messac xcge")
+//                //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+//
+//                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+//                    Toast.makeText(applicationContext,
+//                        android.R.string.yes, Toast.LENGTH_SHORT).show()
+//                }
+//
+//                builder.setNegativeButton(android.R.string.no) { dialog, which ->
+//                    Toast.makeText(applicationContext,
+//                        android.R.string.no, Toast.LENGTH_SHORT).show()
+//                }
+//
+//                builder.setNeutralButton("Maybe") { dialog, which ->
+//                    Toast.makeText(applicationContext,
+//                        "Maybe", Toast.LENGTH_SHORT).show()
+//                }
+//                builder.show()
+                callDialogSpace()
 
             }
 
@@ -151,10 +167,14 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 try {
 
                     val response = RetrofitClient.instance.getSpaceToken(
-                        sharedPreference.getToken().toString(),
-                        getspaceid(listspace, _sListSpace.getItemAtPosition(position).toString())
-                    ).await()
+                    sharedPreference.getToken().toString(),
+                    getspaceid(listspace, _sListSpace.getItemAtPosition(position).toString())).await()
+                    for (i in 0 until parent.childCount) {
+                    parent.getChildAt(i).setBackgroundColor(Color.WHITE)
+                    }
+                    view.setBackgroundColor(Color.GREEN)
                     if (response.success == true) {
+
                         Toast.makeText(
                             applicationContext,
                             response.data.tokenSpace,
@@ -183,6 +203,54 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             if (key == it.name) return it.id
         }
         return 0
+    }
+
+
+    fun callDialogSpace(){
+        val dialogBuilder = AlertDialog.Builder(this).create()
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.activity_dialog_space, null)
+
+        val editText = dialogView.findViewById(R.id.edt_comment) as EditText
+        val Submit = dialogView.findViewById(R.id.buttonSubmit) as Button
+        val Cancel = dialogView.findViewById(R.id.buttonCancel) as Button
+        val sharedPreference: SharedPreference = SharedPreference(this)
+
+        Submit.setOnClickListener {
+            val spacename2=editText.text.toString().trim()
+            if (spacename2.isEmpty()) {
+                editText.error = "Space's name required"
+                editText.requestFocus()
+                return@setOnClickListener
+            }
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+                    val response = RetrofitClient.instance.createSpace(sharedPreference.getToken().toString(), spacename2 ).await()
+                    if (response.success == true) {
+                        Toast.makeText(applicationContext, "OK", Toast.LENGTH_LONG)
+                            .show()
+                        getListSpace()
+
+                    } else {
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                            .show()
+                    }
+                } catch (t: Throwable) {
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                }
+
+
+            }
+
+            dialogBuilder.dismiss()
+        }
+        Cancel.setOnClickListener {
+            dialogBuilder.dismiss()
+        }
+
+
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.show()
     }
 
 
