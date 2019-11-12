@@ -24,15 +24,15 @@ class activity_login : AppCompatActivity() {
         butSignin.setOnClickListener {
             val username = _iUsername.text.toString();
             val password = _iPassword.text.toString();
-            if (password.isEmpty()) {
-                _iPassWord.error = "Password required"
-                _iPassWord.requestFocus()
+            if (username.isEmpty()) {
+                _iUsername.error = "Password required"
+                _iUsername.requestFocus()
                 return@setOnClickListener
             }
 
-            if (username.isEmpty()) {
-                _iUserName.error = "User Name required"
-                _iUserName.requestFocus()
+            if (password.isEmpty()) {
+                _iPassword.error = "User Name required"
+                _iPassword.requestFocus()
                 return@setOnClickListener
             }
 
