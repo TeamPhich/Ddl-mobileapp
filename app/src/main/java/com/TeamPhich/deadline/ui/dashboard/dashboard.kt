@@ -91,23 +91,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         return true
     }
 
-    private fun loaddialog(frag1: dialog_space) {
-        val fm = supportFragmentManager.beginTransaction()
-        fm.replace(R.id.create_a_space, frag1)
-        fm.commit()
-//        val mDialogView  = LayoutInflater.from(this).inflate(R.layout.add_a_space,null);
-//        val mBuilder = AlertDialog.Builder(this).setView(mDialogView)
-//        val mAlertDialog =mBuilder.show()
-//        mDialogView.create.setOnClickListener {
-//            mAlertDialog.dismiss()
-//            val name =mDialogView.name_space.text.toString()
-//
-//        }
-//        mDialogView.cancel.setOnClickListener {
-//            mAlertDialog.dismiss()
-//        }
-
-    }
 
 
     private var doubleBackToExitPressedOnce = false

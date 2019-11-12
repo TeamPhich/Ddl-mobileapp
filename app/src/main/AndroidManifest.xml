@@ -26,8 +26,7 @@
         <!-- android:label="@string/title_activity_sign_up" -->
         <!-- android:theme="@style/FullscreenTheme" /> -->
 
-        <activity android:name=".ui.dashboard.dialog_space"></activity>
-        <activity android:name=".ui.dashboard.space_actyvity.createSpace_activity"></activity>
+
     </application>
 
 </manifest>
