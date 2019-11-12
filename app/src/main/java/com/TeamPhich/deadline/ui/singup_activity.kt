@@ -39,7 +39,7 @@ class singup_activity : AppCompatActivity() {
             val email = _iEmail.text.toString().trim()
             val password = _iPassWord.text.toString().trim()
             val username = _iUserName.text.toString().trim()
-
+            val fullname = _iFullname.text.toString().trim()
 
 
             if (email.isEmpty()) {
@@ -60,11 +60,16 @@ class singup_activity : AppCompatActivity() {
                 _iUserName.requestFocus()
                 return@setOnClickListener
             }
+            if (fullname.isEmpty()) {
+                _iFullname.error = "User Name required"
+                _iFullname.requestFocus()
+                return@setOnClickListener
+            }
 
             GlobalScope.launch(Dispatchers.Main) {
                 try {
                     val response =
-                        RetrofitClient.instance.createUser(username, password, email, "ninh thang").await()
+                        RetrofitClient.instance.createUser(username, password, email, fullname).await()
                     if (response.success == true) {
                         Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_LONG)
                             .show()

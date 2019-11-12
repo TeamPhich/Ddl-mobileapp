@@ -22,7 +22,7 @@ class activity_login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         val sharedPreference: SharedPreference = SharedPreference(this)
         butSignin.setOnClickListener {
-            val username = _iUserName.text.toString();
+            val username = _iUsername.text.toString();
             val password = _iPassword.text.toString();
             if (password.isEmpty()) {
                 _iPassWord.error = "Password required"

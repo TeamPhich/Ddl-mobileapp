@@ -53,15 +53,16 @@
     <LinearLayout
 
         android:id="@+id/linearLayout2"
-        android:layout_width="387dp"
-        android:layout_height="153dp"
+        android:layout_width="390dp"
+        android:layout_height="202dp"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="275dp"
+        android:layout_marginBottom="288dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
@@ -91,6 +92,16 @@
             android:layout_height="wrap_content"
             android:drawablePadding="5dp"
             android:hint="Email"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="111dp" />
+
+        <EditText
+            android:id="@+id/_iFullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:hint="Full name"
             android:inputType="textEmailAddress"
             tools:layout_editor_absoluteX="20dp"
             tools:layout_editor_absoluteY="111dp" />

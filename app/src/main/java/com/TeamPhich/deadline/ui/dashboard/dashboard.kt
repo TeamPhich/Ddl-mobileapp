@@ -157,13 +157,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     }
                     view.setBackgroundColor(Color.GREEN)
                     if (response.success == true) {
-
-                        Toast.makeText(
-                            applicationContext,
-                            response.data.tokenSpace,
-                            Toast.LENGTH_LONG
-                        )
-                            .show()
                         sharedPreference.setTokenSpace(response.data.tokenSpace)
 
 
@@ -175,8 +168,8 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
                 }
 
-
             }
+            drawerLayout.closeDrawer(GravityCompat.START)
 
         }
     }
@@ -229,6 +222,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         }
         Cancel.setOnClickListener {
             dialogBuilder.dismiss()
+
         }
 
 
