@@ -9,8 +9,6 @@ import android.content.Intent
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.dashboard
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main._iUserName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
