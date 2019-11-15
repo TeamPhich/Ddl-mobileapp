@@ -5,7 +5,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -15,17 +14,14 @@ import com.google.android.material.navigation.NavigationView
 
 import android.os.Handler
 import android.util.Log
-import android.widget.Toast
+import android.widget.*
 import com.TeamPhich.deadline.responses.Space.Row
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.yourspace.*
-
-import android.widget.EditText
 
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -140,6 +136,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         }
 
         _sListSpace.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listnamespace)
+        setListViewHeightBasedOnChildren(_sListSpace)
         _sListSpace.setOnItemClickListener { parent, view, position, id ->
             Toast.makeText(
                 applicationContext,
@@ -172,6 +169,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             drawerLayout.closeDrawer(GravityCompat.START)
 
         }
+
     }
 
     fun getspaceid(listspace: List<Row>, key: String): Int {
@@ -181,6 +179,23 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         return 0
     }
 
+    fun setListViewHeightBasedOnChildren(listView: ListView) {
+        val listAdapter = listView.adapter
+            ?: // pre-condition
+            return
+
+        var totalHeight = 0
+        for (i in 0 until listAdapter.count) {
+            val listItem = listAdapter.getView(i, null, listView)
+            listItem.measure(0, 0)
+            totalHeight += listItem.measuredHeight
+        }
+
+        val params = listView.layoutParams
+        params.height = totalHeight + listView.dividerHeight * (listAdapter.count - 1)
+        listView.layoutParams = params
+        listView.requestLayout()
+    }
 
     fun callDialogSpace(){
         val dialogBuilder = AlertDialog.Builder(this).create()
