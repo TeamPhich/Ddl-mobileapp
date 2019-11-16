@@ -1,6 +1,8 @@
 package com.TeamPhich.deadline.ui.dashboard
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,9 +17,11 @@ import com.google.android.material.navigation.NavigationView
 import android.os.Handler
 import android.util.Log
 import android.widget.*
+import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.responses.Space.Row
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -36,22 +40,68 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activiy_showmenu)
 
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+//        toolbar = findViewById(R.id.toolbar)
+//        setSupportActionBar(toolbar)
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
 
         val toggle = ActionBarDrawerToggle(
 
-            this, drawerLayout, toolbar, 0, 0
+            this, drawerLayout,   0, 0
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
         getListSpace()
+        val bottomNavigation : BottomNavigationView =findViewById(R.id.bottomNavigationView)
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
 
+
+    }
+
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            // khi click vao nut create tasks se chuyen sang activity createtask
+            R.id.create_task-> {
+                val Createtask  = createtask.newInstance()
+                openFragment(Createtask)
+
+                return@OnNavigationItemSelectedListener true
+//                intent = Intent(this, createtask::class.java)
+//
+//                startActivity(intent)
+
+
+            }
+            // khi click vao nut peole se chuyen sang activity PeoleFragment
+            R.id.people-> {
+                val peopleFragment = PeopleFragment.newInstance()
+                openFragment(peopleFragment)
+
+                return@OnNavigationItemSelectedListener true
+//                intent = Intent(this,PeopleFragment::class.java)
+////                startActivity(intent)
+            }
+            //khi click vao message se show sang activity message
+//            R.id.message-> {
+//                val messageFragmennt = MessageFragmennt.newInstance()
+//                openFragment(messageFragmennt)
+//
+//                return@OnNavigationItemSelectedListener true
+//            }
+
+        }
+        false
+    }
+    private  fun openFragment(fragment: Fragment){
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmnet_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -105,7 +155,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     fun getListSpace() {
         val sharedPreference: SharedPreference = SharedPreference(this)
-        Log.d("AAAAE", sharedPreference.getToken().toString())
+        Log.d("tokenacc", sharedPreference.getToken().toString())
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
@@ -155,7 +205,8 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     view.setBackgroundColor(Color.GREEN)
                     if (response.success == true) {
                         sharedPreference.setTokenSpace(response.data.tokenSpace)
-
+                        Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
+                        Log.d("Tolen",sharedPreference.getToken().toString())
 
                     } else {
                         Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
@@ -166,6 +217,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 }
 
             }
+
             drawerLayout.closeDrawer(GravityCompat.START)
 
         }

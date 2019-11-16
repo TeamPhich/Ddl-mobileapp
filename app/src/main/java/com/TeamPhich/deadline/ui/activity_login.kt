@@ -38,8 +38,7 @@ class activity_login : AppCompatActivity() {
                 try {
                     val response = RetrofitClient.instance.login(username, password).await()
                     if (response.success == true) {
-                        Toast.makeText(applicationContext, "login success", Toast.LENGTH_LONG)
-                            .show()
+                        Toast.makeText(applicationContext, "login success", Toast.LENGTH_LONG).show()
                         sharedPreference.resetToken()
                         sharedPreference.setToken(response.data.token)
                         startActivity(Intent(this@activity_login, dashboard::class.java))

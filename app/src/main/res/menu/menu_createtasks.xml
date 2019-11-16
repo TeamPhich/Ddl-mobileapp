@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/_btodo"
+        android:icon="@drawable/ic_todo"
+        android:title="TO DO"/>
+    <item android:id="@+id/_binprogess"
+        android:icon="@drawable/ic_inprogess"
+        android:title="IN PROGESS"/>
+    <item android:id="@+id/_binreview"
+        android:icon="@drawable/ic_inreview"
+        android:title="IN REVIEW"/>
+    <item android:id="@+id/_bdone"
+        android:icon="@drawable/ic_done"
+        android:title="DONE"/>
+
+</menu>

@@ -1,5 +1,7 @@
 package com.TeamPhich.deadline.ui.dashboard
 
-class Groupactivity() {
+import androidx.appcompat.app.AppCompatActivity
+
+class Groupactivity() :AppCompatActivity(){
 
 }
