@@ -3,10 +3,10 @@
     <item android:id="@+id/_btodo"
         android:icon="@drawable/ic_todo"
         android:title="TO DO"/>
-    <item android:id="@+id/_binprogess"
+    <item android:id="@+id/_mSetAdmin"
         android:icon="@drawable/ic_inprogess"
         android:title="IN PROGESS"/>
-    <item android:id="@+id/_binreview"
+    <item android:id="@+id/_mdeleteMember"
         android:icon="@drawable/ic_inreview"
         android:title="IN REVIEW"/>
     <item android:id="@+id/_bdone"

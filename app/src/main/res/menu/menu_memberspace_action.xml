@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/_mSetAdmin"
+        android:title="set admin" />
+    <item
+        android:id="@+id/_mdeleteMember"
+        android:title="delete" />
+    <item
+        android:id="@+id/_bdone"
+        android:title="DONE" />
+</menu>

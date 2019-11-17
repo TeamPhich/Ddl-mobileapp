@@ -1,9 +1,6 @@
 package com.TeamPhich.deadline.services
 
-import com.TeamPhich.deadline.responses.Space.getListSpaceRespone
-import com.TeamPhich.deadline.responses.Space.listSpacemember
-import com.TeamPhich.deadline.responses.Space.regSpaceRespone
-import com.TeamPhich.deadline.responses.Space.spaceTokenRespone
+import com.TeamPhich.deadline.responses.Space.*
 import com.TeamPhich.deadline.responses.defaultRespone
 import com.TeamPhich.deadline.responses.login.loginRespone
 import com.TeamPhich.deadline.responses.signUp.signUpRespone
@@ -52,28 +49,50 @@ interface Api {
 
     @FormUrlEncoded
     @POST("/api/v1/spaces/members")
-    fun importToSpace(
-        @Header("space_token") space_token: String,
+    fun importMemberToSpace(
+        @Header("space-token") space_token: String,
         @Field("user_id") user_id: String
     ): Deferred<defaultRespone>
 
 
     @GET("/api/v1/spaces/members")
     fun getSpacemember(
-        @Header("space_token") space_token: String
-    ): Deferred<listSpacemember>
+        @Header("space-token") space_token: String
+    ): Deferred<listspacemem>
+
+
+
 
     @DELETE("/api/v1/spaces/members")
     fun deleteMember(
-        @Header("space_token") space_token: String,
+        @Header("space-token") space_token: String,
         @Field("user_id") user_id: String
+    ): Deferred<defaultRespone>
+
+    @DELETE("/api/v1/spaces/leavings")
+    fun memberOutSpace(
+        @Header("space-token") space_token: String
     ): Deferred<defaultRespone>
 
     @PUT("/api/v1/spaces/admins")
     fun adminToMem(
-        @Header("space_token") space_token: String,
+        @Header("space-token") space_token: String,
         @Field("user_id") user_id: String
     ): Deferred<defaultRespone>
+
+    @GET("/api/v1/tasks/status")
+    fun showSpacetask(
+        @Header("space-token") space_token: String
+    )
+
+
+    //task
+    @DELETE("/api/v1/spaces/members")
+    fun deleteTask(
+        @Header("space-token") space_token: String,
+        @Field("task_id") task_id: String
+    ): Deferred<defaultRespone>
+
 
 
 }

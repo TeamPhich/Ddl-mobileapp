@@ -6,10 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.saveToken.SharedPreference
+import com.TeamPhich.deadline.services.RetrofitClient
 import kotlinx.android.synthetic.main.todo_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class TodoFragment : Fragment() {
 
@@ -28,6 +34,28 @@ class TodoFragment : Fragment() {
     companion object {
         fun newInstance(): TodoFragment = TodoFragment()
     }
+
+//    fun getListPeople(){
+//        val context: Context = context!!
+//        val sharedPreference: SharedPreference = SharedPreference(context)
+//
+//
+//        GlobalScope.launch(Dispatchers.Main) {
+//            try {
+//                val response = RetrofitClient.instance.get(sharedPreference.getTokenSpace().toString()).await()
+//                if (response.success == true) {
+//                    showlistSpacePeople(response.data.rows)
+//                } else {
+//                    Toast.makeText((context as dashboard).applicationContext, response.reason, Toast.LENGTH_LONG)
+//                        .show()
+//                }
+//            } catch (t: Throwable) {
+//                Toast.makeText((context as dashboard).applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+//            }
+//
+//
+//        }
+//    }
 
 
 

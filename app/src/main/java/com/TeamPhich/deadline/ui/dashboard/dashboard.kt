@@ -186,7 +186,9 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         }
 
         _sListSpace.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listnamespace)
+
         setListViewHeightBasedOnChildren(_sListSpace)
+
         _sListSpace.setOnItemClickListener { parent, view, position, id ->
             Toast.makeText(
                 applicationContext,
@@ -218,9 +220,11 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
             }
 
-            drawerLayout.closeDrawer(GravityCompat.START)
+
+                drawerLayout.closeDrawer(GravityCompat.START)
 
         }
+
 
     }
 
@@ -231,7 +235,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         return 0
     }
 
-    fun setListViewHeightBasedOnChildren(listView: ListView) {
+    public fun setListViewHeightBasedOnChildren(listView: ListView) {
         val listAdapter = listView.adapter
             ?: // pre-condition
             return
@@ -295,6 +299,10 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         dialogBuilder.setView(dialogView)
         dialogBuilder.show()
+    }
+    fun defaultSeclectListview(listView: ListView){
+        listView.setSelection(0)
+        listView.getSelectedView().setSelected(true);
     }
 
 

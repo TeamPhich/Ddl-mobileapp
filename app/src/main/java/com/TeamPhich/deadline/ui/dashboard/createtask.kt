@@ -1,14 +1,10 @@
 package com.TeamPhich.deadline.ui.dashboard
 
-import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -34,13 +30,13 @@ class createtask :Fragment(){
 
             }
 
-            R.id._binprogess-> {
+            R.id._mSetAdmin-> {
                 Log.d("diep","itemoriges")
                 return@OnNavigationItemSelectedListener true
 
             }
 
-            R.id._binreview-> {
+            R.id._mdeleteMember-> {
                 Log.d("diep","itemrevuew")
                 return@OnNavigationItemSelectedListener true
 
