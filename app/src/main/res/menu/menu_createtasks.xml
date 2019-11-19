@@ -12,5 +12,8 @@
     <item android:id="@+id/_bdone"
         android:icon="@drawable/ic_done"
         android:title="DONE"/>
+    <item android:icon="@drawable/ic_add"
+        android:title="update task"
+        android:id="@+id/_icUpdate"/>
 
 </menu>

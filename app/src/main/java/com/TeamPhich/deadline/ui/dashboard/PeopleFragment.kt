@@ -21,6 +21,7 @@ import android.widget.*
 import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
+import kotlinx.android.synthetic.main.people_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -38,23 +39,39 @@ class PeopleFragment() : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.people_fragment, container, false)
         var arraypeople: ArrayList<Group> = ArrayList()
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
+        arraypeople.add(Group("diepcute", R.drawable.pikachu))
 
         val _listview = view.findViewById<ListView>(R.id._listview_people)
         val context: Context = context!!
         _listview.adapter = CustomAdapter_listviewgroup(context, arraypeople)
-        getListPeople()
-        View.OnClickListener { view ->
-            when (view.id) {
-                R.id._binsertMember -> {
-                    callDialoginsertMember()
-                }
-            }
+//        getListPeople()
+//        View.OnClickListener { view ->
+//            when (view.id) {
+//                R.id._binsertMember -> {
+////                    callDialoginsertMember()
+//                    Log.d("diep","add a member")
+//                }
+//            }
+//        }
+
+
+        view._binsertMember.setOnClickListener { view ->
+            callDialoginsertMember()
         }
 
-
-
-
-
+        view._bDeleteSapce.setOnClickListener { view ->
+            callDialogDeleteSpace()
+        }
+        view._bOutSpace.setOnClickListener { view ->
+            callDialogOutSpace()
+        }
 
 
 

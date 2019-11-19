@@ -24,19 +24,27 @@ class createtask :Fragment(){
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
             R.id._btodo-> {
-                val todoFragment =TodoFragment.newInstance()
+                val todoFragment = TodoFragment.newInstance()
                 openFragment(todoFragment)
                 return@OnNavigationItemSelectedListener true
 
             }
 
-            R.id._mSetAdmin-> {
+                    R.id._mSetAdmin-> {
                 Log.d("diep","itemoriges")
                 return@OnNavigationItemSelectedListener true
 
             }
+                    R.id._icUpdate -> {
+                        val updatetaskFragment =UpdatetaskFragment.newInstance()
+                        openFragment(updatetaskFragment)
 
-            R.id._mdeleteMember-> {
+                        return@OnNavigationItemSelectedListener true
+
+                    }
+
+
+                    R.id._mdeleteMember-> {
                 Log.d("diep","itemrevuew")
                 return@OnNavigationItemSelectedListener true
 

@@ -5,22 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/_bOutSpace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="11dp"
-        android:text="Thoat Space"
-        app:layout_constraintEnd_toStartOf="@+id/_bDeleteSpace"
-        app:layout_constraintStart_toEndOf="@+id/_binsertMember"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <Button-->
+<!--        android:background="@drawable/custombutton"-->
+<!--        android:id="@+id/_bOutSpace"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginEnd="11dp"-->
+<!--        android:text="Thoat Space"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/_bDeleteSpace"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/_binsertMember"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -38,25 +39,67 @@
         </LinearLayout>
     </ScrollView>
 
+<!--    <Button-->
+<!--        android:id="@+id/_binsertMember"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:text="them"-->
+<!--        app:layout_constraintBaseline_toBaselineOf="@+id/_bOutSpace"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/_bOutSpace"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/_bDeleteSpace"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="18dp"-->
+<!--        android:layout_marginEnd="3dp"-->
+<!--        android:text="xoa space"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/_bOutSpace"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
     <Button
         android:id="@+id/_binsertMember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="them"
-        app:layout_constraintBaseline_toBaselineOf="@+id/_bOutSpace"
-        app:layout_constraintEnd_toStartOf="@+id/_bOutSpace"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/custombutton"
+        android:text="ADD MEMBER"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/_bDeleteSpace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="3dp"
-        android:text="xoa space"
+        android:id="@+id/_bOutSpace"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custombutton"
+        android:text="OUT SPACE"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/_binsertMember"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/_bDeleteSapce"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/custombutton"
+        android:text="DELTE SPACE"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_bOutSpace"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
