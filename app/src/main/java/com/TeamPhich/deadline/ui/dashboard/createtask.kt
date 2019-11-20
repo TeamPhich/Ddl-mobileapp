@@ -2,7 +2,6 @@ package com.TeamPhich.deadline.ui.dashboard
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,61 +18,68 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class createtask :Fragment(){
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+class createtask : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.activity_createtask, container, false)
 
-        val bottomNavigation : BottomNavigationView =view.findViewById(R.id.bottomcreate)
+        val bottomNavigation: BottomNavigationView = view.findViewById(R.id.bottomcreate)
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        view._123.setOnClickListener { view -> callDialogaddtask()   }
+        view._123.setOnClickListener { view -> callDialogaddtask() }
         return view
     }
 
-    companion object{
-        fun newInstance() : createtask= createtask()
+    companion object {
+        fun newInstance(): createtask = createtask()
     }
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-            R.id._btodo-> {
-                val todoFragment = TodoFragment.newInstance()
-                openFragment(todoFragment)
-                return@OnNavigationItemSelectedListener true
+
+    private val mOnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id._btodo -> {
+                    val todoFragment = TaskFragment.newInstance("todo")
+                    openFragment(todoFragment)
+                    return@OnNavigationItemSelectedListener true
+
+                }
+
+                R.id._binprogess -> {
+                    val inprogessFragment = TaskFragment.newInstance("in process")
+                    openFragment(inprogessFragment)
+                    return@OnNavigationItemSelectedListener true
+
+                }
+
+
+                R.id._bỉreview -> {
+                    val inreviewFragment = TaskFragment.newInstance("in review")
+                    openFragment(inreviewFragment)
+                    return@OnNavigationItemSelectedListener true
+
+                }
+
+                R.id._bdone -> {
+                    val doneFragment = TaskFragment.newInstance("done")
+                    openFragment(doneFragment)
+                    return@OnNavigationItemSelectedListener true
+
+                }
 
             }
-
-                    R.id._binprogess-> {
-                        val inprogessFragment = InprogessFragment.newInstance()
-                        openFragment(inprogessFragment)
-                return@OnNavigationItemSelectedListener true
-
-            }
-
-
-
-                    R.id._bỉreview-> {
-                        val inreviewFragment = InreviewFragment.newInstance()
-                        openFragment(inreviewFragment)
-                return@OnNavigationItemSelectedListener true
-
-            }
-
-            R.id._bdone-> {
-                val doneFragment = DoneFragment.newInstance()
-                openFragment(doneFragment)
-                return@OnNavigationItemSelectedListener true
-
-            }
-
+            false
         }
-        false
-    }
-    private  fun openFragment(fragment: Fragment){
+
+    private fun openFragment(fragment: Fragment) {
         val transaction = (context as dashboard).supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
     fun callDialogaddtask() {
         val dialogBuilder = AlertDialog.Builder(requireContext()).create()
         val inflater = this.layoutInflater
@@ -85,7 +91,7 @@ class createtask :Fragment(){
         val sharedPreference: SharedPreference = SharedPreference(requireContext())
 
         addtask.setOnClickListener {
-            val task= _bupdate.text.toString().trim()
+            val task = _bupdate.text.toString().trim()
             val date = _bupdate.text.toString().trim()
             if (task.isEmpty()) {
                 _bupdate.error = "Space's name required"
@@ -120,8 +126,6 @@ class createtask :Fragment(){
     }
 
 
-
-
 }
 //class createtask : AppCompatActivity() {
 
@@ -134,12 +138,12 @@ class createtask :Fragment(){
 //    }
 //    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //        when (item.itemId) {
-            // click de show ra activity TodoFragment
+// click de show ra activity TodoFragment
 //            R.id._btodo-> {
 //                intent = Intent(this,TodoFragment::class.java)
 //                startActivity(intent)
 //            }
-            // click de show ra activity InprogessFragment
+// click de show ra activity InprogessFragment
 //            R.id._binprogess-> {
 //                val inprogessFragment  = InprogessFragment.newInstance()
 //                openFragment(inprogessFragment)
@@ -148,7 +152,7 @@ class createtask :Fragment(){
 //                intent = Intent(this,InprogessFragment::class.java)
 //                startActivity(intent)
 //            }
-            // click de show ra activity InreviewIFragment
+// click de show ra activity InreviewIFragment
 //            R.id._binreview-> {
 //                val inreviewFragment = InreviewFragment.newInstance()
 //                openFragment(inreviewFragment)
@@ -157,13 +161,13 @@ class createtask :Fragment(){
 //                intent = Intent(this,InreviewFragment::class.java)
 //                startActivity(intent)
 //            }
-            // click de show ra activity DoneFragment
+// click de show ra activity TaskFragment
 //            R.id._bdone-> {
 //                val todoFragment = TodoFragment.newInstance()
 //                openFragment(todoFragment)
 //
 //                return@OnNavigationItemSelectedListener true
-//                intent = Intent(this, DoneFragment::class.java)
+//                intent = Intent(this, TaskFragment::class.java)
 //                startActivity(intent)
 //            }
 //

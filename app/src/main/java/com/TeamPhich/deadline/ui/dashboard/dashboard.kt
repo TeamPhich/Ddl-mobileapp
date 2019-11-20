@@ -40,15 +40,17 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activiy_showmenu)
 
-//        toolbar = findViewById(R.id.toolbar)
-//        setSupportActionBar(toolbar)
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+//        supportActionBar?.setIcon(R.drawable.pikachu)
+
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
 
         val toggle = ActionBarDrawerToggle(
 
-            this, drawerLayout,   0, 0
+            this, drawerLayout,toolbar,   0, 0
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
