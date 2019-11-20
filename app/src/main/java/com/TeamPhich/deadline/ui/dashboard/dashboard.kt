@@ -86,12 +86,12 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 ////                startActivity(intent)
             }
             //khi click vao message se show sang activity message
-//            R.id.message-> {
-//                val messageFragmennt = MessageFragmennt.newInstance()
-//                openFragment(messageFragmennt)
-//
-//                return@OnNavigationItemSelectedListener true
-//            }
+            R.id.message-> {
+                val groupFragment = GroupFragment.newInstance()
+                openFragment(groupFragment)
+
+                return@OnNavigationItemSelectedListener true
+            }
 
         }
         false
@@ -163,8 +163,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                         .await()
                 if (response.success == true) {
                     showListSpace(response.data.rows)
-
-
                 } else {
                     Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
                         .show()

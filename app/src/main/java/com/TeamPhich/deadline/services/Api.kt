@@ -2,6 +2,7 @@ package com.TeamPhich.deadline.services
 
 import com.TeamPhich.deadline.responses.Space.*
 import com.TeamPhich.deadline.responses.defaultRespone
+import com.TeamPhich.deadline.responses.findmember.findPeople
 import com.TeamPhich.deadline.responses.login.loginRespone
 import com.TeamPhich.deadline.responses.signUp.signUpRespone
 import kotlinx.coroutines.Deferred
@@ -51,7 +52,7 @@ interface Api {
     @POST("/api/v1/spaces/members")
     fun importMemberToSpace(
         @Header("space-token") space_token: String,
-        @Field("user_id") user_id: String
+        @Field("member_username") member_username: String
     ): Deferred<defaultRespone>
 
 
@@ -92,6 +93,13 @@ interface Api {
         @Header("space-token") space_token: String,
         @Field("task_id") task_id: String
     ): Deferred<defaultRespone>
+
+    @GET("/api/v1/accounts")
+    fun findmember(
+        @Header("token") token: String,
+        @Query("keywords") keywords:String
+    ): Deferred<findPeople>
+
 
 
 

@@ -1,13 +1,23 @@
 package com.TeamPhich.deadline.ui.dashboard
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.saveToken.SharedPreference
+import com.TeamPhich.deadline.services.RetrofitClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_createtask.view.*
+import kotlinx.android.synthetic.main.update_task.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class createtask :Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -16,8 +26,10 @@ class createtask :Fragment(){
         val bottomNavigation : BottomNavigationView =view.findViewById(R.id.bottomcreate)
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        view._123.setOnClickListener { view -> callDialogaddtask()   }
         return view
     }
+
     companion object{
         fun newInstance() : createtask= createtask()
     }
@@ -30,28 +42,25 @@ class createtask :Fragment(){
 
             }
 
-                    R.id._mSetAdmin-> {
-                Log.d("diep","itemoriges")
+                    R.id._binprogess-> {
+                        val inprogessFragment = InprogessFragment.newInstance()
+                        openFragment(inprogessFragment)
                 return@OnNavigationItemSelectedListener true
 
             }
-                    R.id._icUpdate -> {
-                        val updatetaskFragment =UpdatetaskFragment.newInstance()
-                        openFragment(updatetaskFragment)
-
-                        return@OnNavigationItemSelectedListener true
-
-                    }
 
 
-                    R.id._mdeleteMember-> {
-                Log.d("diep","itemrevuew")
+
+                    R.id._bỉreview-> {
+                        val inreviewFragment = InreviewFragment.newInstance()
+                        openFragment(inreviewFragment)
                 return@OnNavigationItemSelectedListener true
 
             }
 
             R.id._bdone-> {
-                Log.d("diep","itemdone")
+                val doneFragment = DoneFragment.newInstance()
+                openFragment(doneFragment)
                 return@OnNavigationItemSelectedListener true
 
             }
@@ -65,6 +74,51 @@ class createtask :Fragment(){
         transaction.addToBackStack(null)
         transaction.commit()
     }
+    fun callDialogaddtask() {
+        val dialogBuilder = AlertDialog.Builder(requireContext()).create()
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.update_task, null)
+
+        val addtask = dialogView.findViewById(R.id._bupdate) as Button
+
+        val Cancel = dialogView.findViewById(R.id._bcancelupdate) as Button
+        val sharedPreference: SharedPreference = SharedPreference(requireContext())
+
+        addtask.setOnClickListener {
+            val task= _bupdate.text.toString().trim()
+            val date = _bupdate.text.toString().trim()
+            if (task.isEmpty()) {
+                _bupdate.error = "Space's name required"
+                _bupdate.requestFocus()
+                return@setOnClickListener
+            }
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+                    val response = RetrofitClient.instance.importMemberToSpace(
+                        sharedPreference.getTokenSpace().toString(),
+                        task
+                    ).await()
+                    if (response.success == true) {
+                        Toast.makeText(requireContext(), "OK", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(requireContext(), response.reason, Toast.LENGTH_LONG).show()
+                    }
+                } catch (t: Throwable) {
+                    Toast.makeText(requireContext(), t.toString(), Toast.LENGTH_LONG).show()
+                }
+
+
+            }
+
+            dialogBuilder.dismiss()
+        }
+        Cancel.setOnClickListener {
+            dialogBuilder.dismiss()
+        }
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.show()
+    }
+
 
 
 

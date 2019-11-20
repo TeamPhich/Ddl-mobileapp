@@ -3,17 +3,17 @@
     <item android:id="@+id/_btodo"
         android:icon="@drawable/ic_todo"
         android:title="TO DO"/>
-    <item android:id="@+id/_mSetAdmin"
+    <item android:id="@+id/_binprogess"
         android:icon="@drawable/ic_inprogess"
         android:title="IN PROGESS"/>
-    <item android:id="@+id/_mdeleteMember"
+    <item android:id="@+id/_bỉreview"
         android:icon="@drawable/ic_inreview"
         android:title="IN REVIEW"/>
     <item android:id="@+id/_bdone"
         android:icon="@drawable/ic_done"
         android:title="DONE"/>
-    <item android:icon="@drawable/ic_add"
-        android:title="update task"
-        android:id="@+id/_icUpdate"/>
+<!--    <item android:icon="@drawable/ic_add"-->
+<!--        android:title="update task"-->
+<!--        android:id="@+id/_icUpdate"/>-->
 
 </menu>

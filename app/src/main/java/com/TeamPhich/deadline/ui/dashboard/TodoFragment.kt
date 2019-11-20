@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.todo_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
+//nhiem vu duoc giao va chua lam ji het tiep sau todo sẽ là inprogess
 class TodoFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,  container: ViewGroup?,  savedInstanceState: Bundle?): View? {

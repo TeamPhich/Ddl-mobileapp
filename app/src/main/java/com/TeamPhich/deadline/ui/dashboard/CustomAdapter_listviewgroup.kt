@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.TeamPhich.deadline.R
-
+//hàm này dùng để custom listview cho các hàm group vaf people , thuộc tính dduwowcj khai báo ở lớp Group
 class CustomAdapter_listviewgroup(var context: Context, var mangnhom:ArrayList<Group> ) : BaseAdapter() {
     class ViewHolder(row : View) {
         var textviewgroup: TextView

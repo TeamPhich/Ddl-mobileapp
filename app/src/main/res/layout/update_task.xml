@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="28dp"
         android:text="TASKS :"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/_inputtasks"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,61 +31,56 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_taskname" />
 
-    <TextView
-        android:id="@+id/_yourpatner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="28dp"
-        android:text="TO :"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_taskname" />
-
-    <EditText
-        android:id="@+id/_enterYourpatner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="34dp"
-        android:ems="10"
-        android:hint="enter your patner"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_inputtasks" />
 
     <TextView
         android:id="@+id/_dead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:text="DEADLINE :"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/_dateOfdead"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_enterYourpatner" />
-
-    <EditText
-        android:id="@+id/_enterdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="enter date"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/_dead"
-        app:layout_constraintTop_toBottomOf="@+id/_dead" />
+        app:layout_constraintTop_toBottomOf="@+id/_taskname" />
 
     <Button
         android:id="@+id/_bupdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/custombutton"
-        android:text="UPDATE"
+        android:text="ADD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_dead" />
+
+    <Button
+        android:id="@+id/_bcancelupdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/custombutton"
+        android:text="CANCEL"
+        app:layout_constraintBottom_toBottomOf="@+id/_bupdate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/_bupdate"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/_dateOfdead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:ems="10"
+        android:hint="date of dead"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/_dead"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/_dead" />
 </androidx.constraintlayout.widget.ConstraintLayout>

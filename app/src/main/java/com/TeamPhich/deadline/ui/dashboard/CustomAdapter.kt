@@ -8,6 +8,8 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.TeamPhich.deadline.R
 
+//hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
+
 class CustomAdapter constructor(var context : Context, var mangcongviec :ArrayList<doneTasks> ) : BaseAdapter() {
     class ViewHolder(row : View) {
         var textviewtask: TextView
