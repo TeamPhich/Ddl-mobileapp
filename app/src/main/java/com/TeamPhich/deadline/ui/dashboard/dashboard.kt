@@ -42,7 +42,8 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-//        supportActionBar?.setIcon(R.drawable.pikachu)
+
+
 
 
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -68,8 +69,10 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         when (item.itemId) {
             // khi click vao nut create tasks se chuyen sang activity createtask
             R.id.create_task-> {
-                val Createtask  = createtask.newInstance()
-                openFragment(Createtask)
+//                val createtask  = createtask.newInstance()
+//                openFragment(createtask)
+                val tablayoutTask = Tablayout_task.newInstance()
+                openFragment(tablayoutTask)
 
                 return@OnNavigationItemSelectedListener true
 //                intent = Intent(this, createtask::class.java)
