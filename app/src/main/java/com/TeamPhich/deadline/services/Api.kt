@@ -100,6 +100,13 @@ interface Api {
         @Query("keywords") keywords:String
     ): Deferred<findPeople>
 
+    @GET("/api/v1/tasks/statusd")
+    fun getlisttask(
+        @Header("token") token: String,
+        @Query("keywords") keywords:String
+    ): Deferred<findPeople>
+
+
 
 
 

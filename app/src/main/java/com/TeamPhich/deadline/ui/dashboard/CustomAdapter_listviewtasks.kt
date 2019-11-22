@@ -1,6 +1,7 @@
 package com.TeamPhich.deadline.ui.dashboard
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,19 +41,23 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
                 popupMenu.setOnMenuItemClickListener { item ->
                     when( item.itemId) {
                         R.id._moveTodo -> {
-                            Toast.makeText(context, "status", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "status", Toast.LENGTH_SHORT).show()
+                            Log.d("diepcute","123")
                             true
                         }
                         R.id._moveInprocess -> {
-                            Toast.makeText(context, "in process", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "in process", Toast.LENGTH_SHORT).show()
+                            Log.d("diepcute","124")
                             true
                         }
                         R.id._moveInreview -> {
-                            Toast.makeText(context, "in review", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "in review", Toast.LENGTH_SHORT).show()
+                            Log.d("diepcute","125")
                             true
                         }
                         R.id._movedone -> {
-                            Toast.makeText(context, "done", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "done", Toast.LENGTH_SHORT).show()
+                            Log.d("diepcute","126")
                             true
                         }
                         else -> false
