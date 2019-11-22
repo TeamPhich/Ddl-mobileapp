@@ -40,7 +40,7 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
                 popupMenu.setOnMenuItemClickListener { item ->
                     when( item.itemId) {
                         R.id._moveTodo -> {
-                            Toast.makeText(context, "status", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "to do", Toast.LENGTH_SHORT).show()
                             true
                         }
                         R.id._moveInprocess -> {
