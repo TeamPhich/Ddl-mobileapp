@@ -61,8 +61,10 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         getListSpace()
         val bottomNavigation : BottomNavigationView =findViewById(R.id.bottomNavigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        //bat su kien cho avarta, an vao anh de hien thi information
+        val intent = Intent(this,Information::class.java)
         _avartar.setOnClickListener { view ->
-            Log.d("diepxinhgai","123")
+            startActivity(intent)
         }
 
 
