@@ -1,4 +1,4 @@
-package com.TeamPhich.deadline.ui.dashboard
+package com.TeamPhich.deadline.ui.dashboard.custom_adapter
 
 import android.content.Context
 import android.util.Log
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.ui.dashboard.doneTasks
 
 //hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
 
@@ -14,13 +15,16 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
     class ViewHolder(row : View, context: Context, status: String) {
         var textviewtask: TextView
         var datetask: TextView
-        var imageViewTask : ImageView
+        var imageuser : ImageView
+        var descriptiontask :TextView
 
         init {
             textviewtask = row.findViewById(R.id._nameOftask_done) as TextView
             datetask = row.findViewById(R.id._timedone) as TextView
-            imageViewTask = row.findViewById(R.id.popupMenuTask) as ImageView
-            imageViewTask.setOnClickListener {
+            imageuser= row.findViewById(R.id._avatar_group) as ImageView
+            descriptiontask= row.findViewById(R.id._description) as TextView
+            row.setOnLongClickListener {
+                row.visibility=View.VISIBLE
                 val popupMenu = PopupMenu(context, it)
                 popupMenu.inflate(R.menu.menu_popup_task)
                 when(status) {
@@ -67,7 +71,9 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
                         else -> false
                     }
                 }
+
                 popupMenu.show()
+                false
             }
         }
     }
@@ -77,7 +83,12 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
         if (convertView == null){
             var layoutInflater : LayoutInflater = LayoutInflater.from(context)
             view = layoutInflater.inflate(R.layout.item_task,null)
-            viewholder =ViewHolder(view,context,status)
+            viewholder =
+                ViewHolder(
+                    view,
+                    context,
+                    status
+                )
             view.tag = viewholder
         }else{
             view = convertView
@@ -86,6 +97,8 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
         var nhiemvu : doneTasks = getItem(position) as doneTasks
         viewholder.textviewtask.text= nhiemvu.task
         viewholder.datetask.text=nhiemvu.date
+        viewholder.imageuser.setImageResource(nhiemvu.image)
+        viewholder.descriptiontask.text=nhiemvu.description
         return view as View
 
     }

@@ -11,9 +11,11 @@ import kotlinx.android.synthetic.main.people_fragment.*
 import android.app.AlertDialog
 import android.util.Log
 import android.widget.*
+import com.TeamPhich.deadline.responses.Space.DataX
 import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
+import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewgroup
 import kotlinx.android.synthetic.main.people_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -23,94 +25,32 @@ import kotlinx.coroutines.launch
 class PeopleFragment() : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.people_fragment, container, false)
-
-        addmember(view)
         getListPeople()
-
-
-
-
+        addmember(view)
         return view
     }
 
     companion object {
         fun newInstance():PeopleFragment  = PeopleFragment()
     }
-    fun addmember(view: View){
-        view._addmember.setOnClickListener { view ->
-            dialogTool().callDialoginsertMember(requireContext(),this)
-        }
-    }
 
 
-//        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-//        inflater.inflate(R.layout.people_fragment, container, false)
 
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        val view = inflater.inflate(R.layout.people_fragment, container, false)
-//        var arraypeople: ArrayList<Group> = ArrayList()
-//        getListPeople()
+    fun showlistSpacePeople(respone: DataX) {
 
-//        val _listview = view.findViewById<ListView>(R.id._listview_people)
-//        val context: Context = context!!
-//        _listview.adapter = CustomAdapter_listviewgroup(context, arraypeople)
-//        getListPeople()
-//        View.OnClickListener { view ->
-//            when (view.id) {
-//                R.id._binsertMember -> {
-////                    callDialoginsertMember()
-//                    Log.d("diep","add a member")
-//                }
-//            }
-//        }
-
-
-//        view._binsertMember.setOnClickListener { view ->
-//            callDialoginsertMember()
-//        }
-//
-//        view._bDeleteSapce.setOnClickListener { view ->
-//            callDialogDeleteSpace()
-//        }
-//        view._bOutSpace.setOnClickListener { view ->
-//            callDialogOutSpace()
-//        }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//        return view
-//    }
-//
-//
-//    companion object {
-//        fun newInstance(): PeopleFragment = PeopleFragment()
-//
-//
-//    }
-//
-    fun showlistSpacePeople(listpeople: List<RowX>) {
-
-        var arraypeople: ArrayList<Group> = ArrayList()
+        var arraypeople: ArrayList<RowX> = ArrayList()
         val context: Context = context!!
-        listpeople.forEach {
-            arraypeople.add(Group(it.fullName, R.drawable.ic_people))
+        respone.rows.forEach {
+            arraypeople.add(it)
         }
-        _listview_people.adapter = CustomAdapter_listviewgroup(context, arraypeople)
+        _listview_people.adapter =
+            CustomAdapter_listviewgroup(
+                context,
+                arraypeople
+            )
         dashboard().setListViewHeightBasedOnChildren(_listview_people)
         sukienlistpp(_listview_people)
-
 
     }
 
@@ -125,7 +65,7 @@ class PeopleFragment() : Fragment() {
                     RetrofitClient.instance.getSpacemember(sharedPreference.getTokenSpace().toString())
                         .await()
                 if (response.success == true) {
-                    showlistSpacePeople(response.data.rows)
+                    showlistSpacePeople(response.data)
 
                 } else {
                     Toast.makeText(
@@ -136,11 +76,6 @@ class PeopleFragment() : Fragment() {
                         .show()
                 }
             } catch (t: Throwable) {
-                Toast.makeText(
-                    (context as dashboard).applicationContext,
-                    t.toString(),
-                    Toast.LENGTH_LONG
-                ).show()
             }
 
 
@@ -154,49 +89,17 @@ class PeopleFragment() : Fragment() {
             }
         }
     }
-
-
-
-
-    fun callDialogOutSpace() {
-        val builder = AlertDialog.Builder(requireContext())
-
-        // Set the alert dialog title
-        builder.setTitle("App background color")
-
-        // Display a message on alert dialog
-        builder.setMessage("Ban thuc su muon thoat khoi space?")
-        builder.setIcon(android.R.drawable.ic_dialog_alert)
-        // Set a positive button and its click listener on alert dialog
-        builder.setPositiveButton("YES") { dialog, which ->
-            val sharedPreference: SharedPreference = SharedPreference(requireContext())
-            GlobalScope.launch(Dispatchers.Main) {
-                try {
-                    val response = RetrofitClient.instance.memberOutSpace(
-                        sharedPreference.getTokenSpace().toString()
-                    ).await()
-                    if (response.success == true) {
-                        Toast.makeText(requireContext(), "OK", Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(requireContext(), response.reason, Toast.LENGTH_LONG).show()
-                    }
-                } catch (t: Throwable) {
-                    Toast.makeText(requireContext(), t.toString(), Toast.LENGTH_LONG).show()
-                }
-            }
+    fun addmember(view: View)
+    {
+        view._bAddPeople.setOnClickListener { view ->
+            dialogTool().callDialoginsertMember(requireContext(),this)
         }
-        builder.setNegativeButton("No") { dialog, which ->
-            Toast.makeText(requireContext(), "You are not agree.", Toast.LENGTH_SHORT).show()
-        }
-
-//        builder.setNeutralButton("Cancel") { _, _ ->
-//            Toast.makeText(requireContext(), "You cancelled the dialog.", Toast.LENGTH_SHORT).show()
-//        }
-
-
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
     }
+
+
+
+
+
 
 
     fun callDialogDeleteSpace() {

@@ -16,81 +16,33 @@
     <!--        app:layout_constraintEnd_toStartOf="@+id/_bDeleteSpace"-->
     <!--        app:layout_constraintStart_toEndOf="@+id/_binsertMember"-->
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/_bAddPeople"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFCD97D6"
-        android:layout_marginBottom="1dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/_avatarinpeople"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="80dp"-->
-        <!--            android:layout_marginStart="16dp"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:layout_marginEnd="232dp"-->
-        <!--            app:layout_constraintEnd_toStartOf="@+id/_addmember"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:srcCompat="@drawable/pikachu" />-->
-        <ImageView
-            android:id="@+id/_avaterinpeople"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="244dp"
-            app:layout_constraintEnd_toStartOf="@+id/_addmember"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pikachu" />
-
-        <TextView
-            android:id="@+id/_nsmeInpeole"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginEnd="138dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/_avaterinpeople"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/_addmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginEnd="40dp"
-
-            android:background="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/_avaterinpeople"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_add_people" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="end|bottom"
+        app:srcCompat="@drawable/ic_add_only" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
 
         <ListView
             android:id="@+id/_listview_people"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <!--            <ListView-->

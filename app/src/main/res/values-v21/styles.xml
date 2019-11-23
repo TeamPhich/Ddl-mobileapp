@@ -5,4 +5,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+    <style name="styletext">
+        <item name="android:textSize"> 13sp</item>
+        <item name="android:textAllCaps">true
+        </item>
+    </style>
 </resources>

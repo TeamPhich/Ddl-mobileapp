@@ -55,6 +55,16 @@ interface Api {
         @Field("member_username") member_username: String
     ): Deferred<defaultRespone>
 
+    @FormUrlEncoded
+    @POST("/api/v1/tasks/")
+    fun createTask(
+        @Header("space-token") space_token: String,
+        @Field("member_id") member_id: Int,
+        @Field("title") title: String,
+        @Field("deadline") deadline: String,
+        @Field("description") description: String
+
+    ): Deferred<defaultRespone>
 
     @GET("/api/v1/spaces/members")
     fun getSpacemember(

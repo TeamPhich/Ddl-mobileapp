@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="150dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/_avatar_group"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/_nameOftask_done"
-        android:layout_width="wrap_content"
+        android:layout_width="242dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
-        android:textSize="50dp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,22 +32,24 @@
         android:id="@+id/_timedone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/_nameOftask_done"
-        app:layout_constraintTop_toBottomOf="@+id/_nameOftask_done" />
-
-    <ImageView
-        android:id="@+id/popupMenuTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="53dp"
         android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textSize="13sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_popupmenu" />
+        app:layout_constraintTop_toBottomOf="@+id/_avatar_group" />
+
+    <TextView
+        android:id="@+id/_description"
+        android:layout_width="245dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_nameOftask_done" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

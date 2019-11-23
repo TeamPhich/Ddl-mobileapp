@@ -18,10 +18,12 @@ import android.os.Handler
 import android.util.Log
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.TeamPhich.deadline.responses.Space.Data
 import com.TeamPhich.deadline.responses.Space.Row
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activiy_showmenu.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,7 +31,7 @@ import kotlinx.android.synthetic.main.yourspace.*
 
 
 class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+    var target:Row=Row(0,"0")
     var listC: List<String> = listOf("x", "y", "z")
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
@@ -59,6 +61,10 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         getListSpace()
         val bottomNavigation : BottomNavigationView =findViewById(R.id.bottomNavigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        _avartar.setOnClickListener { view ->
+            Log.d("diepxinhgai","123")
+        }
+
 
 
 
@@ -67,13 +73,13 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            // khi click vao nut create tasks se chuyen sang activity createtask
-            R.id.create_task-> {
-//                val createtask  = createtask.newInstance()
-//                openFragment(createtask)
-                val tablayoutTask = Tablayout_task.newInstance()
-                openFragment(tablayoutTask)
 
+                // khi click vao nut create tasks se chuyen sang activity createtask
+                R.id.create_task-> {
+                    //                val createtask  = createtask.newInstance()
+//                openFragment(createtask)
+                    val tablayoutTask = Tablayout_task.newInstance()
+                    openFragment(tablayoutTask)
                 return@OnNavigationItemSelectedListener true
 //                intent = Intent(this, createtask::class.java)
 //
@@ -112,29 +118,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.add_space -> {
-//               loaddialog(frag1 = dialog_space())
-//                val builder = AlertDialog.Builder(this)
-//                builder.setTitle("Androidly Alert")
-//                builder.setMessage("We have a messac xcge")
-//                //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
-//
-//                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-//                    Toast.makeText(applicationContext,
-//                        android.R.string.yes, Toast.LENGTH_SHORT).show()
-//                }
-//
-//                builder.setNegativeButton(android.R.string.no) { dialog, which ->
-//                    Toast.makeText(applicationContext,
-//                        android.R.string.no, Toast.LENGTH_SHORT).show()
-//                }
-//
-//                builder.setNeutralButton("Maybe") { dialog, which ->
-//                    Toast.makeText(applicationContext,
-//                        "Maybe", Toast.LENGTH_SHORT).show()
-//                }
-//                builder.show()
                 callDialogSpace()
-
             }
 
         }
@@ -222,11 +206,10 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 }
 
             }
-
-
-                drawerLayout.closeDrawer(GravityCompat.START)
+            drawerLayout.closeDrawer(GravityCompat.START)
 
         }
+        defaultSeclectListSpace(_sListSpace,listspace)
 
 
     }
@@ -303,9 +286,39 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         dialogBuilder.setView(dialogView)
         dialogBuilder.show()
     }
-    fun defaultSeclectListview(listView: ListView){
-        listView.setSelection(0)
-        listView.getSelectedView().setSelected(true);
+    fun defaultSeclectListSpace(listView: ListView,listspace: List<Row>){
+        val sharedPreference:SharedPreference= SharedPreference(this)
+        Toast.makeText(
+            applicationContext,
+            _sListSpace.getItemAtPosition(0).toString(),
+            Toast.LENGTH_LONG
+        ).show()
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+
+                val response = RetrofitClient.instance.getSpaceToken(
+                    sharedPreference.getToken().toString(),
+                    getspaceid(listspace, _sListSpace.getItemAtPosition(0).toString())).await()
+                for (i in 0 until listView.childCount) {
+                    listView.getChildAt(i).setBackgroundColor(Color.WHITE)
+                }
+                listView.getChildAt(0).setBackgroundColor(Color.GREEN)
+                if (response.success == true) {
+                    sharedPreference.setTokenSpace(response.data.tokenSpace)
+                    Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
+                    Log.d("Tolen",sharedPreference.getToken().toString())
+
+                } else {
+                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                        .show()
+                }
+            } catch (t: Throwable) {
+                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+            }
+
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+
     }
 
 
