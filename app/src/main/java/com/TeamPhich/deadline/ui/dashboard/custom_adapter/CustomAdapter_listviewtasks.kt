@@ -1,22 +1,35 @@
 package com.TeamPhich.deadline.ui.dashboard.custom_adapter
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.responses.Space.task.task
+import com.TeamPhich.deadline.saveToken.SharedPreference
+import com.TeamPhich.deadline.services.RetrofitClient
+import com.TeamPhich.deadline.ui.dashboard.dashboard
+import com.TeamPhich.deadline.ui.dashboard.dialogTool
 import com.TeamPhich.deadline.ui.dashboard.doneTasks
+import com.bumptech.glide.Glide
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 
 //hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
 
-class CustomAdapter_listviewtasks constructor(var context : Context, var mangcongviec :ArrayList<doneTasks>, var status: String ) : BaseAdapter() {
+class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :ArrayList<task>, var status: String ) : BaseAdapter() {
     class ViewHolder(row : View, context: Context, status: String) {
         var textviewtask: TextView
         var datetask: TextView
         var imageuser : ImageView
         var descriptiontask :TextView
+
 
         init {
             textviewtask = row.findViewById(R.id._nameOftask_done) as TextView
@@ -25,6 +38,7 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
             descriptiontask= row.findViewById(R.id._description) as TextView
             row.setOnLongClickListener {
                 row.visibility=View.VISIBLE
+
                 val popupMenu = PopupMenu(context, it)
                 popupMenu.inflate(R.menu.menu_popup_task)
                 when(status) {
@@ -46,16 +60,12 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
                     when( item.itemId) {
                         R.id._moveTodo -> {
 
-//                            Toast.makeText(context, "status", Toast.LENGTH_SHORT).show()
-                            Log.d("diepcute","123")
-
-                            Toast.makeText(context, "to do", Toast.LENGTH_SHORT).show()
-
+                            dialogTool().calldialogswitchTask(context,"19","todo")
                             true
                         }
                         R.id._moveInprocess -> {
 //                            Toast.makeText(context, "in process", Toast.LENGTH_SHORT).show()
-                            Log.d("diepcute","124")
+                            dialogTool().calldialogswitchTask(context,"19","in process")
                             true
                         }
                         R.id._moveInreview -> {
@@ -94,10 +104,11 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
             view = convertView
             viewholder = convertView.tag as ViewHolder
         }
-        var nhiemvu : doneTasks = getItem(position) as doneTasks
-        viewholder.textviewtask.text= nhiemvu.task
-        viewholder.datetask.text=nhiemvu.date
-        viewholder.imageuser.setImageResource(nhiemvu.image)
+        var nhiemvu : task = getItem(position) as task
+        viewholder.textviewtask.text= nhiemvu.title
+        viewholder.datetask.text=nhiemvu.deadline.toString()
+//        viewholder.imageuser.setImageResource(nhiemvu.image)
+        setimage(nhiemvu.creatorId.toString(),viewholder)
         viewholder.descriptiontask.text=nhiemvu.description
         return view as View
 
@@ -113,5 +124,32 @@ class CustomAdapter_listviewtasks constructor(var context : Context, var mangcon
 
     override fun getCount(): Int {
         return mangcongviec.size
+    }
+    fun setimage(userid:String,viewholder:ViewHolder){
+
+        val sharedPreference: SharedPreference = SharedPreference(context)
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response = RetrofitClient.instance.getSpacememberbyid(sharedPreference.getTokenSpace().toString(),userid).await()
+                if (response.success == true) {
+                    Log.d("sdfsdfsdf",response.data.rows.elementAt(0).imagesUrl)
+                    Toast.makeText(context, "", Toast.LENGTH_LONG).show()
+                    Glide
+                        .with(context)
+                        .load(response.data.rows.elementAt(0).imagesUrl)
+                        .centerCrop()
+                        .placeholder(R.drawable.ic_insert_photo)
+                        .into(viewholder.imageuser)
+
+                } else {
+                    Toast.makeText(context, response.reason, Toast.LENGTH_LONG)
+                        .show()
+                }
+            } catch (t: Throwable) {
+                Toast.makeText(context, t.toString(), Toast.LENGTH_LONG).show()
+            }
+
+
+        }
     }
 }

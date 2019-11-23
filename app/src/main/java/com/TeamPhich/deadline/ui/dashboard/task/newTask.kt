@@ -104,7 +104,7 @@ class newTask : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                        val myFormat = "dd.MM.yyyy" // mention the format you need
+                val myFormat = "dd.MM.yyyy" // mention the format you need
                 val sdf = SimpleDateFormat(myFormat, Locale.US)
                 textView.text = sdf.format(cal.time)
 

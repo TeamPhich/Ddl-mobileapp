@@ -1,6 +1,7 @@
 package com.TeamPhich.deadline.services
 
 import com.TeamPhich.deadline.responses.Space.*
+import com.TeamPhich.deadline.responses.Space.task.alltask
 import com.TeamPhich.deadline.responses.defaultRespone
 import com.TeamPhich.deadline.responses.findmember.findPeople
 import com.TeamPhich.deadline.responses.login.loginRespone
@@ -72,6 +73,13 @@ interface Api {
     ): Deferred<listspacemem>
 
 
+    @GET("/api/v1/spaces/members")
+    fun getSpacememberbyid(
+        @Header("space-token") space_token: String,
+        @Query("member_id") member_id:String
+    ): Deferred<listspacemem>
+
+
 
 
     @DELETE("/api/v1/spaces/members")
@@ -93,8 +101,10 @@ interface Api {
 
     @GET("/api/v1/tasks/status")
     fun showSpacetask(
-        @Header("space-token") space_token: String
-    )
+        @Header("space-token") space_token: String,
+        @Query("status") status:String
+    ): Deferred<alltask>
+
 
 
     //task
@@ -115,7 +125,12 @@ interface Api {
         @Header("token") token: String,
         @Query("keywords") keywords:String
     ): Deferred<findPeople>
-
+    @PUT("/api/v1/tasks/status")
+    fun switchTask(
+        @Header("space-token") space_token: String,
+        @Field("task_id") task_id: String,
+        @Field("status") status:String
+    ):Deferred<defaultRespone>
 
 
 
