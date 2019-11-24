@@ -46,6 +46,10 @@ class newTask : AppCompatActivity() {
         setContentView(R.layout.activity_new_task)
         choosedate()
         getListPeople()
+        // an camcel de thoat
+        _cancelcreate.setOnClickListener {
+            finish()
+        }
         _bCreateTask.setOnClickListener {
             Log.d("fjhidjhfjsdkf",target.id.toString())
             val sharedPreference: SharedPreference = SharedPreference(this)

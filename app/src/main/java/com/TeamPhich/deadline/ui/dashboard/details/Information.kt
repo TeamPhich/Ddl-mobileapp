@@ -1,5 +1,6 @@
-package com.TeamPhich.deadline.ui.dashboard
+package com.TeamPhich.deadline.ui.dashboard.details
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.TeamPhich.deadline.R
@@ -13,6 +14,10 @@ class Information : AppCompatActivity() {
         // an close de dong information
         _closeactivity.setOnClickListener {
             finish()
+        }
+        _changepass.setOnClickListener {
+            val intent = Intent(this,changepassword::class.java)
+            startActivity(intent)
         }
     }
 }

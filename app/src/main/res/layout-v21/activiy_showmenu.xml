@@ -17,18 +17,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FFCD97D6"
+            android:background="@color/colorAccent"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/_avartar"
+                android:id="@+id/avartauseringroup"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/pikachu"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/colorAccent"
+                android:src="@drawable/husky"
+
+
                 android:layout_gravity="right"/>
 
         </androidx.appcompat.widget.Toolbar>
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:background="#FFCD97D6"
+                android:background="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

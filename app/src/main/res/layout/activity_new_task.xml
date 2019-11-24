@@ -6,57 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.task.newTask">
 
+
     <EditText
         android:id="@+id/_iTasktittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="task tittle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/_selectday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/_iTasktittle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_iTasktittle" />
 
     <Button
         android:id="@+id/_bCreateTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/custombutton2"
         android:text="create"
-        app:layout_constraintEnd_toEndOf="@+id/_iTasktittle"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="@+id/_iTasktittle"
-        app:layout_constraintTop_toBottomOf="@+id/_selectday" />
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/_cancelcreate"
+        app:layout_constraintStart_toStartOf="@+id/_cancelcreate" />
 
     <EditText
         android:id="@+id/_iTaskdescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="51dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="description"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/_selectday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_selectday" />
 
     <Spinner
         android:id="@+id/_selectedmember"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/_cancelcreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="78dp"
+        android:background="@drawable/custombutton2"
+        android:text="@android:string/cancel"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

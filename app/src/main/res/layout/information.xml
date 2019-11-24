@@ -9,7 +9,7 @@
         android:id="@+id/_toolbar_info"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
 
 
         android:elevation="4dp"
@@ -17,13 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
         <TextView
             android:id="@+id/_closeactivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:text="CLOSE"
-            android:textColor="#FFFF0000"
-            android:layout_gravity="right" />
+            android:textColor="#FFFF" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -32,12 +33,12 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
-        app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="1dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_toolbar_info"
+        android:src="@drawable/husky"
         />
 
     <TextView
@@ -85,6 +86,7 @@
             android:textSize="15sp"
             android:textColor="#A9585757"/>
         <TextView
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/_changepass"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_changepass"
