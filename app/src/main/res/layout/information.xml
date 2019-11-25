@@ -24,7 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="CLOSE"
-            android:textColor="#FFFF" />
+            android:textColor="@color/cardview_dark_background"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"/>
 
     </androidx.appcompat.widget.Toolbar>
 

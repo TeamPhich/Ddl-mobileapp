@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".ui.activity_login">
 
     <EditText
@@ -15,7 +16,8 @@
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="username"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -61,7 +63,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/_iUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/_iUsername"
+        android:hint="password"/>
 
     <Button
         android:background="@drawable/custombutton3"

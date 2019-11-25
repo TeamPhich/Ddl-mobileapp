@@ -15,9 +15,9 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="#FFFF"
+
             android:text="YOUR SPACE"
-            android:textSize="40dp"
+            android:textSize="35dp"
             android:textStyle="bold" />
 
     </LinearLayout>

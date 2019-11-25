@@ -14,12 +14,12 @@ import kotlinx.coroutines.launch
 class showlistview {
 //    fun showlistSpacePeople(listpeople: List<RowX>,listView: ListView,context: Context) {
 //
-//        var arraypeople: ArrayList<Group> = ArrayList()
+//        var arraypeople: ArrayList<People> = ArrayList()
 //        val context: Context = context!!
 //        listpeople.forEach {
-//            arraypeople.add(Group(it.fullName, R.drawable.ic_people))
+//            arraypeople.add(People(it.fullName, R.drawable.ic_people))
 //        }
-//        _listview_people.adapter = CustomAdapter_listviewgroup(context, arraypeople)
+//        _listview_people.adapter = CustomAdapter_listviewpeople(context, arraypeople)
 //        dashboard().setListViewHeightBasedOnChildren(_listview_people)
 //        sukienlistpp(_listview_people)
 //

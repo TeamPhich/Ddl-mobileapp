@@ -3,6 +3,7 @@ package com.TeamPhich.deadline.ui.dashboard
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -47,6 +48,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
 
 
+
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
 
@@ -54,6 +56,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
             this, drawerLayout,toolbar,   0, 0
         )
+        toggle.drawerArrowDrawable.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
