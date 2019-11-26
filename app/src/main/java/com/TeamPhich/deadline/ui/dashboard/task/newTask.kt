@@ -1,8 +1,6 @@
 package com.TeamPhich.deadline.ui.dashboard.task
 
 import android.app.DatePickerDialog
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,31 +8,19 @@ import android.widget.TextView
 import com.TeamPhich.deadline.R
 import java.text.SimpleDateFormat
 import java.util.*
-import java.time.LocalDate
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.Toast
 import com.TeamPhich.deadline.responses.Space.DataX
 import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
-import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewgroup
-import com.TeamPhich.deadline.ui.dashboard.dashboard
-import kotlinx.android.synthetic.main.activity_login.*
+import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewPeople
 import kotlinx.android.synthetic.main.activity_new_task.*
-import kotlinx.android.synthetic.main.people_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlin.collections.ArrayList
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 import android.view.View
 
@@ -130,7 +116,7 @@ class newTask : AppCompatActivity() {
             arraypeople.add(it)
         }
         _selectedmember.adapter =
-            CustomAdapter_listviewgroup(
+            CustomAdapter_listviewPeople(
                 this,
                 arraypeople
             )

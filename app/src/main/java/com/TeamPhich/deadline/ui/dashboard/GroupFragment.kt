@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.RowX
-import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewgroup
+import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewPeople
 
 class GroupFragment :Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -21,7 +21,7 @@ class GroupFragment :Fragment() {
         val context: Context = context!!
 
         _listview.adapter =
-            CustomAdapter_listviewgroup(
+            CustomAdapter_listviewPeople(
                 context,
                 arraypeople
             )

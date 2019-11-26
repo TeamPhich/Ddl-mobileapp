@@ -12,7 +12,7 @@ import com.TeamPhich.deadline.responses.Space.RowX
 import com.bumptech.glide.Glide
 
 //hàm này dùng để custom listview cho các hàm group vaf people , thuộc tính dduwowcj khai báo ở lớp Group
-class CustomAdapter_listviewgroup(var context: Context, var mangnhom:ArrayList<RowX>) : BaseAdapter() {
+class CustomAdapter_listviewPeople(var context: Context, var mangnhom:ArrayList<RowX>) : BaseAdapter() {
     class ViewHolder(row : View) {
         var textviewpeople: TextView
         var imageviewpeople: ImageView

@@ -19,7 +19,7 @@ class showlistview {
 //        listpeople.forEach {
 //            arraypeople.add(Group(it.fullName, R.drawable.ic_people))
 //        }
-//        _listview_people.adapter = CustomAdapter_listviewgroup(context, arraypeople)
+//        _listview_people.adapter = CustomAdapter_listviewPeople(context, arraypeople)
 //        dashboard().setListViewHeightBasedOnChildren(_listview_people)
 //        sukienlistpp(_listview_people)
 //
