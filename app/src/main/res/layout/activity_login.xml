@@ -9,80 +9,81 @@
 
     <EditText
         android:id="@+id/_iUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="258dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="4dp"
         android:ems="10"
+        android:hint="username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="username"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="61dp"
-        android:text="SIGN IN"
+        android:layout_marginTop="88dp"
+        android:text="LOG IN"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/_iUsername"
-        app:layout_constraintStart_toStartOf="@+id/_iUsername" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="7dp"
-        android:text="USERNAME  :"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/_iUsername"
-        app:layout_constraintEnd_toStartOf="@+id/_iUsername"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:text="PASSWORD  :"
-        android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/_iPassword"
-        app:layout_constraintEnd_toStartOf="@+id/_iPassword"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/_iPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="63dp"
         android:ems="10"
+        android:hint="password"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/butSignin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/_iUsername"
-        android:hint="password"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_iUsername" />
 
     <Button
-        android:background="@drawable/custombutton3"
         android:id="@+id/butSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/custombutton4"
         android:text="sign in"
-        app:layout_constraintStart_toStartOf="@+id/_iPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_iPassword" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="92dp"
         android:text="FORGET YOUR PASSWWORD??"
+        android:textColor="#E1970D0D"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_clicktoregister" />
+
+    <TextView
+        android:id="@+id/_clicktoregister"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginTop="56dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="CLICK HERE TO REGISTER!!"
+        android:textColor="#A71111"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

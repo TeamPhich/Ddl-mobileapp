@@ -13,8 +13,6 @@ class changepassword : AppCompatActivity() {
         _exitchange.setOnClickListener {
             finish()
         }
-        _cancelchange.setOnClickListener {
-            finish()
-        }
+
     }
 }

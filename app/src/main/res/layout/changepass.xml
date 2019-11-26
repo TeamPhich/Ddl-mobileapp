@@ -88,16 +88,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/_cancelchange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:background="@drawable/custombutton4"
-        android:text="CANCEL"
-        app:layout_constraintStart_toStartOf="@+id/_acceptchange"
-        app:layout_constraintTop_toBottomOf="@+id/_acceptchange" />
-
     <ImageView
         android:id="@+id/_exitchange"
         android:layout_width="wrap_content"

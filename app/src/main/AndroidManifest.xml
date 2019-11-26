@@ -15,16 +15,18 @@
         <activity android:name=".ui.dashboard.details.changepassword"></activity>
         <activity android:name=".ui.dashboard.details.Information"></activity>
         <activity android:name=".ui.dashboard.task.newTask" />
-        <activity android:name=".ui.dashboard.details.personal" />
+         <activity android:name=".ui.activity_login">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
         <activity android:name=".ui.dashboard.dashboard" />
         <activity android:name=".ui.singup_activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".ui.activity_login" />
+
         <activity android:name=".ui.dashboard.PeopleFragment" />
     </application>
 

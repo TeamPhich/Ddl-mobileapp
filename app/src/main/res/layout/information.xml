@@ -70,17 +70,47 @@
             android:text="INFORMATION"
             android:textColor="#A9585757"
             android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/_fullnameinfo"
-            style="@style/viewParent.headerText.settingsTextIcon"
-            android:drawableLeft="@drawable/ic_fullname"
-            android:text=" FULL NAME" />
-        <TextView
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/_fullnameinfo"
+    android:background="?android:attr/selectableItemBackground">
+    <TextView
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_fullname"
+        android:drawablePadding="20dp"
+        android:text=" FULL NAME"
+        android:textStyle="bold"
+        android:textColor="@color/cardview_dark_background"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ninh hong diep"
+        android:drawableRight="@drawable/ic_next"/>
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/_roleinspace"
             style="@style/viewParent.headerText.settingsTextIcon"
-            android:drawableLeft="@drawable/ic_role"
-            android:text=" ROLE IN SPACE" />
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/ic_role"
+                android:text=" ROLE IN SPACE"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_dark_background"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="admin"
+                android:drawableRight="@drawable/ic_next"/>
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

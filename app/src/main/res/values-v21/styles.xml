@@ -36,7 +36,9 @@
     </style>
     <style name="viewParent.headerText.settingsTextIcon" parent="settingsText">
         <item name="android:drawableRight">@drawable/ic_next</item>
+
     </style>
+
     <style name="textToolbar">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/cardview_dark_background</item>
