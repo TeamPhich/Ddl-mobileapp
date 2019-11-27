@@ -1,6 +1,7 @@
 package com.TeamPhich.deadline.services
 
 import com.TeamPhich.deadline.responses.Space.*
+import com.TeamPhich.deadline.responses.Space.group.listGroupRespone
 import com.TeamPhich.deadline.responses.Space.task.alltask
 import com.TeamPhich.deadline.responses.defaultRespone
 import com.TeamPhich.deadline.responses.findmember.findPeople
@@ -132,7 +133,16 @@ interface Api {
         @Field("status") status:String
     ):Deferred<defaultRespone>
 
+    //group
+    @GET("/api/v1/groups")
+    fun getlistgroup(
+        @Header("space-token") space_token:String
+    ):Deferred<listGroupRespone>
 
+    @GET("/api/v1/groups/members")
+    fun getlistpeopleingroup(
+        @Header("space-token") space_token:String
+    ):Deferred<listGroupRespone>
 
 
 }

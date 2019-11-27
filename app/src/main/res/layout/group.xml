@@ -6,19 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/name_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="70dp"
-        android:text="TextView"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/avatar"
-        app:layout_constraintTop_toBottomOf="@+id/search_view" />
-
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
@@ -33,18 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Search Here" />
-
-    <ImageView
-        app:srcCompat="@drawable/pikachu"
-        android:id="@+id/avatar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="68dp"
-        app:layout_constraintEnd_toStartOf="@+id/name_user"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
     <ListView
         android:id="@+id/listview_group"

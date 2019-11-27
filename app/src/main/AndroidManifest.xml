@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.dashboard.task.newTask"></activity>
+        <activity android:name=".ui.dashboard.group.listGroupmember"></activity>
+        <activity android:name=".ui.dashboard.group.activity_chat" />
+        <activity android:name=".ui.dashboard.task.newTask" />
         <activity android:name=".ui.dashboard.details.personal" />
-        <activity android:name=".ui.dashboard.createtask" />
+
         <activity android:name=".ui.dashboard.dashboard" />
         <activity android:name=".ui.singup_activity">
             <intent-filter>
