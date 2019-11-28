@@ -31,7 +31,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView2"
+        android:id="@+id/_info_avata"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
@@ -44,7 +44,7 @@
         />
 
     <TextView
-        android:id="@+id/_nameuser_info"
+        android:id="@+id/_info_nameuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -53,7 +53,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/_info_avata" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -88,7 +88,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ninh hong diep"
-        android:drawableRight="@drawable/ic_next"/>
+        android:drawableRight="@drawable/ic_next"
+        android:id="@+id/_info_fullname"/>
 </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -104,11 +105,13 @@
                 android:text=" ROLE IN SPACE"
                 android:textStyle="bold"
                 android:textColor="@color/cardview_dark_background"/>
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="24dp"
+                android:drawableRight="@drawable/ic_next"
                 android:text="admin"
-                android:drawableRight="@drawable/ic_next"/>
+                android:id="@+id/_info_role"/>
         </LinearLayout>
 
         <TextView

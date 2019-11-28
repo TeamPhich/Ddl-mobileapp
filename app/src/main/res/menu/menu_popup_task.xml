@@ -9,5 +9,7 @@
         android:id="@+id/_moveInreview"/>
     <item android:title="move done"
         android:id="@+id/_movedone"/>
+    <item android:title="Delete task"
+        android:id="@+id/_deleteTask"/>
 
 </menu>

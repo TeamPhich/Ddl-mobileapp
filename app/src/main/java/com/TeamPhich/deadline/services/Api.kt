@@ -1,8 +1,10 @@
 package com.TeamPhich.deadline.services
 
+import androidx.annotation.Nullable
 import com.TeamPhich.deadline.responses.Space.*
 import com.TeamPhich.deadline.responses.Space.group.listGroupRespone
 import com.TeamPhich.deadline.responses.Space.task.alltask
+import com.TeamPhich.deadline.responses.Space.userprofile.datainforp
 import com.TeamPhich.deadline.responses.defaultRespone
 import com.TeamPhich.deadline.responses.findmember.findPeople
 import com.TeamPhich.deadline.responses.login.loginRespone
@@ -94,6 +96,7 @@ interface Api {
         @Header("space-token") space_token: String
     ): Deferred<defaultRespone>
 
+    @FormUrlEncoded
     @PUT("/api/v1/spaces/admins")
     fun adminToMem(
         @Header("space-token") space_token: String,
@@ -104,16 +107,13 @@ interface Api {
     fun showSpacetask(
         @Header("space-token") space_token: String,
         @Query("status") status:String
+
     ): Deferred<alltask>
 
 
 
     //task
-    @DELETE("/api/v1/spaces/members")
-    fun deleteTask(
-        @Header("space-token") space_token: String,
-        @Field("task_id") task_id: String
-    ): Deferred<defaultRespone>
+
 
     @GET("/api/v1/accounts")
     fun findmember(
@@ -126,12 +126,22 @@ interface Api {
         @Header("token") token: String,
         @Query("keywords") keywords:String
     ): Deferred<findPeople>
+
+
+    @FormUrlEncoded
     @PUT("/api/v1/tasks/status")
-    fun switchTask(
+    fun  switchTask(
         @Header("space-token") space_token: String,
         @Field("task_id") task_id: String,
         @Field("status") status:String
     ):Deferred<defaultRespone>
+
+    @DELETE("/api/v1/tasks/{task_id}")
+    fun deleteTask(
+        @Header("space-token") space_token: String,
+        @Path("task_id") task_id: String
+    ): Deferred<defaultRespone>
+
 
     //group
     @GET("/api/v1/groups")
@@ -143,6 +153,16 @@ interface Api {
     fun getlistpeopleingroup(
         @Header("space-token") space_token:String
     ):Deferred<listGroupRespone>
+
+
+    @GET("/api/v1/spaces/profiles")
+    fun getuserprofile(
+        @Header("space-token") space_token:String
+    ):Deferred<datainforp>
+
+
+
+
 
 
 }

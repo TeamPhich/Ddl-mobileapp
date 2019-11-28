@@ -24,18 +24,19 @@ import kotlinx.coroutines.launch
 //hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
 
 class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :ArrayList<task>, var status: String ) : BaseAdapter() {
-    class ViewHolder(row : View, context: Context, status: String) {
+
+    class ViewHolder(row : View, context: Context, status: String, task: task) {
         var textviewtask: TextView
         var datetask: TextView
         var imageuser : ImageView
         var descriptiontask :TextView
-
 
         init {
             textviewtask = row.findViewById(R.id._nameOftask_done) as TextView
             datetask = row.findViewById(R.id._timedone) as TextView
             imageuser= row.findViewById(R.id._avatar_group) as ImageView
             descriptiontask= row.findViewById(R.id._description) as TextView
+
             row.setOnLongClickListener {
                 row.visibility=View.VISIBLE
 
@@ -60,22 +61,28 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
                     when( item.itemId) {
                         R.id._moveTodo -> {
 
-                            dialogTool().calldialogswitchTask(context,"19","todo")
+                            dialogTool().calldialogswitchTask(context,task.id.toString(),"todo")
                             true
                         }
                         R.id._moveInprocess -> {
+
+
 //                            Toast.makeText(context, "in process", Toast.LENGTH_SHORT).show()
-                            dialogTool().calldialogswitchTask(context,"19","in process")
+                            dialogTool().calldialogswitchTask(context,task.id.toString(),"in process")
                             true
                         }
                         R.id._moveInreview -> {
-//                            Toast.makeText(context, "in review", Toast.LENGTH_SHORT).show()
-                            Log.d("diepcute","125")
+
+                            dialogTool().calldialogswitchTask(context,task.id.toString(),"in review")
                             true
                         }
                         R.id._movedone -> {
-//                            Toast.makeText(context, "done", Toast.LENGTH_SHORT).show()
-                            Log.d("diepcute","126")
+
+                            dialogTool().calldialogswitchTask(context,task.id.toString(),"done")
+                            true
+                        }
+                        R.id._deleteTask-> {
+                            dialogTool().calldialag_deletetask(context,task.id.toString())
                             true
                         }
                         else -> false
@@ -93,11 +100,14 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
         if (convertView == null){
             var layoutInflater : LayoutInflater = LayoutInflater.from(context)
             view = layoutInflater.inflate(R.layout.item_task,null)
+            var task : task = getItem(position) as task
+
             viewholder =
-                ViewHolder(
+                ViewHolder (
                     view,
                     context,
-                    status
+                    status,
+                    task
                 )
             view.tag = viewholder
         }else{
@@ -126,7 +136,7 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
         return mangcongviec.size
     }
     fun setimage(userid:String,viewholder:ViewHolder){
-
+        Log.d("rtytry","")
         val sharedPreference: SharedPreference = SharedPreference(context)
         GlobalScope.launch(Dispatchers.Main) {
             try {

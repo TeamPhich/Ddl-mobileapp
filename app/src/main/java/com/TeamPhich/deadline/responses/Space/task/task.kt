@@ -17,5 +17,7 @@ data class task(
     @SerializedName("status")
     val status: String,
     @SerializedName("title")
-    val title: String
+    val title: String,
+    @SerializedName("role")
+    val role: Int
 )

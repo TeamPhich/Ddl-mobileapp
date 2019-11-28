@@ -146,6 +146,8 @@ class dialogTool {
                         sharedPreference.getTokenSpace().toString(),taskid,status
 
                     ).await()
+                    Log.d ("ưerwer",taskid)
+                    Log.d("retret345",status)
                     if (response.success == true) {
                         Toast.makeText(context, "ok", Toast.LENGTH_LONG).show()
                     } else {
@@ -170,5 +172,49 @@ class dialogTool {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+    fun calldialag_deletetask(context: Context,taskid: String){
+        val builder = AlertDialog.Builder(context)
+
+        // Set the alert dialog title
+        builder.setTitle("App background color")
+
+        // Display a message on alert dialog
+        builder.setMessage("Ban muon xoa task task sang trang thai")
+        builder.setIcon(android.R.drawable.ic_dialog_alert)
+        // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton("YES") { dialog, which ->
+            val sharedPreference: SharedPreference = SharedPreference(context)
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+                    val response = RetrofitClient.instance.deleteTask(
+                        sharedPreference.getTokenSpace().toString(),taskid
+
+                    ).await()
+
+                    if (response.success == true) {
+                        Toast.makeText(context, "ok", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(context, response.reason, Toast.LENGTH_LONG).show()
+                    }
+                } catch (t: Throwable) {
+                    Toast.makeText(context, t.toString(), Toast.LENGTH_LONG).show()
+                }
+
+
+            }
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+            Toast.makeText(context, "You are not agree.", Toast.LENGTH_SHORT).show()
+        }
+
+//        builder.setNeutralButton("Cancel") { _, _ ->
+//            Toast.makeText(requireContext(), "You cancelled the dialog.", Toast.LENGTH_SHORT).show()
+//        }
+
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
 
 }
