@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:icon="@drawable/ic_message"
         android:id="@+id/message"
-        android:title="message"/>
+        android:title="message" />
     <item android:icon="@drawable/ic_people"
         android:id="@+id/people"
         android:title="people"/>

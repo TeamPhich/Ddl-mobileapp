@@ -17,19 +17,23 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FFCD97D6"
-            android:elevation="4dp"
+            android:background="@color/colorAccent"
+            android:elevation="0dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            android:translationZ="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+            app:title="Diepxinhgai"
+            app:titleTextAppearance="@style/textToolbar">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/_avartar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/pikachu"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/colorAccent"
-                android:layout_gravity="right"/>
+                android:id="@+id/avartauseringroup"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+
+                android:src="@drawable/husky" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -43,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:background="#FFCD97D6"
+                android:background="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

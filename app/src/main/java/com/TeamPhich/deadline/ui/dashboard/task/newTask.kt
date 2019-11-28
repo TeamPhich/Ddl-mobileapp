@@ -13,7 +13,10 @@ import com.TeamPhich.deadline.responses.Space.DataX
 import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
-import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewPeople
+
+
+import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewpeople
+
 import kotlinx.android.synthetic.main.activity_new_task.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -32,6 +35,10 @@ class newTask : AppCompatActivity() {
         setContentView(R.layout.activity_new_task)
         choosedate()
         getListPeople()
+        // an camcel de thoat
+        _cancelcreate.setOnClickListener {
+            finish()
+        }
         _bCreateTask.setOnClickListener {
             Log.d("fjhidjhfjsdkf",target.id.toString())
             val sharedPreference: SharedPreference = SharedPreference(this)
@@ -116,7 +123,10 @@ class newTask : AppCompatActivity() {
             arraypeople.add(it)
         }
         _selectedmember.adapter =
-            CustomAdapter_listviewPeople(
+
+
+            CustomAdapter_listviewpeople(
+
                 this,
                 arraypeople
             )

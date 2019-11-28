@@ -6,6 +6,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/_baddtask"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
@@ -20,11 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/_bCreateTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
 
         <com.google.android.material.tabs.TabLayout
@@ -32,11 +33,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            app:tabBackground="@color/colorPrimary"
+            app:tabBackground="@color/colorAccent"
             app:tabGravity="fill"
+            app:tabIndicatorColor="#1D1818"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/styletext"
-            app:tabTextColor="@android:color/white" />
+            app:tabTextColor="@android:color/background_dark" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

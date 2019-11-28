@@ -33,6 +33,7 @@
 
     <Button
         android:id="@+id/buttonSubmit"
+        android:background="@drawable/custombutton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -45,6 +46,7 @@
 
     <Button
         android:id="@+id/buttonCancel"
+        android:background="@drawable/custombutton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

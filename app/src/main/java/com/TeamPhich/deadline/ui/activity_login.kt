@@ -20,6 +20,10 @@ class activity_login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val sharedPreference: SharedPreference = SharedPreference(this)
+        _clicktoregister.setOnClickListener {
+            val intent =Intent(this,singup_activity::class.java)
+            startActivity(intent)
+        }
         butSignin.setOnClickListener {
             val username = _iUsername.text.toString();
             val password = _iPassword.text.toString();

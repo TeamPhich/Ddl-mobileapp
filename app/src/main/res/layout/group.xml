@@ -8,29 +8,25 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="97dp"
+        android:layout_marginBottom="22dp"
         app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@id/listview_group"
+        app:layout_constraintBottom_toTopOf="@+id/listview_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Search Here" />
 
+
     <ListView
         android:id="@+id/listview_group"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_view" />
 

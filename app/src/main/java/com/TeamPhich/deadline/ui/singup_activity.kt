@@ -31,8 +31,8 @@ class singup_activity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textLogin.setOnClickListener {
-            startActivity(Intent(this@singup_activity, activity_login::class.java))
+        _backlogin.setOnClickListener {
+            finish()
         }
         ButSignup.setOnClickListener {
 

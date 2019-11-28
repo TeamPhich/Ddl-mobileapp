@@ -15,7 +15,10 @@ import com.TeamPhich.deadline.responses.Space.DataX
 import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
-import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewPeople
+
+
+import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewpeople
+
 import kotlinx.android.synthetic.main.people_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -44,8 +47,7 @@ class PeopleFragment() : Fragment() {
         respone.rows.forEach {
             arraypeople.add(it)
         }
-        _listview_people.adapter =
-            CustomAdapter_listviewPeople(
+        _listview_people.adapter =CustomAdapter_listviewpeople(
                 context,
                 arraypeople
             )

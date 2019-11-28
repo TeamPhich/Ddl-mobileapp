@@ -91,4 +91,5 @@ class receivecitem : Item<ViewHolder>(){
     override fun getLayout(): Int {
         return R.layout.item_mess_recived
     }
+
 }

@@ -30,6 +30,11 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.ui.dashboard.dashboard
+import org.json.JSONObject
+import io.socket.emitter.Emitter
+
+
+
 
 
 class activity_chat : AppCompatActivity() {
@@ -70,13 +75,28 @@ class activity_chat : AppCompatActivity() {
         //now adding the adapter to recyclerview
         recyclerView.adapter = adapter
         val sharedPreference:SharedPreference= SharedPreference(this)
+        createConnection(group_id,sharedPreference.getTokenSpace().toString())
 
 }
 
-//    fun createConnection(groupid:Int,groupname:String){
-//
-//       opts.query = "spaceToken=" + sharedPreference.getTokenSpace().toString()
-//    }
+    fun createConnection(groupid:Int,token_space:String){
+       opts.query = "spaceToken=" + token_space+"&"+"group_id="+groupid
+        val socket= IO.socket(SockURL,opts)
+        socket.connect()
+        val json=JSONObject()
+        json.put("offset",0)
+        socket.emit("messages.get", json)
+        socket.on("currentMessages.get", Emitter.Listener { args ->
+           Log.d("sixautrai",args[0].toString())
+        })
+
+
+
+
+
+
+    }
+
 }
 
 
