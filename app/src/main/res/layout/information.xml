@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/_toolbar_info"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent"
+
+
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/_closeactivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="CLOSE"
+            android:textColor="@color/cardview_dark_background"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_toolbar_info"
+        android:src="@drawable/husky"
+        />
+
+    <TextView
+        android:id="@+id/_nameuser_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView2" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="252dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/_title_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INFORMATION"
+            android:textColor="#A9585757"
+            android:textSize="15sp" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/_fullnameinfo"
+    android:background="?android:attr/selectableItemBackground">
+    <TextView
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_fullname"
+        android:drawablePadding="20dp"
+        android:text=" FULL NAME"
+        android:textStyle="bold"
+        android:textColor="@color/cardview_dark_background"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ninh hong diep"
+        android:drawableRight="@drawable/ic_next"/>
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/_roleinspace"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/ic_role"
+                android:text=" ROLE IN SPACE"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_dark_background"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="admin"
+                android:drawableRight="@drawable/ic_next"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OPTIONS"
+            android:textSize="15sp"
+            android:textColor="#A9585757"/>
+        <TextView
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/_changepass"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_changepass"
+            android:text=" CHANGE YOUR PASSWORD" />
+        <TextView
+            android:id="@+id/_logout"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_logout"
+            android:text=" LOG OUT" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
