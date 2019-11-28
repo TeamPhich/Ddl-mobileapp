@@ -68,10 +68,8 @@ class activity_chat : AppCompatActivity() {
         //adding some dummy data to the list
         //creating our adapter
         val adapter = GroupAdapter<ViewHolder>()
-        adapter.add(senditem())
-        adapter.add(receivecitem())
-        adapter.add(senditem())
-        adapter.add(receivecitem())
+        adapter.add(stenclass())
+
         //now adding the adapter to recyclerview
         recyclerView.adapter = adapter
         val sharedPreference:SharedPreference= SharedPreference(this)

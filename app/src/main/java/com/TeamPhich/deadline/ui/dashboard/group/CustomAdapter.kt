@@ -1,6 +1,7 @@
 package com.TeamPhich.deadline.ui.dashboard.group
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,22 +75,34 @@ import com.xwray.groupie.ViewHolder
 ////        }
 ////    }
 ////}
-class senditem : Item<ViewHolder>(){
-    override fun bind(viewHolder: ViewHolder, position: Int) {
+//class senditem : Item<ViewHolder>(){
+//    override fun bind(viewHolder: ViewHolder, position: Int) {
+//
+//    }
+//
+//    override fun getLayout(): Int {
+//        return R.layout.item_mess_sent
+//    }
+//}
+//class receivecitem : Item<ViewHolder>(){
+//    override fun bind(viewHolder: ViewHolder, position: Int) {
+//
+//    }
+//
+//    override fun getLayout(): Int {
+//        return R.layout.item_mess_recived
+//    }
+//
+//}
+
+
+    class stenclass:Item<ViewHolder>(){
+        override fun bind(viewHolder: ViewHolder, position: Int) {
+
+        }
+
+        override fun getLayout(): Int {
+            return R.layout.item_mess_recived
+        }
 
     }
-
-    override fun getLayout(): Int {
-        return R.layout.item_mess_sent
-    }
-}
-class receivecitem : Item<ViewHolder>(){
-    override fun bind(viewHolder: ViewHolder, position: Int) {
-
-    }
-
-    override fun getLayout(): Int {
-        return R.layout.item_mess_recived
-    }
-
-}
