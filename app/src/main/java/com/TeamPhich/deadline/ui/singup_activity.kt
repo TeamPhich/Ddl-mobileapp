@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import android.os.Handler
+import kotlinx.android.synthetic.main.login.*
 
 class singup_activity : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
@@ -30,9 +31,11 @@ class singup_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        _backlogin.setOnClickListener {
-            finish()
+        setContentView(R.layout.singup)
+
+        sin.setOnClickListener {
+            val intent =Intent(this,activity_login::class.java)
+            startActivity(intent)
         }
         ButSignup.setOnClickListener {
 

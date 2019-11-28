@@ -28,70 +28,105 @@ import io.socket.client.IO
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
+import com.TeamPhich.deadline.responses.Space.group.chat.Message
+import com.TeamPhich.deadline.responses.Space.group.chat.chatrp
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.ui.dashboard.dashboard
+import com.google.gson.Gson
 import org.json.JSONObject
 import io.socket.emitter.Emitter
-
-
-
+import kotlinx.android.synthetic.main.activity_chat.*
 
 
 class activity_chat : AppCompatActivity() {
     var opts = IO.Options()
-    val SockURL="http://18.162.125.153/chat"
+    val SockURL = "http://18.162.125.153/chat"
+    var adapter = GroupAdapter<ViewHolder>()
 
 
-
-//    val sharedPreference: SharedPreference = SharedPreference(this)
+    //    val sharedPreference: SharedPreference = SharedPreference(this)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        val group_name=intent.getStringExtra("group_name")
-        val group_id=intent.getIntExtra("group_id",0)
-//        _blistPeople.setOnClickListener { view ->
-//            val listGroupmember = Intent(this, activity_chat::class.java)
-//            listGroupmember.putExtra("group_name",group_name) //Put your id to your next Intent
-//            listGroupmember.putExtra("group_id",group_id)
-//            startActivity(listGroupmember)
-//
-//        }
-        val recyclerView = findViewById(R.id.reyclerview_message_list) as RecyclerView
-
-        //adding a layoutmanager
-//        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        val group_name = intent.getStringExtra("group_name")
+        val group_id = intent.getIntExtra("group_id", 0)
+        reyclerview_message_list.adapter = adapter
 
 
-        //crating an arraylist to store users using the data class user
+        val sharedPreference: SharedPreference = SharedPreference(this)
+        createConnection(group_id, sharedPreference.getTokenSpace().toString())
 
-        //adding some dummy data to the list
-        //creating our adapter
-        val adapter = GroupAdapter<ViewHolder>()
-        adapter.add(stenclass())
+    }
 
-        //now adding the adapter to recyclerview
-        recyclerView.adapter = adapter
-        val sharedPreference:SharedPreference= SharedPreference(this)
-        createConnection(group_id,sharedPreference.getTokenSpace().toString())
 
-}
-
-    fun createConnection(groupid:Int,token_space:String){
-       opts.query = "spaceToken=" + token_space+"&"+"group_id="+groupid
-        val socket= IO.socket(SockURL,opts)
+    fun createConnection(groupid: Int, token_space: String) {
+        opts.query = "spaceToken=" + token_space + "&" + "group_id=" + groupid
+        val socket = IO.socket(SockURL, opts)
         socket.connect()
-        val json=JSONObject()
-        json.put("offset",0)
+        val json = JSONObject()
+        json.put("offset", 0)
         socket.emit("messages.get", json)
         socket.on("currentMessages.get", Emitter.Listener { args ->
-           Log.d("sixautrai",args[0].toString())
+
+            val obj = args[0] as JSONObject
+            val gson = Gson()
+            var rp = gson.fromJson(args[0].toString(), chatrp::class.java)
+            addmess(rp)
+
+
+
+        })
+        socket.on("new_messages.get", Emitter.Listener { args ->
+            socket.emit("messages.get", json)
+
+
+
+
         })
 
+        runOnUiThread(
+            object : Runnable {
+                override fun run() {
+                    button_chatbox_send.setOnClickListener { view ->
+
+                        val json = JSONObject()
+                        json.put("message", edittext_chatbox.text.toString())
+                        socket.emit("new_messages.post", json)
+
+                    }
+                }
+            }
+        )
 
 
 
+    }
 
+    fun addmess(chatrp: chatrp) {
+        if (chatrp.messages.size > 0) {
+
+            chatrp.messages.forEach {
+                if (it.isUserMessages == true) {
+                    runOnUiThread(
+                        object : Runnable {
+                            override fun run() {
+                                adapter.add(senditem(it))
+                            }
+                        }
+                    )
+
+                } else if (it.isUserMessages == false) {
+                    runOnUiThread(
+                        object : Runnable {
+                            override fun run() {
+                                adapter.add(receivecitem(it,this@activity_chat))
+                            }
+                        }
+                    )
+                }
+            }
+        }
 
     }
 

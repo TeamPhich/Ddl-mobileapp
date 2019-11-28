@@ -10,21 +10,21 @@
     <EditText
         android:id="@+id/_iUsername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="4dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="256dp"
         android:ems="10"
         android:hint="username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="143dp"
         android:text="LOG IN"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -35,59 +35,46 @@
     <EditText
         android:id="@+id/_iPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="63dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="316dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/butSignin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_iUsername" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/butSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginTop="428dp"
         android:background="@drawable/custombutton4"
         android:text="sign in"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_iPassword" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="80dp" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="92dp"
         android:text="FORGET YOUR PASSWWORD??"
         android:textColor="#E1970D0D"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_clicktoregister" />
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="602dp" />
 
     <TextView
         android:id="@+id/_clicktoregister"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
-        android:layout_marginTop="56dp"
         android:background="?android:attr/selectableItemBackground"
         android:text="CLICK HERE TO REGISTER!!"
         android:textColor="#A71111"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butSignin" />
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="534dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

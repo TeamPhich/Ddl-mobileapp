@@ -11,8 +11,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.group.RowsGroup
+import com.TeamPhich.deadline.responses.Space.group.chat.Message
+import com.TeamPhich.deadline.ui.dashboard.dashboard
+import com.bumptech.glide.Glide
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.item_mess_recived.view.*
+import kotlinx.android.synthetic.main.item_mess_sent.view.*
 
 //class sentadapter( val data: String) : RecyclerView.Adapter<sentadapter.ViewHolder_sentmess>()
 ////{
@@ -75,34 +80,34 @@ import com.xwray.groupie.ViewHolder
 ////        }
 ////    }
 ////}
-//class senditem : Item<ViewHolder>(){
-//    override fun bind(viewHolder: ViewHolder, position: Int) {
-//
-//    }
-//
-//    override fun getLayout(): Int {
-//        return R.layout.item_mess_sent
-//    }
-//}
-//class receivecitem : Item<ViewHolder>(){
-//    override fun bind(viewHolder: ViewHolder, position: Int) {
-//
-//    }
-//
-//    override fun getLayout(): Int {
-//        return R.layout.item_mess_recived
-//    }
-//
-//}
+class senditem(val message: Message) : Item<ViewHolder>(){
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+        viewHolder.itemView.text_messagesend_body.text=message.message
+        viewHolder.itemView.text_messagesend_time.text="10:30"
+    }
 
-
-    class stenclass:Item<ViewHolder>(){
-        override fun bind(viewHolder: ViewHolder, position: Int) {
-
-        }
-
-        override fun getLayout(): Int {
-            return R.layout.item_mess_recived
-        }
+    override fun getLayout(): Int {
+        return R.layout.item_mess_sent
+    }
+}
+class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>(){
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+        viewHolder.itemView.text_message_body.text=message.message
+        viewHolder.itemView.text_message_time.text="10:30"
+        viewHolder.itemView.text_message_name.text=message.userName
+        Glide
+            .with(context)
+            .load(message.imagesUrl)
+            .centerCrop()
+            .placeholder(R.drawable.ic_insert_photo)
+            .into(viewHolder.itemView.image_message_profile);
 
     }
+
+    override fun getLayout(): Int {
+        return R.layout.item_mess_recived
+    }
+
+}
+
+

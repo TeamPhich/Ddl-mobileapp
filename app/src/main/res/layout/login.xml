@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:src="@drawable/deadline"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center|bottom"
+            android:background="#80000000">
+            <TextView
+                android:id="@+id/sin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Sign in"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="16dp"/>
+            <TextView
+                android:id="@+id/sup"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Sign up"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:padding="16dp"/>
+        </LinearLayout>
+    </FrameLayout>
+        <EditText
+            android:id="@+id/_iUsername"
+            android:inputType="textPersonName"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:hint="username"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/ic_username"
+            android:drawablePadding ="20dp"/>
+    <EditText
+        android:id="@+id/_iPassword"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/custom_edittext"
+        android:layout_marginTop="20dp"
+        android:hint="password"
+        android:drawableLeft="@drawable/ic_pass"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
+    <Button
+        android:id="@+id/butSignin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="SIGN IN"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custombutton4"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FORGET YOUR PASSWORD ??"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+         />
+</LinearLayout>
