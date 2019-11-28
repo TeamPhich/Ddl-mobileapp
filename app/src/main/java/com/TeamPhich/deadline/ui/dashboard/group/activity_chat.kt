@@ -33,6 +33,7 @@ import com.TeamPhich.deadline.responses.Space.group.chat.chatrp
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.ui.dashboard.dashboard
 import com.google.gson.Gson
+import com.xwray.groupie.Item
 import org.json.JSONObject
 import io.socket.emitter.Emitter
 import kotlinx.android.synthetic.main.activity_chat.*
@@ -41,7 +42,7 @@ import kotlinx.android.synthetic.main.activity_chat.*
 class activity_chat : AppCompatActivity() {
     var opts = IO.Options()
     val SockURL = "http://18.162.125.153/chat"
-    var adapter = GroupAdapter<ViewHolder>()
+
 
 
     //    val sharedPreference: SharedPreference = SharedPreference(this)
@@ -51,7 +52,7 @@ class activity_chat : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
         val group_name = intent.getStringExtra("group_name")
         val group_id = intent.getIntExtra("group_id", 0)
-        reyclerview_message_list.adapter = adapter
+
 
 
         val sharedPreference: SharedPreference = SharedPreference(this)
@@ -92,6 +93,7 @@ class activity_chat : AppCompatActivity() {
 
                         val json = JSONObject()
                         json.put("message", edittext_chatbox.text.toString())
+                        edittext_chatbox.text.clear()
                         socket.emit("new_messages.post", json)
 
                     }
@@ -104,16 +106,17 @@ class activity_chat : AppCompatActivity() {
     }
 
     fun addmess(chatrp: chatrp) {
+        var adapter = GroupAdapter<ViewHolder>()
         if (chatrp.messages.size > 0) {
-
-            chatrp.messages.forEach {
+            val newlist=chatrp.messages.asReversed()
+            newlist.forEach {
                 if (it.isUserMessages == true) {
                     runOnUiThread(
-                        object : Runnable {
-                            override fun run() {
-                                adapter.add(senditem(it))
-                            }
+                                        object : Runnable {
+                        override fun run() {
+                            adapter.add(senditem(it))
                         }
+                    }
                     )
 
                 } else if (it.isUserMessages == false) {
@@ -126,7 +129,18 @@ class activity_chat : AppCompatActivity() {
                     )
                 }
             }
+
         }
+        runOnUiThread(
+            object : Runnable {
+                override fun run() {
+                    reyclerview_message_list.adapter = adapter
+                    reyclerview_message_list.scrollToPosition(adapter.getItemCount()-1)
+                }
+            }
+        )
+
+
 
     }
 
