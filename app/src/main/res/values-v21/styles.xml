@@ -41,7 +41,7 @@
 
     <style name="textToolbar">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/cardview_dark_background</item>
+        <item name="android:textColor">#FFF</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>

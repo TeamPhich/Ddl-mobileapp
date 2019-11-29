@@ -9,11 +9,9 @@ import android.content.Intent
 import android.util.Log
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.dashboard
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login._iPassword
-import kotlinx.android.synthetic.main.activity_login._iUsername
-import kotlinx.android.synthetic.main.activity_login.butSignin
-import kotlinx.android.synthetic.main.login.*
+
+import kotlinx.android.synthetic.main.login_activity.*
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -22,7 +20,7 @@ class activity_login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        setContentView(R.layout.login_activity)
         val sharedPreference: SharedPreference = SharedPreference(this)
         sup.setOnClickListener {
             val intent =Intent(this,singup_activity::class.java)

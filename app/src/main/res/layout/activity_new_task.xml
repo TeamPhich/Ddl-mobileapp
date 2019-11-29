@@ -9,68 +9,88 @@
 
     <EditText
         android:id="@+id/_iTasktittle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="task tittle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/_selectday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="40dp"
+
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="30/11/2019"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_iTasktittle" />
+        app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="31dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription" />
 
     <Button
         android:id="@+id/_bCreateTask"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
+        android:layout_height="0dp"
+
+        android:layout_marginBottom="128dp"
         android:background="@drawable/custombutton2"
         android:text="create"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/_cancelcreate"
-        app:layout_constraintStart_toStartOf="@+id/_cancelcreate" />
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/_iTaskdescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="description"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_selectday" />
+        app:layout_constraintTop_toBottomOf="@+id/_iTasktittle" />
 
     <Spinner
         android:id="@+id/_selectedmember"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="42dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/_selectday" />
 
-    <Button
+    <ImageView
         android:id="@+id/_cancelcreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="78dp"
-        android:background="@drawable/custombutton2"
-        android:text="@android:string/cancel"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="31dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_exit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

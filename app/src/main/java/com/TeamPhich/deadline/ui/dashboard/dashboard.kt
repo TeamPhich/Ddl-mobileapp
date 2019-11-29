@@ -36,7 +36,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
-
+    val color="#1c94e0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
             this, drawerLayout,toolbar,   0, 0
         )
-        toggle.drawerArrowDrawable.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN)
+        toggle.drawerArrowDrawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
@@ -195,7 +195,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     for (i in 0 until parent.childCount) {
                     parent.getChildAt(i).setBackgroundColor(Color.WHITE)
                     }
-                    view.setBackgroundColor(Color.GREEN)
+                    view.setBackgroundColor(Color.parseColor(color))
                     if (response.success == true) {
                         sharedPreference.setTokenSpace(response.data.tokenSpace)
                         Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
@@ -306,7 +306,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 for (i in 0 until listView.childCount) {
                     listView.getChildAt(i).setBackgroundColor(Color.WHITE)
                 }
-                listView.getChildAt(0).setBackgroundColor(Color.GREEN)
+                listView.getChildAt(0).setBackgroundColor(Color.parseColor(color))
                 if (response.success == true) {
                     sharedPreference.setTokenSpace(response.data.tokenSpace)
                     Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())

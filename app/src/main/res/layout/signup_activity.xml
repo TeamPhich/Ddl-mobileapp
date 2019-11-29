@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/imagelayout"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/custom_layoutlogin"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="DEADLINE"
+            android:textColor="#FFF"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/customlayout"
+
+
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imagelayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIGN UP"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="#03a5fc"
+            />
+        <EditText
+            android:id="@+id/_iUserName"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_username"
+            android:hint="Username"
+            android:padding="15dp"
+            android:drawablePadding="20dp"
+            android:inputType="textPersonName"/>
+        <EditText
+            android:id="@+id/_iFullname"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_fullname"
+            android:hint="Fullname"
+            android:padding="15dp"
+            android:drawablePadding="20dp"
+            android:inputType="textPersonName"/>
+
+
+        <EditText
+            android:id="@+id/_iEmail"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_email"
+            android:hint="Email"
+            android:padding="15dp"
+            android:drawablePadding="20dp"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/_iPassWord"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_pass"
+            android:hint="Password"
+            android:padding="15dp"
+            android:drawablePadding="20dp"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/ButSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombutton5"
+            android:layout_gravity="center"
+            android:text="REGISTER"
+            android:textColor="#FFF"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"/>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

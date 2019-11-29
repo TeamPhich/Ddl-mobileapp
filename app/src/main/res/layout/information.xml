@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="CLOSE"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="#FFF"
             android:layout_marginRight="10dp"
             android:textStyle="bold"/>
 
@@ -75,12 +75,14 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/_fullnameinfo"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingTop="10dp">
     <TextView
         android:layout_width="298dp"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_fullname"
+        android:drawableLeft="@drawable/ic_fullname_info"
         android:drawablePadding="20dp"
+
         android:text=" FULL NAME"
         android:textStyle="bold"
         android:textColor="@color/cardview_dark_background"/>
@@ -114,7 +116,30 @@
                 android:id="@+id/_info_role"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/_youremail"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/ic_email_info"
+                android:text="YOUR EMAIL"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_dark_background"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:drawableRight="@drawable/ic_next"
+                android:text="ninhhongdiep@gmail.com"
+                android:id="@+id/_info_email"/>
+        </LinearLayout>
         <TextView
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OPTIONS"

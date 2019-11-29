@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.widget.Toast
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.services.RetrofitClient
-import kotlinx.android.synthetic.main.activity_main.*
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import android.os.Handler
-import kotlinx.android.synthetic.main.login.*
+
+import kotlinx.android.synthetic.main.signup_activity.*
 
 class singup_activity : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
@@ -31,12 +32,9 @@ class singup_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.singup)
+        setContentView(R.layout.signup_activity)
 
-        sin.setOnClickListener {
-            val intent =Intent(this,activity_login::class.java)
-            startActivity(intent)
-        }
+
         ButSignup.setOnClickListener {
 
             val email = _iEmail.text.toString().trim()
