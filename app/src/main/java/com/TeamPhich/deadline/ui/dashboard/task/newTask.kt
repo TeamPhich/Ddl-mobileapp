@@ -1,6 +1,7 @@
 package com.TeamPhich.deadline.ui.dashboard.task
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,21 +27,22 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 
 import android.view.View
+import android.widget.TimePicker
 
 
 class newTask : AppCompatActivity() {
-    var target:RowX= RowX("","",0,"",0)
+    var target: RowX = RowX("", "", 0, "", 0)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_task)
         choosedate()
         getListPeople()
         // an camcel de thoat
-       _cancelcreate.setOnClickListener {
-           finish()
-       }
+        _cancelcreate.setOnClickListener {
+            finish()
+        }
         _bCreateTask.setOnClickListener {
-            Log.d("fjhidjhfjsdkf",target.id.toString())
+            Log.d("fjhidjhfjsdkf", target.id.toString())
             val sharedPreference: SharedPreference = SharedPreference(this)
             val description = _iTaskdescription.text.toString()
             val title = _iTasktittle.text.toString()
@@ -59,7 +61,13 @@ class newTask : AppCompatActivity() {
 
             GlobalScope.launch(Dispatchers.Main) {
                 try {
-                    val response = RetrofitClient.instance.createTask(sharedPreference.getTokenSpace().toString(),target.id,title,getunixdate(),description).await()
+                    val response = RetrofitClient.instance.createTask(
+                        sharedPreference.getTokenSpace().toString(),
+                        target.id,
+                        title,
+                        getunixdate(),
+                        description
+                    ).await()
 
                     if (response.success == true) {
                         Toast.makeText(applicationContext, "create ok", Toast.LENGTH_SHORT).show()
@@ -79,14 +87,16 @@ class newTask : AppCompatActivity() {
     }
 
 
-    fun getunixdate():String{
+    fun getunixdate(): String {
         val textView: TextView = findViewById(R.id._selectday)
-        val date = SimpleDateFormat("dd.MM.yyyy").parse(textView.text.toString())
+        val dateString = textView.text.toString()+" "+_selectedhour.text.toString()
+        val date = SimpleDateFormat("dd.MM.yyyy HH:mm").parse(dateString)
         val unix = date.time / 1000L
+        Log.d("oweirwpoeri",unix.toString())
         return unix.toString()
     }
 
-    fun choosedate(){
+    fun choosedate() {
         val textView: TextView = findViewById(R.id._selectday)
         textView.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
 
@@ -98,7 +108,7 @@ class newTask : AppCompatActivity() {
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 val myFormat = "dd.MM.yyyy" // mention the format you need
-                val sdf = SimpleDateFormat(myFormat, Locale.US)
+                val sdf = SimpleDateFormat(myFormat)
                 textView.text = sdf.format(cal.time)
 
             }
@@ -110,6 +120,22 @@ class newTask : AppCompatActivity() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             ).show()
+        }
+        _selectedhour.setOnClickListener {
+
+            val hour = cal.get(Calendar.HOUR)
+            val minute = cal.get(Calendar.MINUTE)
+
+            val tpd =
+                TimePickerDialog(this, TimePickerDialog.OnTimeSetListener(function = { view, h, m ->
+                    _selectedhour.text = h.toString()+ ":" + m
+
+
+                }), hour, minute, true)
+
+            tpd.show()
+
+
         }
 
 
@@ -126,15 +152,19 @@ class newTask : AppCompatActivity() {
 
 
             CustomAdapter_listviewpeople(
-
                 this,
                 arraypeople
             )
 ////        dashboard().setListViewHeightBasedOnChildren(_listview_people)
 //        sukienlistpp(_listview_people)
         _selectedmember.setOnItemSelectedListener(object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                target=arraypeople.elementAt(position)
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                target = arraypeople.elementAt(position)
 
             } // to close the onItemSelected
 
@@ -144,6 +174,7 @@ class newTask : AppCompatActivity() {
         })
 
     }
+
     fun getListPeople() {
 
         val sharedPreference: SharedPreference = SharedPreference(this)
@@ -171,7 +202,6 @@ class newTask : AppCompatActivity() {
 
         }
     }
-
 
 
 }

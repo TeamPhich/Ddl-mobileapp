@@ -19,6 +19,8 @@ import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 //hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
@@ -116,9 +118,9 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
         }
         var nhiemvu : task = getItem(position) as task
         viewholder.textviewtask.text= nhiemvu.title
-        viewholder.datetask.text=nhiemvu.deadline.toString()
+        viewholder.datetask.text=gettextdatefromunix(nhiemvu.deadline).toString()
 //        viewholder.imageuser.setImageResource(nhiemvu.image)
-        setimage(nhiemvu.creatorId.toString(),viewholder)
+        setimage(nhiemvu.memberId.toString(),viewholder)
         viewholder.descriptiontask.text=nhiemvu.description
         return view as View
 
@@ -161,5 +163,11 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
 
 
         }
+    }
+    fun gettextdatefromunix(unix: Long):String{
+        val sdf = java.text.SimpleDateFormat("dd-MM-yyyy hh:mm")
+        val date = java.util.Date(unix * 1000)
+
+        return sdf.format(date)
     }
 }

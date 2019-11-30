@@ -7,7 +7,7 @@ data class task(
     @SerializedName("creator_id")
     val creatorId: Int,
     @SerializedName("deadline")
-    val deadline: Int,
+    val deadline: Long,
     @SerializedName("description")
     val description: String,
     @SerializedName("id")
