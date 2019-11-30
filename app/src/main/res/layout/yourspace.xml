@@ -6,22 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/colorAccent">
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:text="YOUR SPACE"
-            android:textSize="35dp"
-            android:textStyle="bold" />
+   <androidx.appcompat.widget.Toolbar
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       android:background="@color/colorAccent">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="YOUR SPACE"/>
 
-    </LinearLayout>
-
+   </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/_sListSpace"
