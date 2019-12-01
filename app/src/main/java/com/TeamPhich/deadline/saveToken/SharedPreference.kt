@@ -16,11 +16,17 @@ class SharedPreference(val cont: Context) {
         editor.putString("token", value)
         editor.commit()
     }
-
+    fun setSpaceName(value: String?) {
+        val editor = SharedPreferences.edit()
+        editor.putString("name", value)
+        editor.commit()
+    }
     fun getToken(): String? {
         return SharedPreferences.getString("token", "")
     }
-
+    fun getSpaceName(): String? {
+        return SharedPreferences.getString("name", "")
+    }
     fun resetToken() {
         val editor = SharedPreferences.edit()
         editor.remove("token")

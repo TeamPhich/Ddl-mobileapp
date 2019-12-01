@@ -58,7 +58,9 @@ class activity_chat : AppCompatActivity() {
         val sharedPreference: SharedPreference = SharedPreference(this)
         callinfogroup(group_name,group_id)
         createConnection(group_id, sharedPreference.getTokenSpace().toString())
-
+        _backbutton.setOnClickListener{
+            finish()
+        }
     }
 
 

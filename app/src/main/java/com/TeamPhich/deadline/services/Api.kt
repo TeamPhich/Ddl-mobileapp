@@ -186,6 +186,15 @@ interface Api {
     fun postimage(@Part file: MultipartBody.Part
     ):Deferred<imgrespone>
 
+    @FormUrlEncoded
+    @PUT("/api/v1/spaces/roles")
+    fun  updateRole(
+        @Header("space-token") token: String,
+        @Field("member_id") member_id:Int,
+        @Field("role_id") role_id:Int
+
+    ):Deferred<defaultRespone>
+
 
 
 

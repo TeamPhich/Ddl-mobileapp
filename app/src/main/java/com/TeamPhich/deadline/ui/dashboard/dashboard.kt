@@ -39,14 +39,12 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     val color="#1c94e0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPreference: SharedPreference = SharedPreference(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activiy_showmenu)
-
         toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle(sharedPreference.getSpaceName())
         setSupportActionBar(toolbar)
-        toolbar.setTitle("thang dep trai")
-
-
 
 
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -70,8 +68,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         }
         val tablayoutTask = Tablayout_task.newInstance()
         openFragment(tablayoutTask)
-
-
 
 
     }
@@ -183,12 +179,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         setListViewHeightBasedOnChildren(_sListSpace)
 
         _sListSpace.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(
-                applicationContext,
-                _sListSpace.getItemAtPosition(position).toString(),
-                Toast.LENGTH_LONG
-            ).show()
-            GlobalScope.launch(Dispatchers.Main) {
+              GlobalScope.launch(Dispatchers.Main) {
                 try {
 
                     val response = RetrofitClient.instance.getSpaceToken(
@@ -221,13 +212,20 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
 
     fun getspaceid(listspace: List<Row>, key: String): Int {
+        val sharedPreference: SharedPreference = SharedPreference(this)
         listspace.forEach {
-            if (key == it.name) return it.id
+            if (key == it.name) {
+                sharedPreference.setSpaceName(it.name)
+                toolbar = findViewById(R.id.toolbar)
+                toolbar.setTitle(it.name)
+                return it.id
+            }
+
         }
         return 0
     }
 
-    public fun setListViewHeightBasedOnChildren(listView: ListView) {
+    fun setListViewHeightBasedOnChildren(listView: ListView) {
         val listAdapter = listView.adapter
             ?: // pre-condition
             return
@@ -266,8 +264,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 try {
                     val response = RetrofitClient.instance.createSpace(sharedPreference.getToken().toString(), spacename2 ).await()
                     if (response.success == true) {
-                        Toast.makeText(applicationContext, "OK", Toast.LENGTH_LONG)
-                            .show()
                         getListSpace()
 
                     } else {
@@ -294,11 +290,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
     fun defaultSeclectListSpace(listView: ListView,listspace: List<Row>){
         val sharedPreference:SharedPreference= SharedPreference(this)
-        Toast.makeText(
-            applicationContext,
-            _sListSpace.getItemAtPosition(0).toString(),
-            Toast.LENGTH_LONG
-        ).show()
         GlobalScope.launch(Dispatchers.Main) {
             try {
 

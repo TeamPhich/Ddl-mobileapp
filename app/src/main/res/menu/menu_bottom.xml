@@ -8,7 +8,7 @@
         android:title="people"/>
     <item android:icon="@drawable/ic_library_books"
         android:id="@+id/create_task"
-        android:title="create tasks"/>
+        android:title="tasks"/>
 
 
 </menu>
