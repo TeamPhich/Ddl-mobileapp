@@ -3,7 +3,7 @@ package com.TeamPhich.deadline.responses.Space
 
 import com.google.gson.annotations.SerializedName
 
-data class RowX(
+data class datapepleinsp(
     @SerializedName("full_name")
     val fullName: String,
     @SerializedName("imagesUrl")

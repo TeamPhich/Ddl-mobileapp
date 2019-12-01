@@ -18,6 +18,12 @@ data class task(
     val status: String,
     @SerializedName("title")
     val title: String,
-    @SerializedName("role")
-    val role: Int
+    @SerializedName("isSuperAdmin")
+    val isSuperAdmin: Boolean,
+    @SerializedName("isCreator")
+    val isCreator: Boolean,
+    @SerializedName("isMember")
+    val isMember: Boolean
 )
+
+

@@ -8,18 +8,18 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.TeamPhich.deadline.R
-import com.TeamPhich.deadline.responses.Space.RowX
+import com.TeamPhich.deadline.responses.Space.datapepleinsp
 import com.bumptech.glide.Glide
 
 //hàm này dùng để custom listview cho các hàm   people , thuộc tính dduwowcj khai báo ở lớp People
-class CustomAdapter_listviewpeople(var context: Context, var mangbanbe:ArrayList<RowX>) : BaseAdapter() {
+class CustomAdapter_listviewpeople(var context: Context, var mangbanbe:ArrayList<datapepleinsp>) : BaseAdapter() {
     class ViewHolder(row : View) {
         var textviewpeople: TextView
         var imageviewpeople: ImageView
 
         init {
-            textviewpeople = row.findViewById(R.id._nameOfFriend) as TextView
-            imageviewpeople = row.findViewById(R.id._avatar_friend) as ImageView
+            textviewpeople = row.findViewById(R.id._name_thispp) as TextView
+            imageviewpeople = row.findViewById(R.id._avatar_thispp) as ImageView
         }
     }
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -37,7 +37,7 @@ class CustomAdapter_listviewpeople(var context: Context, var mangbanbe:ArrayList
             view = convertView
             viewholder = convertView.tag as ViewHolder
         }
-        var nhom : RowX = getItem(position) as RowX
+        var nhom : datapepleinsp = getItem(position) as datapepleinsp
         viewholder.textviewpeople.text= nhom.fullName
         Glide
             .with(context)

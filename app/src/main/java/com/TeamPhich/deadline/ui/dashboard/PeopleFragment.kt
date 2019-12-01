@@ -1,5 +1,6 @@
 package com.TeamPhich.deadline.ui.dashboard
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,17 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.R
-import kotlinx.android.synthetic.main.people_fragment.*
-import android.app.AlertDialog
-import android.util.Log
 import android.widget.*
 import com.TeamPhich.deadline.responses.Space.DataX
-import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 
 
-import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listviewpeople
+import com.TeamPhich.deadline.ui.dashboard.custom_adapter.itemPeopleinSpace
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 
 import kotlinx.android.synthetic.main.people_fragment.view.*
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +27,7 @@ import kotlinx.coroutines.launch
 class PeopleFragment() : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.people_fragment, container, false)
-        getListPeople()
+        getListPeople(view)
         addmember(view)
         return view
     }
@@ -40,23 +39,20 @@ class PeopleFragment() : Fragment() {
 
 
 
-    fun showlistSpacePeople(respone: DataX) {
+    fun showlistSpacePeople(view: View,data: DataX,context: Context) {
 
-        var arraypeople: ArrayList<RowX> = ArrayList()
-        val context: Context = context!!
-        respone.rows.forEach {
-            arraypeople.add(it)
-        }
-        _listview_people.adapter =CustomAdapter_listviewpeople(
-                context,
-                arraypeople
-            )
-        dashboard().setListViewHeightBasedOnChildren(_listview_people)
-        sukienlistpp(_listview_people)
+            var adapter = GroupAdapter<ViewHolder>()
+            data.rows.forEach {
+                adapter.add(itemPeopleinSpace(it,context))
+            }
+
+            view._reyclerview_list_peopleinspace.adapter=adapter
+
+
+
 
     }
-
-    fun getListPeople() {
+    fun getListPeople(view: View) {
         val context: Context = context!!
         val sharedPreference: SharedPreference = SharedPreference(context)
 
@@ -67,7 +63,7 @@ class PeopleFragment() : Fragment() {
                     RetrofitClient.instance.getSpacemember(sharedPreference.getTokenSpace().toString())
                         .await()
                 if (response.success == true) {
-                    showlistSpacePeople(response.data)
+                    showlistSpacePeople(view,response.data,context)
 
                 } else {
                     Toast.makeText(
@@ -81,14 +77,6 @@ class PeopleFragment() : Fragment() {
             }
 
 
-        }
-    }
-    fun sukienlistpp(_listview: ListView){
-        _listview.setOnItemClickListener { parent, view, position, id ->
-            if (position==0)
-            {
-                Log.d("diep","cute")
-            }
         }
     }
     fun addmember(view: View)
@@ -122,7 +110,7 @@ class PeopleFragment() : Fragment() {
                         sharedPreference.getTokenSpace().toString()
                     ).await()
                     if (response.success == true) {
-                        Toast.makeText(requireContext(), "OK", Toast.LENGTH_LONG).show()
+
                     } else {
                         Toast.makeText(requireContext(), response.reason, Toast.LENGTH_LONG).show()
                     }
@@ -144,5 +132,10 @@ class PeopleFragment() : Fragment() {
         dialog.show()
     }
 
-
 }
+
+
+//
+//
+
+

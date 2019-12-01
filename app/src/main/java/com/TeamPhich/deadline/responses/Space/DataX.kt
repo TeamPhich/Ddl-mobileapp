@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class DataX(
     @SerializedName("rows")
-    val rows: List<RowX>
+    val rows: List<datapepleinsp>
 )

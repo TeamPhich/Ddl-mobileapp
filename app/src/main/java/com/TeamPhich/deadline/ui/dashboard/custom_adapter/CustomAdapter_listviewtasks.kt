@@ -44,6 +44,23 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
 
                 val popupMenu = PopupMenu(context, it)
                 popupMenu.inflate(R.menu.menu_popup_task)
+                if(task.isMember&&task.isSuperAdmin==false){
+                    popupMenu.menu.removeItem(R.id._deleteTask)
+                }
+                if(task.isSuperAdmin&&(task.isCreator==false&&!task.isMember)){
+                    popupMenu.menu.removeItem(R.id._moveTodo)
+                    popupMenu.menu.removeItem(R.id._moveInprocess)
+                    popupMenu.menu.removeItem(R.id._moveInreview)
+                    popupMenu.menu.removeItem(R.id._movedone)
+                }
+                if (!task.isMember&&!task.isCreator&&!task.isSuperAdmin){
+                    popupMenu.menu.removeItem(R.id._moveTodo)
+                    popupMenu.menu.removeItem(R.id._moveInprocess)
+                    popupMenu.menu.removeItem(R.id._moveInreview)
+                    popupMenu.menu.removeItem(R.id._movedone)
+                    popupMenu.menu.removeItem(R.id._deleteTask)
+                }
+
                 when(status) {
                     "todo" -> {
                         popupMenu.menu.removeItem(R.id._moveTodo)

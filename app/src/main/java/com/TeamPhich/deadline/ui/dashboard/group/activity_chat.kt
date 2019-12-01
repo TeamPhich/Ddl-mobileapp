@@ -56,6 +56,7 @@ class activity_chat : AppCompatActivity() {
 
 
         val sharedPreference: SharedPreference = SharedPreference(this)
+        callinfogroup(group_name,group_id)
         createConnection(group_id, sharedPreference.getTokenSpace().toString())
 
     }
@@ -143,8 +144,17 @@ class activity_chat : AppCompatActivity() {
 
 
     }
+    fun callinfogroup(group_name:String,group_id:Int){
+        _infoGroup.setOnClickListener { view ->
+            val intent = Intent(this@activity_chat, groupInfo::class.java)
+//            val b = Bundle()
+//            b.putInt("key", position) //Your id
+            intent.putExtra("group_name",group_name) //Put your id to your next Intent
+            intent.putExtra("group_id",group_id)
+            startActivity(intent)
+        }
+    }
 
 }
-
 
 

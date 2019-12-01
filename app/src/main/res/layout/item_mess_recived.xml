@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
 
         android:id="@+id/image_message_profile"
 

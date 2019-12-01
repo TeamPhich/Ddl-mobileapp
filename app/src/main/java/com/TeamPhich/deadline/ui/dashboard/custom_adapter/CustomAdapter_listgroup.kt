@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import com.TeamPhich.deadline.R
-import com.TeamPhich.deadline.responses.Space.RowX
 import com.TeamPhich.deadline.responses.Space.group.RowsGroup
-import com.bumptech.glide.Glide
 
 //hàm này dùng để custom listview cho các hàm group vaf people , thuộc tính dduwowcj khai báo ở lớp Group
 class CustomAdapter_listgroup(var context: Context, var mangnhom:ArrayList<RowsGroup>) : BaseAdapter() {
@@ -19,7 +16,7 @@ class CustomAdapter_listgroup(var context: Context, var mangnhom:ArrayList<RowsG
 
 
         init {
-            textviewpeople = row.findViewById(R.id._nameOfFriend) as TextView
+            textviewpeople = row.findViewById(R.id._nameOfgroup) as TextView
 
         }
     }
@@ -28,7 +25,7 @@ class CustomAdapter_listgroup(var context: Context, var mangnhom:ArrayList<RowsG
         var viewholder : ViewHolder
         if (convertView == null){
             var layoutInflater : LayoutInflater = LayoutInflater.from(context)
-            view = layoutInflater.inflate(R.layout.item_people,null)
+            view = layoutInflater.inflate(R.layout.item_group,null)
             viewholder =
                 ViewHolder(
                     view

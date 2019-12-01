@@ -160,6 +160,25 @@ interface Api {
         @Header("space-token") space_token:String
     ):Deferred<datainforp>
 
+    @FormUrlEncoded
+    @PUT("/api/v1/spaces/profiles")
+    fun  changeinfo(
+        @Header("space-token") space_token: String,
+        @Field("full_name") full_name:String,
+        @Field("email") email:String,
+        @Field("imagesUrl") imagesUrl:String
+    ):Deferred<defaultRespone>
+
+    @FormUrlEncoded
+    @PUT("/api/v1/accounts/password")
+    fun  changepass(
+        @Header("space-token") token: String,
+        @Field("oldPassword") oldPassword:String,
+        @Field("newPassword") newPassword:String
+
+    ):Deferred<defaultRespone>
+
+
 
 
 

@@ -31,7 +31,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/_info_avata"
+        android:id="@+id/_new_info_avatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
@@ -53,13 +53,15 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_info_avata" />
+        app:layout_constraintTop_toBottomOf="@+id/_new_info_avatar" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="252dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -70,74 +72,87 @@
             android:text="INFORMATION"
             android:textColor="#A9585757"
             android:textSize="15sp" />
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:id="@+id/_fullnameinfo"
-    android:background="?android:attr/selectableItemBackground"
-    android:paddingTop="10dp">
-    <TextView
-        android:layout_width="298dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_fullname_info"
-        android:drawablePadding="20dp"
-
-        android:text=" FULL NAME"
-        android:textStyle="bold"
-        android:textColor="@color/cardview_dark_background"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ninh hong diep"
-        android:drawableRight="@drawable/ic_next"
-        android:id="@+id/_info_fullname"/>
-</LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/_roleinspace"
-            style="@style/viewParent.headerText.settingsTextIcon"
-            android:orientation="horizontal">
+            android:id="@+id/_fullnameinfo"
+            android:layout_marginTop="20dp">
+
             <TextView
-                android:layout_width="350dp"
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_fullname_info"
+
                 android:drawablePadding="20dp"
+                android:text=" FULL NAME"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/_info_fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ninh hong diep"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_role"
+
+                android:drawablePadding="20dp"
                 android:text=" ROLE IN SPACE"
                 android:textStyle="bold"
-                android:textColor="@color/cardview_dark_background"/>
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/_info_role"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:drawableRight="@drawable/ic_next"
-                android:text="admin"
-                android:id="@+id/_info_role"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/_youremail"
-            style="@style/viewParent.headerText.settingsTextIcon"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:drawablePadding="20dp"
+                android:text="admin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_email_info"
-                android:text="YOUR EMAIL"
+
+                android:drawablePadding="20dp"
+                android:text=" EMAIL"
                 android:textStyle="bold"
-                android:textColor="@color/cardview_dark_background"/>
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:drawableRight="@drawable/ic_next"
-                android:text="ninhhongdiep@gmail.com"
-                android:id="@+id/_info_email"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:text="ninhhongdiep99@gmail.com"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"

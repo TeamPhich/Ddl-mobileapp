@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.Toast
 import com.TeamPhich.deadline.responses.Space.DataX
-import com.TeamPhich.deadline.responses.Space.RowX
+import com.TeamPhich.deadline.responses.Space.datapepleinsp
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 
@@ -27,11 +27,10 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 
 import android.view.View
-import android.widget.TimePicker
 
 
 class newTask : AppCompatActivity() {
-    var target: RowX = RowX("", "", 0, "", 0)
+    var target: datapepleinsp = datapepleinsp("", "", 0, "", 0)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_task)
@@ -143,7 +142,7 @@ class newTask : AppCompatActivity() {
 
     fun showlistSpacePeople(respone: DataX) {
 
-        var arraypeople: ArrayList<RowX> = ArrayList()
+        var arraypeople: ArrayList<datapepleinsp> = ArrayList()
 
         respone.rows.forEach {
             arraypeople.add(it)

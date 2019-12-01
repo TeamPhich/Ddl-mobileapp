@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/_ioldpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -38,7 +38,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/_ioldpass" />
 
     <TextView
         android:id="@+id/textView9"
@@ -47,15 +47,15 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="13dp"
-        android:text="RE- NEWPASS :"
+        android:text="confirm- NEWPASS :"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/editText5"
+        app:layout_constraintEnd_toStartOf="@+id/_icfnewpass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/_inewpass" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/_inewpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/_icfnewpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -78,7 +78,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/_acceptchange"
+        android:id="@+id/_bchangepass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="166dp"

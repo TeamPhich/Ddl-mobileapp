@@ -11,7 +11,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
         android:divider="@null"
-        android:dividerHeight="5dp"
+        android:dividerHeight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
