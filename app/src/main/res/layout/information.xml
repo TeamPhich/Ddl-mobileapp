@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <TextView
+        <ImageView
             android:id="@+id/_closeactivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="CLOSE"
-            android:textColor="#FFF"
-            android:layout_marginRight="10dp"
+            android:layout_gravity="left"
+            android:src="@drawable/ic_exitinfo"
+
+            android:layout_marginLeft="10dp"
             android:textStyle="bold"/>
 
     </androidx.appcompat.widget.Toolbar>

@@ -11,11 +11,11 @@
         android:id="@+id/_iTasktittle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="99dp"
-        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="task tittle"
+        android:layout_marginTop="99dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,8 +24,6 @@
         android:id="@+id/_selectday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="40dp"
 
         android:ems="10"
         android:inputType="date"
@@ -33,14 +31,16 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription" />
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="19dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/_selectedhour"
+        app:layout_constraintEnd_toStartOf="@+id/_selectedhour"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/_selectedhour"
-        android:layout_width="81dp"
+        android:layout_width="0dp"
         android:layout_height="28dp"
-        android:layout_marginTop="40dp"
 
         android:ems="10"
         android:inputType="date"
@@ -48,8 +48,12 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="41dp"
         android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/_selectedmember"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/_selectday"
         app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription" />
 
     <Button
@@ -57,48 +61,49 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
 
-        android:layout_marginBottom="128dp"
         android:background="@drawable/custombutton2"
         android:text="create"
         android:textColor="#FFF"
+        android:layout_marginBottom="128dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/_iTaskdescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="30dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="description"
         android:inputType="textMultiLine"
+        android:layout_marginTop="49dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_iTasktittle" />
 
     <Spinner
         android:id="@+id/_selectedmember"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_selectday" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/_cancelcreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="31dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_exit" />
+        app:srcCompat="@drawable/ic_exit"
+        tools:ignore="VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
