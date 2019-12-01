@@ -3,6 +3,7 @@ package com.TeamPhich.deadline.services
 import androidx.annotation.Nullable
 import com.TeamPhich.deadline.responses.Space.*
 import com.TeamPhich.deadline.responses.Space.group.listGroupRespone
+import com.TeamPhich.deadline.responses.Space.image.imgrespone
 import com.TeamPhich.deadline.responses.Space.task.alltask
 import com.TeamPhich.deadline.responses.Space.userprofile.datainforp
 import com.TeamPhich.deadline.responses.defaultRespone
@@ -10,6 +11,8 @@ import com.TeamPhich.deadline.responses.findmember.findPeople
 import com.TeamPhich.deadline.responses.login.loginRespone
 import com.TeamPhich.deadline.responses.signUp.signUpRespone
 import kotlinx.coroutines.Deferred
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 import retrofit2.http.GET
 
@@ -160,13 +163,13 @@ interface Api {
         @Header("space-token") space_token:String
     ):Deferred<datainforp>
 
-    @FormUrlEncoded
+
     @PUT("/api/v1/spaces/profiles")
     fun  changeinfo(
         @Header("space-token") space_token: String,
-        @Field("full_name") full_name:String,
-        @Field("email") email:String,
-        @Field("imagesUrl") imagesUrl:String
+        @Query("full_name") full_name:String,
+        @Query("email") email:String,
+        @Query("imagesUrl") imagesUrl:String
     ):Deferred<defaultRespone>
 
     @FormUrlEncoded
@@ -178,6 +181,10 @@ interface Api {
 
     ):Deferred<defaultRespone>
 
+    @Multipart
+    @POST("/images")
+    fun postimage(@Part file: MultipartBody.Part
+    ):Deferred<imgrespone>
 
 
 

@@ -32,9 +32,7 @@ class Information : AppCompatActivity() {
                 changepassword::class.java)
             startActivity(intent)
         }
-        _fullnameinfo.setOnClickListener {
 
-        }
 
         getinfo()
 
@@ -74,17 +72,20 @@ class Information : AppCompatActivity() {
             _info_fullname.text=userProfile.profile.get(0).fullName
             _info_role.text=userProfile.profile.get(0).roleName
             _info_nameuser.text=userProfile.profile.get(0).userName
-
+            callnewActivity(userProfile)
 
     }
 
 
     fun callnewActivity(userProfile:userProfile){
+        _fullnameinfo.setOnClickListener {
+
 
         val intent =Intent(this,changeInfo::class.java)
         intent.putExtra("avatar",userProfile.profile.get(0).imagesUrl) //Put your id to your next Intent
         intent.putExtra("email",userProfile.profile.get(0).email)
         intent.putExtra("fullname",userProfile.profile.get(0).fullName)
         startActivity(intent)
+        }
     }
 }
