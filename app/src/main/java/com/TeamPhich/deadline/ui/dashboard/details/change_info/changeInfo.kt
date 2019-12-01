@@ -28,7 +28,6 @@ import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import android.net.Uri
-import com.TeamPhich.deadline.ui.dashboard.dialogTool
 
 
 class changeInfo : AppCompatActivity() {
@@ -211,10 +210,16 @@ class changeInfo : AppCompatActivity() {
         ) { dialog, which ->
             run {
                 dialog.dismiss()
-
+                finish()
             }
         }
-        finish()
+        val returnIntent = Intent()
+        returnIntent.putExtra("result", 1)
+        setResult(Activity.RESULT_OK, returnIntent)
+
+
+
+
         alertDialog.show()
 
     }

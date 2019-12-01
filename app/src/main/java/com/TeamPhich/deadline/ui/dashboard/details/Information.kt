@@ -33,7 +33,7 @@ class Information : AppCompatActivity() {
         _changepass.setOnClickListener {
             val intent = Intent(this,
                 changepassword::class.java)
-            startActivity(intent)
+                startActivity(intent)
         }
 
 
@@ -92,10 +92,15 @@ class Information : AppCompatActivity() {
         intent.putExtra("avatar",userProfile.profile.get(0).imagesUrl) //Put your id to your next Intent
         intent.putExtra("email",userProfile.profile.get(0).email)
         intent.putExtra("fullname",userProfile.profile.get(0).fullName)
-        startActivity(intent)
-            getinfo()
+            startActivityForResult(intent, 1)
+
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        getinfo()
+        super.onActivityResult(requestCode, resultCode, data)
     }
     fun calldialog_logout(){
         val builder = AlertDialog.Builder(this)

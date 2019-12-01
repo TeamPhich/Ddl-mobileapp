@@ -34,7 +34,7 @@
         android:id="@+id/_new_info_avatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,7 +47,7 @@
         android:id="@+id/_info_nameuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="TextView"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -59,7 +59,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="230dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
                 android:drawablePadding="20dp"
                 android:text=" FULL NAME"
                 android:textStyle="bold"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/colordark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -114,7 +114,7 @@
                 android:drawablePadding="20dp"
                 android:text=" ROLE IN SPACE"
                 android:textStyle="bold"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/colordark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +141,7 @@
                 android:drawablePadding="20dp"
                 android:text=" EMAIL"
                 android:textStyle="bold"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/colordark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -160,6 +160,40 @@
             android:text="OPTIONS"
             android:textSize="15sp"
             android:textColor="#A9585757"/>
+        <TextView
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/_changeyourinfo"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_info_black_24dp"
+            android:text=" CHANGE INFO" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_outspace"
+
+                android:drawablePadding="20dp"
+                android:text=" OUT SPACE"
+                android:textStyle="bold"
+                android:textColor="@color/colordark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/_outspace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="diep xinh gai"
+                android:drawableRight="@drawable/ic_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:background="?android:attr/selectableItemBackground"
             android:id="@+id/_changepass"

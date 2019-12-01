@@ -44,7 +44,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
+        toolbar.setTitle("thang dep trai")
 
 
 

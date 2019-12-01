@@ -18,6 +18,8 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.item_mess_recived.view.*
 import kotlinx.android.synthetic.main.item_mess_sent.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 //class sentadapter( val data: String) : RecyclerView.Adapter<sentadapter.ViewHolder_sentmess>()
 ////{
@@ -83,17 +85,27 @@ import kotlinx.android.synthetic.main.item_mess_sent.view.*
 class senditem(val message: Message) : Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.text_messagesend_body.text=message.message
-        viewHolder.itemView.text_messagesend_time.text="10:30"
+        viewHolder.itemView.text_messagesend_time.text=getDateTime(message.time)
     }
 
     override fun getLayout(): Int {
         return R.layout.item_mess_sent
     }
+    fun getDateTime(s: Long): String? {
+        try {
+            val sdf = SimpleDateFormat("hh:mm")
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"))
+            val netDate = Date(s.toLong())
+            return sdf.format(netDate)
+        } catch (e: Exception) {
+            return e.toString()
+        }
+    }
 }
 class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.text_message_body.text=message.message
-        viewHolder.itemView.text_message_time.text="10:30"
+        viewHolder.itemView.text_message_time.text=getDateTime(message.time)
         viewHolder.itemView.text_message_name.text=message.userName
         Glide
             .with(context)
@@ -107,17 +119,16 @@ class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>
     override fun getLayout(): Int {
         return R.layout.item_mess_recived
     }
-
-}
-class iteme() : Item<ViewHolder>(){
-    override fun bind(viewHolder: ViewHolder, position: Int) {
-
-        viewHolder.itemView.text_messagesend_time.text="10:30"
+    public fun getDateTime(s: Long): String? {
+        try {
+            val sdf = SimpleDateFormat("hh:mm")
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"))
+            val netDate = Date(s.toLong())
+            return sdf.format(netDate)
+        } catch (e: Exception) {
+            return e.toString()
+        }
     }
 
-    override fun getLayout(): Int {
-        return R.layout.item_mess_sent
-    }
 }
-
 

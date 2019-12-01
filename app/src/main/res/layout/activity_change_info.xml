@@ -7,60 +7,62 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/_new_info_avatar"
-        android:layout_width="96dp"
-        android:layout_height="123dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
 
         android:src="@drawable/husky"
-        android:layout_marginBottom="147dp"
+        android:layout_marginBottom="73dp"
         app:layout_constraintBottom_toTopOf="@+id/_iNeweMail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/_exitchange" />
 
     <EditText
         android:id="@+id/_iNewfullname"
-        android:layout_width="218dp"
-        android:layout_height="140dp"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="fullname"
-        android:layout_marginBottom="405dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_iNeweMail" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
 
     <EditText
         android:id="@+id/_iNeweMail"
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="172dp"
         android:ems="10"
         android:hint="email"
-        android:layout_marginBottom="9dp"
-        app:layout_constraintBottom_toTopOf="@+id/_iNewfullname"
+        android:layout_marginBottom="333dp"
+        app:layout_constraintBottom_toTopOf="@+id/_changeinfo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_new_info_avatar" />
 
     <Button
         android:id="@+id/_changeinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
         android:background="@drawable/custombutton4"
         android:text="CHANGE"
+        android:layout_marginBottom="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_iNeweMail" />
 
     <ImageView
         android:id="@+id/_exitchange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="28dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/_new_info_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_exit" />
+        app:srcCompat="@drawable/ic_exit"
+        tools:ignore="VectorDrawableCompat" />
 </androidx.constraintlayout.widget.ConstraintLayout>
