@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.group.groupInfo">
 
-    <Button
-        android:id="@+id/button"
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="579dp" />
+    <com.allyants.chipview.ChipView
+        android:id="@+id/_listpeoplechip"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="411dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

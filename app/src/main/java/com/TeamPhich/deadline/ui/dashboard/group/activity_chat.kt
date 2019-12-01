@@ -154,6 +154,9 @@ class activity_chat : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    fun setdisplay(group_name: String){
+
+    }
 
 }
 

@@ -1,6 +1,8 @@
 package com.TeamPhich.deadline.ui.dashboard.details.change_info
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -26,8 +28,7 @@ import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import android.net.Uri
-
-
+import com.TeamPhich.deadline.ui.dashboard.dialogTool
 
 
 class changeInfo : AppCompatActivity() {
@@ -89,8 +90,8 @@ class changeInfo : AppCompatActivity() {
                         urlimage
                     ).await()
                     if (response.success == true) {
-                        Toast.makeText(applicationContext, response.data.toString(), Toast.LENGTH_LONG)
-                            .show()
+                        calldialog_show(this@changeInfo, "Change Success")
+
                     } else {
                         Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
                             .show()
@@ -191,7 +192,7 @@ class changeInfo : AppCompatActivity() {
                     runOnUiThread(
                         object : Runnable {
                             override fun run() {
-                                urlimage=response.data.url
+                                urlimage = response.data.url
                             }
                         }
                     )
@@ -202,6 +203,21 @@ class changeInfo : AppCompatActivity() {
         }
     }
 
+    fun calldialog_show(context: Context, string: String) {
+        val alertDialog = AlertDialog.Builder(context).create()
+        alertDialog.setMessage(string)
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEUTRAL, "OK"
+        ) { dialog, which ->
+            run {
+                dialog.dismiss()
+
+            }
+        }
+        finish()
+        alertDialog.show()
+
+    }
 
 //    fun geturlimage(data: Intent?):String{
 //

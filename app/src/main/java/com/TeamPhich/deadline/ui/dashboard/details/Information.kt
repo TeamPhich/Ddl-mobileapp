@@ -1,5 +1,7 @@
 package com.TeamPhich.deadline.ui.dashboard.details
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +11,7 @@ import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.userprofile.userProfile
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
+import com.TeamPhich.deadline.ui.activity_login
 import com.TeamPhich.deadline.ui.dashboard.details.change_info.changeInfo
 import com.TeamPhich.deadline.ui.dashboard.details.change_info.changepassword
 import com.bumptech.glide.Glide
@@ -36,6 +39,9 @@ class Information : AppCompatActivity() {
 
         getinfo()
 
+        _logout.setOnClickListener {
+            calldialog_logout()
+        }
     }
     fun getinfo(){
 
@@ -46,8 +52,9 @@ class Information : AppCompatActivity() {
                 if (response.success == true) {
                     Toast.makeText(applicationContext, "lo", Toast.LENGTH_LONG).show()
 
-                    setinfo(response.data)
 
+
+                    setinfo(response.data)
                 } else {
                     Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
                         .show()
@@ -86,6 +93,29 @@ class Information : AppCompatActivity() {
         intent.putExtra("email",userProfile.profile.get(0).email)
         intent.putExtra("fullname",userProfile.profile.get(0).fullName)
         startActivity(intent)
+            getinfo()
         }
+
+    }
+    fun calldialog_logout(){
+        val builder = AlertDialog.Builder(this)
+        val sharedPreference: SharedPreference = SharedPreference(this)
+        // Set the alert dialog title
+        builder.setTitle("App background color")
+
+        builder.setMessage("Ban muon xoa task task sang trang thai")
+        builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+        builder.setPositiveButton("YES") { dialog, which ->
+            sharedPreference.resetToken()
+            sharedPreference.resetTokenSpace()
+            val intent = Intent(this, activity_login::class.java)
+            startActivity(intent)
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+            Toast.makeText(this, "You are not agree.", Toast.LENGTH_SHORT).show()
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

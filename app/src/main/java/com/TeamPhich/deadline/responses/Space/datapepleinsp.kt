@@ -13,6 +13,8 @@ data class datapepleinsp(
     @SerializedName("user_name")
     val userName: String,
     @SerializedName("id")
-    val id: Int
+    val id: Int,
+    @SerializedName("role_name")
+    val role_name: String
 
 )

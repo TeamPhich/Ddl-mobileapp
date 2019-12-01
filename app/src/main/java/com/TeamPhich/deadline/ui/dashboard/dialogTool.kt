@@ -3,6 +3,7 @@ package com.TeamPhich.deadline.ui.dashboard
 import android.R
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -10,10 +11,14 @@ import android.widget.*
 import com.TeamPhich.deadline.responses.findmember.Account
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
+import com.TeamPhich.deadline.ui.activity_login
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.ArrayList
+import android.content.DialogInterface
+
+
 
 class dialogTool {
     fun callDialoginsertMember(context: Context,fragment: PeopleFragment) {
@@ -215,6 +220,7 @@ class dialogTool {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
 
 
 }

@@ -32,4 +32,47 @@
         app:layout_constraintStart_toEndOf="@+id/_avatar_thispp"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/custom__radio"
+        android:layout_marginTop="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:id="@+id/_isadmin"
+            android:background="@drawable/custom_clickradio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Admin"
+            android:textColor="#FFF" />
+
+        <RadioButton
+            android:id="@+id/_isUser"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/custom_clickradio"
+            android:button="@null"
+            android:gravity="center"
+            android:text="User"
+            android:textColor="#FFF" />
+
+    </RadioGroup>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,5 +109,15 @@ class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>
     }
 
 }
+class iteme() : Item<ViewHolder>(){
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+
+        viewHolder.itemView.text_messagesend_time.text="10:30"
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.item_mess_sent
+    }
+}
 
 
