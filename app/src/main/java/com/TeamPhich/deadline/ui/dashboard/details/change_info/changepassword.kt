@@ -69,9 +69,9 @@ class changepassword : AppCompatActivity() {
             }
         }
 
-        _exitchange.setOnClickListener {
-            finish()
-        }
+//        _.setOnClickListener {
+//            finish()
+//        }
 
     }
 }

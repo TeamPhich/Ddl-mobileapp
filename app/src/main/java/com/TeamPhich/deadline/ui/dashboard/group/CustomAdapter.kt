@@ -132,3 +132,14 @@ class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>
 
 }
 
+class people() : Item<ViewHolder>(){
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.item_people2
+    }
+
+}
+

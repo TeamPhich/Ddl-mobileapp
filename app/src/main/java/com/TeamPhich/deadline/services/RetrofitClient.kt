@@ -12,7 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 object RetrofitClient {
 
 
-    private const val BASE_URL = "http://18.162.125.153"
+    private const val BASE_URL = "http://ddl-api.sidz.tools"
     var interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
     var interceptor2 = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS);
     private val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).addInterceptor(

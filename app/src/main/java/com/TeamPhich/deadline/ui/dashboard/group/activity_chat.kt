@@ -41,7 +41,7 @@ import kotlinx.android.synthetic.main.activity_chat.*
 
 class activity_chat : AppCompatActivity() {
     var opts = IO.Options()
-    val SockURL = "http://18.162.125.153/chat"
+    val SockURL = "http://ddl-api.sidz.tools"
 
 
 

@@ -15,10 +15,13 @@ import com.TeamPhich.deadline.responses.Space.group.RowsGroup
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.custom_adapter.CustomAdapter_listgroup
+import com.TeamPhich.deadline.ui.dashboard.group.Addpeopletogroup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import com.TeamPhich.deadline.ui.dashboard.group.activity_chat
+import kotlinx.android.synthetic.main.group.*
+import kotlinx.android.synthetic.main.group.view.*
 
 class GroupFragment :Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -27,7 +30,9 @@ class GroupFragment :Fragment() {
 
         getlistgroup(view)
 
-
+        view._bAddpptogr.setOnClickListener {
+        startActivity(Intent(requireContext(), Addpeopletogroup::class.java))
+    }
 
         return view
     }

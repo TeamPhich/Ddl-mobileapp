@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/_new_info_avatar"
-        android:layout_width="80dp"
-        android:layout_height="0dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
 
         android:src="@drawable/husky"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="105dp"
         android:layout_marginBottom="73dp"
         app:layout_constraintBottom_toTopOf="@+id/_iNeweMail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,17 +57,25 @@
         android:layout_marginBottom="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_iNewfullname" />
 
-    <ImageView
-        android:id="@+id/_exitchange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
+    <androidx.appcompat.widget.Toolbar
+
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_exit"
-        tools:ignore="VectorDrawableCompat" />
+        android:background="@color/colorAccent">
+
+
+
+        <ImageView
+            android:id="@+id/_backbuttonchange"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/ic_backmesswhite" />
+    </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>
