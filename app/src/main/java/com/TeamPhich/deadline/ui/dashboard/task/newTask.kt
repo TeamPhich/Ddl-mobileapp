@@ -27,6 +27,8 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 
 import android.view.View
+import com.TeamPhich.deadline.ui.MessageEvent
+import org.greenrobot.eventbus.EventBus
 
 
 class newTask : AppCompatActivity() {
@@ -70,7 +72,6 @@ class newTask : AppCompatActivity() {
 
                     if (response.success == true) {
                         Toast.makeText(applicationContext, "create ok", Toast.LENGTH_SHORT).show()
-
                     } else {
                         Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                             .show()

@@ -3,12 +3,15 @@ package com.TeamPhich.deadline.ui.dashboard
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentTransaction
 
-class ViewPagerAdapter_task(supportFragmentManager: FragmentManager) : FragmentStatePagerAdapter(supportFragmentManager) {
+class ViewPagerAdapter_task(supportFragmentManager: FragmentManager) :
+    FragmentStatePagerAdapter(supportFragmentManager) {
     private val mFragmentList = ArrayList<Fragment>()
     private val mFragmentTitleList = ArrayList<String>()
 
     override fun getItem(position: Int): Fragment {
+
         return mFragmentList.get(position)
     }
 
@@ -24,4 +27,5 @@ class ViewPagerAdapter_task(supportFragmentManager: FragmentManager) : FragmentS
         mFragmentList.add(fragment)
         mFragmentTitleList.add(title)
     }
+
 }

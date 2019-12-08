@@ -17,7 +17,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.ArrayList
 import android.content.DialogInterface
-
+import com.TeamPhich.deadline.ui.MessageEvent
+import org.greenrobot.eventbus.EventBus
 
 
 class dialogTool {
@@ -151,8 +152,7 @@ class dialogTool {
                         sharedPreference.getTokenSpace().toString(),taskid,status
 
                     ).await()
-                    Log.d ("ưerwer",taskid)
-                    Log.d("retret345",status)
+                    EventBus.getDefault().post(MessageEvent("tasks_tab_changed"))
                     if (response.success == true) {
                         Toast.makeText(context, "ok", Toast.LENGTH_LONG).show()
                     } else {
@@ -197,6 +197,7 @@ class dialogTool {
                     ).await()
 
                     if (response.success == true) {
+                        EventBus.getDefault().post(MessageEvent("tasks_tab_changed"))
                         Toast.makeText(context, "ok", Toast.LENGTH_LONG).show()
                     } else {
                         Toast.makeText(context, response.reason, Toast.LENGTH_LONG).show()

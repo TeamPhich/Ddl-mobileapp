@@ -12,6 +12,7 @@ import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.task.task
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
+import com.TeamPhich.deadline.ui.dashboard.Tablayout_task
 import com.TeamPhich.deadline.ui.dashboard.dashboard
 import com.TeamPhich.deadline.ui.dashboard.dialogTool
 import com.TeamPhich.deadline.ui.dashboard.doneTasks
@@ -79,19 +80,14 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
                 popupMenu.setOnMenuItemClickListener { item ->
                     when( item.itemId) {
                         R.id._moveTodo -> {
-
                             dialogTool().calldialogswitchTask(context,task.id.toString(),"todo")
                             true
                         }
                         R.id._moveInprocess -> {
-
-
-//                            Toast.makeText(context, "in process", Toast.LENGTH_SHORT).show()
                             dialogTool().calldialogswitchTask(context,task.id.toString(),"in process")
                             true
                         }
                         R.id._moveInreview -> {
-
                             dialogTool().calldialogswitchTask(context,task.id.toString(),"in review")
                             true
                         }
