@@ -12,13 +12,12 @@
         android:layout_height="140dp"
 
         android:src="@drawable/husky"
-        android:layout_marginTop="105dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/_iNeweMail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
     <EditText
         android:id="@+id/_iNewfullname"
@@ -26,9 +25,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="fullname"
-        android:layout_marginBottom="228dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+
+        android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toTopOf="@+id/_changeinfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +38,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="email"
-        android:layout_marginBottom="60dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+
+        android:layout_marginBottom="41dp"
         app:layout_constraintBottom_toTopOf="@+id/_iNewfullname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +51,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custombutton4"
         android:text="CHANGE"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="100dp"
+        android:textColor="@color/colorwhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -63,19 +61,22 @@
 
     <androidx.appcompat.widget.Toolbar
 
-        android:layout_width="match_parent"
+        android:id="@+id/toolbar4"
+
+        android:background="@color/colorAccent"
         android:layout_height="?attr/actionBarSize"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorAccent">
-
+        android:layout_width="match_parent">
 
 
         <ImageView
             android:id="@+id/_backbuttonchange"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:srcCompat="@drawable/ic_backmesswhite" />
+            app:srcCompat="@drawable/ic_backmesswhite"
+            tools:ignore="VectorDrawableCompat" />
     </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>

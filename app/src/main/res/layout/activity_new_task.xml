@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,7 +20,8 @@
 
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:srcCompat="@drawable/ic_backmesswhite" />
+            app:srcCompat="@drawable/ic_backmesswhite"
+            tools:ignore="VectorDrawableCompat" />
     </androidx.appcompat.widget.Toolbar>
     <EditText
         android:id="@+id/_iTasktittle"
@@ -37,7 +38,7 @@
 
     <TextView
         android:id="@+id/_selectday"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
 
         android:ems="10"
@@ -54,7 +55,7 @@
 
     <TextView
         android:id="@+id/_selectedhour"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="28dp"
 
         android:ems="10"
@@ -69,7 +70,8 @@
         app:layout_constraintBottom_toTopOf="@+id/_selectedmember"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_selectday"
-        app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription" />
+        app:layout_constraintTop_toBottomOf="@+id/_iTaskdescription"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/_bCreateTask"
@@ -79,7 +81,7 @@
         android:background="@drawable/custombutton2"
         android:text="create"
         android:textColor="#FFF"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,14 +103,16 @@
 
     <Spinner
         android:id="@+id/_selectedmember"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.608" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -85,7 +85,7 @@ class Information : AppCompatActivity() {
 
 
     fun callnewActivity(userProfile:userProfile){
-        _fullnameinfo.setOnClickListener {
+        _changeyourinfo.setOnClickListener {
 
 
         val intent =Intent(this,changeInfo::class.java)

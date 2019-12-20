@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/group"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorwhite">
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/_bAddpptogr"
         android:layout_width="wrap_content"
@@ -14,7 +15,8 @@
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_only" />
+        app:srcCompat="@drawable/ic_add_only"
+        tools:ignore="VectorDrawableCompat" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
