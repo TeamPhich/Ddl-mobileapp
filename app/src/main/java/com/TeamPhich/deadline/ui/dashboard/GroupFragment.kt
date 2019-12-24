@@ -1,6 +1,8 @@
 package com.TeamPhich.deadline.ui.dashboard
 
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import com.TeamPhich.deadline.ui.dashboard.group.activity_chat
+import kotlinx.android.synthetic.main.dialog_newgroup.view.*
 import kotlinx.android.synthetic.main.group.*
 import kotlinx.android.synthetic.main.group.view.*
 
@@ -31,9 +34,21 @@ class GroupFragment :Fragment() {
         getlistgroup(view)
 
 
-        view._bAddpptogr.setOnClickListener {
-        startActivity(Intent(requireContext(), Addpeopletogroup::class.java))
-    }
+        view._addmoregroup.setOnClickListener {
+            val mDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_newgroup, null)
+            val mBuilder = AlertDialog.Builder(requireContext())
+                .setView(mDialogView)
+            val  mAlertDialog = mBuilder.show()
+            mDialogView.buttonSubmit.setOnClickListener {
+                mAlertDialog.dismiss()
+
+
+            }
+
+            mDialogView.buttonCancel.setOnClickListener {
+                mAlertDialog.dismiss()
+            }
+        }
 
         return view
     }

@@ -21,15 +21,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:srcCompat="@drawable/ic_backmesswhite" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add"
-            android:textColor="#FFF"
-            android:layout_gravity="right"
-            android:textStyle="bold"
 
-            android:layout_marginRight="15dp"/>
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.appcompat.widget.SearchView

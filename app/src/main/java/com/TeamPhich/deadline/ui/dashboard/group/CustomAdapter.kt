@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.TeamPhich.deadline.R
+import com.TeamPhich.deadline.responses.Space.datapepleinsp
 import com.TeamPhich.deadline.responses.Space.group.RowsGroup
 import com.TeamPhich.deadline.responses.Space.group.chat.Message
 import com.TeamPhich.deadline.ui.dashboard.dashboard
@@ -18,6 +19,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.item_mess_recived.view.*
 import kotlinx.android.synthetic.main.item_mess_sent.view.*
+import kotlinx.android.synthetic.main.item_people2.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -132,8 +134,15 @@ class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>
 
 }
 
-class people() : Item<ViewHolder>(){
+class people(val datapepleinsp: datapepleinsp,val context: Context) : Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
+        Glide
+            .with(context)
+            .load(datapepleinsp.imagesUrl)
+            .centerCrop()
+            .placeholder(R.drawable.ic_insert_photo)
+            .into(viewHolder.itemView._avatar_peo);
+        viewHolder.itemView._name_peo2.text=datapepleinsp.fullName
 
     }
 

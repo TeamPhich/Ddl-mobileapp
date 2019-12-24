@@ -8,14 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.Fragment
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.task.task
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
-import com.TeamPhich.deadline.ui.dashboard.Tablayout_task
-import com.TeamPhich.deadline.ui.dashboard.dashboard
-import com.TeamPhich.deadline.ui.dashboard.dialogTool
-import com.TeamPhich.deadline.ui.dashboard.doneTasks
+import com.TeamPhich.deadline.ui.dashboard.*
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,7 +24,7 @@ import kotlin.collections.ArrayList
 
 //hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
 
-class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :ArrayList<task>, var status: String ) : BaseAdapter() {
+class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :ArrayList<task>, var status: String,val fragment: TaskFragment) : BaseAdapter() {
 
     class ViewHolder(row : View, context: Context, status: String, task: task) {
         var textviewtask: TextView
@@ -39,6 +37,11 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
             datetask = row.findViewById(R.id._timedone) as TextView
             imageuser= row.findViewById(R.id._avatar_group) as ImageView
             descriptiontask= row.findViewById(R.id._description) as TextView
+
+            row.setOnClickListener {
+                dialogTool().callDiaglogTaskInfo(context,fragment,task)
+            }
+
 
             row.setOnLongClickListener {
                 row.visibility=View.VISIBLE
@@ -178,7 +181,7 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
     }
     fun gettextdatefromunix(unix: Long):String{
         val sdf = java.text.SimpleDateFormat("dd-MM-yyyy hh:mm")
-        val date = java.util.Date(unix * 1000)
+        val date = java.util.Date(unix * 1000-3600*7)
 
         return sdf.format(date)
     }

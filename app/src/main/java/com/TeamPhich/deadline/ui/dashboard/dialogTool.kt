@@ -17,6 +17,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.ArrayList
 import android.content.DialogInterface
+import com.TeamPhich.deadline.responses.Space.task.task
 import com.TeamPhich.deadline.ui.MessageEvent
 import org.greenrobot.eventbus.EventBus
 
@@ -181,10 +182,10 @@ class dialogTool {
         val builder = AlertDialog.Builder(context)
 
         // Set the alert dialog title
-        builder.setTitle("App background color")
+
 
         // Display a message on alert dialog
-        builder.setMessage("Ban muon xoa task task sang trang thai")
+        builder.setMessage("Ban muon xoa task ?")
         builder.setIcon(android.R.drawable.ic_dialog_alert)
         // Set a positive button and its click listener on alert dialog
         builder.setPositiveButton("YES") { dialog, which ->
@@ -220,6 +221,24 @@ class dialogTool {
 
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    fun callDiaglogTaskInfo(context: Context,fragment: TaskFragment,task: task) {
+        val dialogBuilder = AlertDialog.Builder(context).create()
+        val inflater = fragment.layoutInflater
+        val dialogView = inflater.inflate(com.TeamPhich.deadline.R.layout.dialog_task_info, null)
+        val taskname = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_name) as TextView
+        val taskdate = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_date) as TextView
+        val tasknote = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_note) as TextView
+        val sharedPreference: SharedPreference = SharedPreference(context)
+        taskname.text=task.title
+        taskdate.text=task.deadline.toString()
+        tasknote.text=task.description
+
+
+
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.show()
     }
 
 

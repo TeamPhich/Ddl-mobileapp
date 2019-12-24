@@ -3,23 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    >
+    android:layout_height="80dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/_avatar_thispp"
-        android:layout_width="50dp"
+        android:id="@+id/_avatar_peo"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:src="@drawable/husky"
         android:layout_marginStart="35dp"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="284dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/_name_thispp"
+        android:id="@+id/_name_peo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -29,7 +30,22 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/_avatar_thispp"
+        app:layout_constraintStart_toEndOf="@+id/_avatar_peo"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textColor="#2196F3"
+        android:layout_gravity="right"
+        android:textStyle="bold"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

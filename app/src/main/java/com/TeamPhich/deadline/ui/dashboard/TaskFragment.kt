@@ -44,6 +44,7 @@ class TaskFragment(var status: String) : Fragment() {
                 getlist(view, status, arraytask)
             }
         }
+
         return view
     }
 
@@ -73,6 +74,7 @@ class TaskFragment(var status: String) : Fragment() {
                             arraytask,
                             status
                         )
+
                 } else {
                     Toast.makeText(requireContext(), response.reason, Toast.LENGTH_SHORT)
                         .show()
