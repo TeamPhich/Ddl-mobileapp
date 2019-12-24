@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import android.content.Intent
+import android.os.Handler
 import android.util.Log
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.dashboard
@@ -51,11 +52,11 @@ class activity_login : AppCompatActivity() {
                         startActivity(Intent(this@activity_login, dashboard::class.java))
                         Log.d("token",response.data.token)
                     } else {
-                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                             .show()
                     }
                 } catch (t: Throwable) {
-                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
                 }
 
 
@@ -69,7 +70,19 @@ class activity_login : AppCompatActivity() {
 
     }
 
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            System.exit(-1)
 
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
 
 
 }

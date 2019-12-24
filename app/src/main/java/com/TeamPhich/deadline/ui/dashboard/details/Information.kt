@@ -50,17 +50,16 @@ class Information : AppCompatActivity() {
             try {
                 val response = RetrofitClient.instance.getuserprofile(sharedPreference.getTokenSpace().toString()).await()
                 if (response.success == true) {
-                    Toast.makeText(applicationContext, "lo", Toast.LENGTH_LONG).show()
 
 
 
                     setinfo(response.data)
                 } else {
-                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                         .show()
                 }
             } catch (t: Throwable) {
-                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
             }
 
 

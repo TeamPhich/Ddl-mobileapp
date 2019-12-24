@@ -155,11 +155,11 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 if (response.success == true) {
                     showListSpace(response.data.rows)
                 } else {
-                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                         .show()
                 }
             } catch (t: Throwable) {
-                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
             }
 
 
@@ -193,13 +193,16 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                         sharedPreference.setTokenSpace(response.data.tokenSpace)
                         Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
                         Log.d("Tolen",sharedPreference.getToken().toString())
+                        val groupFragment = GroupFragment.newInstance()
+                        openFragment(groupFragment)
+
 
                     } else {
-                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                             .show()
                     }
                 } catch (t: Throwable) {
-                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -306,11 +309,11 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     Log.d("Tolen",sharedPreference.getToken().toString())
 
                 } else {
-                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                         .show()
                 }
             } catch (t: Throwable) {
-                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
             }
 
         }

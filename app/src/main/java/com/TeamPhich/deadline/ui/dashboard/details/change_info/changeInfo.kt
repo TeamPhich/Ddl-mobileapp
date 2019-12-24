@@ -92,11 +92,11 @@ class changeInfo : AppCompatActivity() {
                         calldialog_show(this@changeInfo, "Change Success")
 
                     } else {
-                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                             .show()
                     }
                 } catch (t: Throwable) {
-                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
                 }
 
 
@@ -196,7 +196,7 @@ class changeInfo : AppCompatActivity() {
                         }
                     )
                 } catch (t: Throwable) {
-                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         }

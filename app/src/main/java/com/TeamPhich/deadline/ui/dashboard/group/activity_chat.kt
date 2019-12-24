@@ -32,6 +32,7 @@ import com.TeamPhich.deadline.responses.Space.group.chat.Message
 import com.TeamPhich.deadline.responses.Space.group.chat.chatrp
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.ui.dashboard.dashboard
+import com.TeamPhich.deadline.ui.singup_activity
 import com.google.gson.Gson
 import com.xwray.groupie.Item
 import org.json.JSONObject
@@ -60,6 +61,10 @@ class activity_chat : AppCompatActivity() {
         createConnection(group_id, sharedPreference.getTokenSpace().toString())
         _backbutton.setOnClickListener{
             finish()
+        }
+        addpeopletogr.setOnClickListener {
+            val intent =Intent(this, Addpeopletogroup::class.java)
+            startActivity(intent)
         }
     }
 
@@ -159,6 +164,8 @@ class activity_chat : AppCompatActivity() {
     fun setdisplay(group_name: String){
 
     }
+
+
 
 }
 

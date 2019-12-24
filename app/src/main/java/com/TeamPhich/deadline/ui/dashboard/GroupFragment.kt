@@ -30,12 +30,15 @@ class GroupFragment :Fragment() {
 
         getlistgroup(view)
 
+
         view._bAddpptogr.setOnClickListener {
         startActivity(Intent(requireContext(), Addpeopletogroup::class.java))
     }
 
         return view
     }
+
+
 
     companion object {
         fun newInstance(): GroupFragment = GroupFragment()
@@ -50,14 +53,14 @@ class GroupFragment :Fragment() {
                     RetrofitClient.instance.getlistgroup(sharedPreference.getTokenSpace().toString())
                         .await()
                 if (response.success == true) {
-                    Toast.makeText(requireContext(),response.toString(),Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(),response.toString(),Toast.LENGTH_SHORT)
                     setadapterviewgrou(response.data,view)
                 } else {
-                    Toast.makeText(requireContext(), response.reason, Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(), response.reason, Toast.LENGTH_SHORT)
                         .show()
                 }
             } catch (t: Throwable) {
-                Toast.makeText(requireContext(), t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), t.toString(), Toast.LENGTH_SHORT).show()
             }
 
 

@@ -15,19 +15,7 @@ import android.os.Handler
 import kotlinx.android.synthetic.main.signup_activity.*
 
 class singup_activity : AppCompatActivity() {
-    private var doubleBackToExitPressedOnce = false
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            System.exit(-1)
 
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
-
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -72,14 +60,14 @@ class singup_activity : AppCompatActivity() {
                     val response =
                         RetrofitClient.instance.createUser(username, password, email, fullname).await()
                     if (response.success == true) {
-                        Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, "sign up success", Toast.LENGTH_SHORT)
                             .show()
                     } else {
-                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                             .show()
                     }
                 } catch (t: Throwable) {
-                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
                 }
 
 

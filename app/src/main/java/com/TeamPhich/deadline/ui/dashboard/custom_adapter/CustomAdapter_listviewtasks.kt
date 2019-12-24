@@ -158,7 +158,6 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
                 val response = RetrofitClient.instance.getSpacememberbyid(sharedPreference.getTokenSpace().toString(),userid).await()
                 if (response.success == true) {
                     Log.d("sdfsdfsdf",response.data.rows.elementAt(0).imagesUrl)
-                    Toast.makeText(context, "", Toast.LENGTH_LONG).show()
                     Glide
                         .with(context)
                         .load(response.data.rows.elementAt(0).imagesUrl)

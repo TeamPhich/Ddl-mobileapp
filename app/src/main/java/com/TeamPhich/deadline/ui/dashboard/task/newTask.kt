@@ -38,6 +38,9 @@ class newTask : AppCompatActivity() {
         setContentView(R.layout.activity_new_task)
         choosedate()
         getListPeople()
+        backnewtask.setOnClickListener {
+            finish()
+        }
         // an camcel de thoat
 //        _cancelcreate.setOnClickListener {
 //            finish()
@@ -91,7 +94,7 @@ class newTask : AppCompatActivity() {
         val textView: TextView = findViewById(R.id._selectday)
         val dateString = textView.text.toString()+" "+_selectedhour.text.toString()
         val date = SimpleDateFormat("dd.MM.yyyy HH:mm").parse(dateString)
-        val unix = date.time / 1000L
+        val unix = date.time / 1000L-3600*7
         Log.d("oweirwpoeri",unix.toString())
         return unix.toString()
     }
@@ -192,7 +195,7 @@ class newTask : AppCompatActivity() {
                     Toast.makeText(
                         applicationContext,
                         response.reason,
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     )
                         .show()
                 }

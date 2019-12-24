@@ -57,14 +57,14 @@ class itemPeopleinSpace(val datapepleinsp: datapepleinsp, val context: Context) 
                             )
                                 .await()
                         if (response.success == true) {
-                            Toast.makeText(context, "ok", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show()
                         } else {
 //                            viewHolder.itemView._isadmin.isChecked = !viewHolder.itemView._isadmin.isChecked
 //                            viewHolder.itemView._isUser.isChecked = !viewHolder.itemView._isUser.isChecked
-                            Toast.makeText(context, response.reason, Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, response.reason, Toast.LENGTH_SHORT).show()
                         }
                     } catch (t: Throwable) {
-                        Toast.makeText(context, t.toString(), Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show()
 //                        viewHolder.itemView._isadmin.isChecked = !viewHolder.itemView._isadmin.isChecked
 //                        viewHolder.itemView._isUser.isChecked = !viewHolder.itemView._isUser.isChecked
                     }

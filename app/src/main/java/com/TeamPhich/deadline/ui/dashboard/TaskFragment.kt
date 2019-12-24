@@ -74,11 +74,11 @@ class TaskFragment(var status: String) : Fragment() {
                             status
                         )
                 } else {
-                    Toast.makeText(requireContext(), response.reason, Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(), response.reason, Toast.LENGTH_SHORT)
                         .show()
                 }
             } catch (t: Throwable) {
-                Toast.makeText(requireContext(), t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), t.toString(), Toast.LENGTH_SHORT).show()
             }
         }
     }
