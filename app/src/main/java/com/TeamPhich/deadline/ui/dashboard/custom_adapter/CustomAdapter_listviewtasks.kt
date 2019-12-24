@@ -24,9 +24,9 @@ import kotlin.collections.ArrayList
 
 //hàm này dùng để custom listview cho các hàm trạng thái todo inprogess inreview done , thuộc tính dduwowcj khai báo ở lớp doneTasks
 
-class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :ArrayList<task>, var status: String,val fragment: TaskFragment) : BaseAdapter() {
+class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :ArrayList<task>, var status: String,val taskFragment: TaskFragment) : BaseAdapter() {
 
-    class ViewHolder(row : View, context: Context, status: String, task: task) {
+    class ViewHolder(row : View, context: Context, status: String, task: task,taskFragment: TaskFragment) {
         var textviewtask: TextView
         var datetask: TextView
         var imageuser : ImageView
@@ -39,7 +39,7 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
             descriptiontask= row.findViewById(R.id._description) as TextView
 
             row.setOnClickListener {
-                dialogTool().callDiaglogTaskInfo(context,fragment,task)
+                dialogTool().callDiaglogTaskInfo(context, taskFragment,task)
             }
 
 
@@ -125,7 +125,8 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
                     view,
                     context,
                     status,
-                    task
+                    task,
+                    taskFragment
                 )
             view.tag = viewholder
         }else{

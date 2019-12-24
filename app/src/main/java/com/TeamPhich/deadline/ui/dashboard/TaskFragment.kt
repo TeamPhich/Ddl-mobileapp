@@ -72,7 +72,8 @@ class TaskFragment(var status: String) : Fragment() {
                         CustomAdapter_listviewtasks(
                             context,
                             arraytask,
-                            status
+                            status,
+                            this@TaskFragment
                         )
 
                 } else {

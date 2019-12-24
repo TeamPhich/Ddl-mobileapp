@@ -11,42 +11,33 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="247dp"
-        app:layout_constraintEnd_toStartOf="@+id/_avatar_group"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="28dp" />
 
     <TextView
         android:id="@+id/task_date"
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="52dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name" />
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="83dp" />
 
     <TextView
         android:id="@+id/task_note"
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginStart="71dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_date" />
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="154dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/_avatar_group"
-        android:layout_width="0dp"
+        android:id="@+id/task_avatar"
+        android:layout_width="50dp"
         android:layout_height="50dp"
 
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="60dp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/task_name"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

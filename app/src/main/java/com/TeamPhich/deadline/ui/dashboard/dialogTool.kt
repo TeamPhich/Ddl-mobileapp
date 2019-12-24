@@ -19,6 +19,8 @@ import java.util.ArrayList
 import android.content.DialogInterface
 import com.TeamPhich.deadline.responses.Space.task.task
 import com.TeamPhich.deadline.ui.MessageEvent
+import com.bumptech.glide.Glide
+import de.hdodenhof.circleimageview.CircleImageView
 import org.greenrobot.eventbus.EventBus
 
 
@@ -230,10 +232,33 @@ class dialogTool {
         val taskname = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_name) as TextView
         val taskdate = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_date) as TextView
         val tasknote = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_note) as TextView
+        val task_avatar = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_avatar) as CircleImageView
         val sharedPreference: SharedPreference = SharedPreference(context)
         taskname.text=task.title
         taskdate.text=task.deadline.toString()
         tasknote.text=task.description
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response = RetrofitClient.instance.getSpacememberbyid(sharedPreference.getTokenSpace().toString(),task.memberId.toString()).await()
+                if (response.success == true) {
+                    Log.d("sdfsdfsdf",response.data.rows.elementAt(0).imagesUrl)
+                    Glide
+                        .with(context)
+                        .load(response.data.rows.elementAt(0).imagesUrl)
+                        .centerCrop()
+                        .placeholder(com.TeamPhich.deadline.R.drawable.ic_insert_photo)
+                        .into(task_avatar)
+
+                } else {
+                    Toast.makeText(context, response.reason, Toast.LENGTH_LONG)
+                        .show()
+                }
+            } catch (t: Throwable) {
+                Toast.makeText(context, t.toString(), Toast.LENGTH_LONG).show()
+            }
+
+
+        }
 
 
 
