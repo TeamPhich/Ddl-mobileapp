@@ -102,6 +102,7 @@ class GroupFragment :Fragment() {
 
 
         }
+        dashboard().setListViewHeightBasedOnChildren(_listview)
     }
 
 
