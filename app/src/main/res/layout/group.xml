@@ -18,42 +18,24 @@
         app:srcCompat="@drawable/ic_add_only"
         tools:ignore="VectorDrawableCompat" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="22dp"
-        app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@+id/scrollview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Search Here" />
 
-
-<!--    <ListView-->
-<!--        android:id="@+id/listview_group"-->
-<!--        android:layout_width="380dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/search_view" />-->
     <ScrollView
-        android:layout_width="380dp"
-        android:layout_height="0dp"
-        android:id="@+id/scrollview"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view"
-        >
-        <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="128dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/listview_group"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/listview_group"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
