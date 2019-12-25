@@ -22,8 +22,10 @@ import com.TeamPhich.deadline.responses.Space.Row
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.details.Information
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activiy_showmenu.*
+import kotlinx.android.synthetic.main.item_people2.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -335,6 +337,12 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
                     Log.d("Tolen",sharedPreference.getToken().toString())
 
+                    Glide
+                        .with(this@dashboard)
+                        .load(response.data.profile[0].imagesUrl)
+                        .centerCrop()
+                        .placeholder(R.drawable.ic_insert_photo)
+                        .into(findViewById(com.TeamPhich.deadline.R.id.avartauseringroup));
                 } else {
                     Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
                         .show()
@@ -345,5 +353,6 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         }
     }
+
 
 }

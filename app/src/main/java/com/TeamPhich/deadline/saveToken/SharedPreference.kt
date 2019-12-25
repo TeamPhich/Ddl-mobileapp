@@ -63,4 +63,14 @@ class SharedPreference(val cont: Context) {
         editor.remove("Role")
     }
 
+    fun setUrl(value: String?) {
+        val editor = SharedPreferences.edit()
+        editor.putString("url", value)
+        editor.commit()
+    }
+
+    fun getUrl(): String? {
+        return SharedPreferences.getString("url", "")
+    }
+
 }
