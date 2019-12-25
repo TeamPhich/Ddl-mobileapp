@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.dashboard.dashboard">
 
     <TextView
@@ -13,10 +13,8 @@
         android:layout_height="wrap_content"
         android:textSize="23sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/task_note"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,40 +22,37 @@
         android:id="@+id/task_date"
         android:text="TextView"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:textSize="13sp"
         android:textStyle="bold"
-        android:layout_marginBottom="621dp"
-        android:layout_marginEnd="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/task_note"
-        app:layout_constraintTop_toBottomOf="@+id/task_avatar" />
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_name" />
 
     <TextView
         android:id="@+id/task_note"
         android:text="TextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="13sp"
         android:textStyle="bold"
+        android:layout_marginTop="28dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="614dp"
-        android:layout_marginEnd="85dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/task_date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name" />
+        app:layout_constraintTop_toBottomOf="@+id/task_date" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/task_avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
 
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/task_date"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
