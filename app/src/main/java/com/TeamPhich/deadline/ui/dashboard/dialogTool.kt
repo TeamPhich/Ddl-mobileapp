@@ -225,6 +225,12 @@ class dialogTool {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+    fun gettextdatefromunix(unix: Long):String{
+        val sdf = java.text.SimpleDateFormat("dd-MM-yyyy hh:mm")
+        val date = java.util.Date(unix * 1000+1000*7*3600)
+
+        return sdf.format(date)
+    }
 
     fun callDiaglogTaskInfo(context: Context,fragment: TaskFragment,task: task) {
         val dialogBuilder = AlertDialog.Builder(context).create()
@@ -236,7 +242,7 @@ class dialogTool {
         val task_avatar = dialogView.findViewById(com.TeamPhich.deadline.R.id.task_avatar) as CircleImageView
         val sharedPreference: SharedPreference = SharedPreference(context)
         taskname.text=task.title
-        taskdate.text=task.deadline.toString()
+        taskdate.text=gettextdatefromunix(task.deadline)
         tasknote.text=task.description
         GlobalScope.launch(Dispatchers.Main) {
             try {
