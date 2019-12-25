@@ -66,8 +66,8 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         avartauseringroup.setOnClickListener { view ->
             startActivity(intent)
         }
-        val tablayoutTask = Tablayout_task.newInstance()
-        openFragment(tablayoutTask)
+        val groupFragment = GroupFragment.newInstance()
+        openFragment(groupFragment)
 
 
     }
