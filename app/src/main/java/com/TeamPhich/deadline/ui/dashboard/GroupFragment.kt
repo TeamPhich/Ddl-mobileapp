@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import com.TeamPhich.deadline.ui.dashboard.group.activity_chat
+import kotlinx.android.synthetic.main.dialog_newgroup.*
 import kotlinx.android.synthetic.main.dialog_newgroup.view.*
 import kotlinx.android.synthetic.main.group.*
 import kotlinx.android.synthetic.main.group.view.*
@@ -30,24 +32,13 @@ class GroupFragment :Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.group , container, false)
 
-
+        val sharedPreference: SharedPreference = SharedPreference(requireContext())
         getlistgroup(view)
 
 
         view._addmoregroup.setOnClickListener {
-            val mDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_newgroup, null)
-            val mBuilder = AlertDialog.Builder(requireContext())
-                .setView(mDialogView)
-            val  mAlertDialog = mBuilder.show()
-            mDialogView.buttonSubmit.setOnClickListener {
-                mAlertDialog.dismiss()
+                dialogTool().callDialoginsertGroup(requireContext(),this)
 
-
-            }
-
-            mDialogView.buttonCancel.setOnClickListener {
-                mAlertDialog.dismiss()
-            }
         }
 
         return view
@@ -103,6 +94,7 @@ class GroupFragment :Fragment() {
             val intent = Intent(requireContext(), activity_chat::class.java)
 //            val b = Bundle()
 //            b.putInt("key", position) //Your id
+            Log.d("groupoasd",arraygroup.elementAt(position).groupId.toString())
             intent.putExtra("group_name",arraygroup.elementAt(position).name) //Put your id to your next Intent
             intent.putExtra("group_id",arraygroup.elementAt(position).groupId)
             startActivity(intent)
@@ -111,4 +103,7 @@ class GroupFragment :Fragment() {
 
         }
     }
+
+
+
 }

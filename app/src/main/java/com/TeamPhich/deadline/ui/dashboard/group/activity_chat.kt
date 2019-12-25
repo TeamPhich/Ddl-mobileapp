@@ -42,7 +42,7 @@ import kotlinx.android.synthetic.main.activity_chat.*
 
 class activity_chat : AppCompatActivity() {
     var opts = IO.Options()
-    val SockURL = "http://ddl-api.sidz.tools"
+    val SockURL = "http://ddl-api.sidz.tools/chat"
 
 
 
@@ -64,6 +64,7 @@ class activity_chat : AppCompatActivity() {
         }
         addpeopletogr.setOnClickListener {
             val intent =Intent(this, Addpeopletogroup::class.java)
+            intent.putExtra("group_id",group_id)
             startActivity(intent)
         }
     }

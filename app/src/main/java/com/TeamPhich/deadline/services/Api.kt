@@ -2,6 +2,7 @@ package com.TeamPhich.deadline.services
 
 import androidx.annotation.Nullable
 import com.TeamPhich.deadline.responses.Space.*
+import com.TeamPhich.deadline.responses.Space.group.chat.grchatmem.ppnotingr
 import com.TeamPhich.deadline.responses.Space.group.listGroupRespone
 import com.TeamPhich.deadline.responses.Space.image.imgrespone
 import com.TeamPhich.deadline.responses.Space.task.alltask
@@ -146,6 +147,9 @@ interface Api {
     ): Deferred<defaultRespone>
 
 
+
+
+
     //group
     @GET("/api/v1/groups")
     fun getlistgroup(
@@ -197,7 +201,33 @@ interface Api {
 
 
 
+    @GET("/api/v1/groups/members/not_in/{group_id}")
+    fun getListppnotinspace(
+        @Header("space-token") tokenData: String,
+        @Path("group_id") group_id:String
 
+
+    ):Deferred<ppnotingr>
+
+
+    @FormUrlEncoded
+    @POST("/api/v1/groups")
+    fun creategroup(
+        @Header("space-token") tokenData:String,
+        @Field("name") name: String,
+        @Field("couple") couple: String
+
+    ): Deferred<defaultRespone>
+
+    @FormUrlEncoded
+    @POST("/api/v1/groups/members")
+    fun importpptogroup(
+        @Header("space-token") tokenData:String,
+        @Field("member_id") member_id: String,
+        @Field("group_id") group_id: String
+
+
+    ): Deferred<defaultRespone>
 
 
 }

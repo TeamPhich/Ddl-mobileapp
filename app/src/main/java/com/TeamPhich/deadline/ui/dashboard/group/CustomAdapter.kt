@@ -1,5 +1,6 @@
 package com.TeamPhich.deadline.ui.dashboard.group
 
+import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,9 @@ import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.datapepleinsp
 import com.TeamPhich.deadline.responses.Space.group.RowsGroup
 import com.TeamPhich.deadline.responses.Space.group.chat.Message
+import com.TeamPhich.deadline.responses.Space.group.chat.grchatmem.RowNotInGr
+import com.TeamPhich.deadline.saveToken.SharedPreference
+import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.dashboard
 import com.bumptech.glide.Glide
 import com.xwray.groupie.Item
@@ -20,6 +24,9 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.item_mess_recived.view.*
 import kotlinx.android.synthetic.main.item_mess_sent.view.*
 import kotlinx.android.synthetic.main.item_people2.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -84,31 +91,34 @@ import java.util.*
 ////        }
 ////    }
 ////}
-class senditem(val message: Message) : Item<ViewHolder>(){
+class senditem(val message: Message) : Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.text_messagesend_body.text=message.message
-        viewHolder.itemView.text_messagesend_time.text=getDateTime(message.time)
+        viewHolder.itemView.text_messagesend_body.text = message.message
+        viewHolder.itemView.text_messagesend_time.text = getDateTime(message.time)
     }
 
     override fun getLayout(): Int {
         return R.layout.item_mess_sent
     }
+
     fun getDateTime(s: Long): String? {
         try {
             val sdf = SimpleDateFormat("hh:mm")
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"))
-            val netDate = Date(s.toLong())
+            val netDate = Date(s.toLong() + 3600 * 7)
             return sdf.format(netDate)
         } catch (e: Exception) {
-            return e.toString()
+
         }
+        return "--"
     }
 }
-class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>(){
+
+class receivecitem(val message: Message, val context: Context) : Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.text_message_body.text=message.message
-        viewHolder.itemView.text_message_time.text=getDateTime(message.time)
-        viewHolder.itemView.text_message_name.text=message.userName
+        viewHolder.itemView.text_message_body.text = message.message
+        viewHolder.itemView.text_message_time.text = getDateTime(message.time)
+        viewHolder.itemView.text_message_name.text = message.userName
         Glide
             .with(context)
             .load(message.imagesUrl)
@@ -121,6 +131,7 @@ class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>
     override fun getLayout(): Int {
         return R.layout.item_mess_recived
     }
+
     public fun getDateTime(s: Long): String? {
         try {
             val sdf = SimpleDateFormat("hh:mm")
@@ -134,7 +145,12 @@ class receivecitem(val message: Message,val context: Context) : Item<ViewHolder>
 
 }
 
-class people(val datapepleinsp: datapepleinsp,val context: Context) : Item<ViewHolder>(){
+class people(
+    val datapepleinsp: RowNotInGr,
+    val context: Context,
+    val L2ist: List<RowNotInGr>,
+    val grid: String
+) : Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         Glide
             .with(context)
@@ -142,13 +158,50 @@ class people(val datapepleinsp: datapepleinsp,val context: Context) : Item<ViewH
             .centerCrop()
             .placeholder(R.drawable.ic_insert_photo)
             .into(viewHolder.itemView._avatar_peo);
-        viewHolder.itemView._name_peo2.text=datapepleinsp.fullName
+        viewHolder.itemView._name_peo2.text = datapepleinsp.fullName
+        viewHolder.itemView.textView456.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            val sharedPreference: SharedPreference = SharedPreference(context)
+            builder.setMessage("Xac nhan them")
+
+            builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                GlobalScope.launch(Dispatchers.Main) {
+                    try {
+                        val response =
+                            RetrofitClient.instance.importpptogroup(
+                                sharedPreference.getTokenSpace().toString(),
+                                L2ist[position].id.toString(),
+                                grid
+                            )
+                                .await()
+                        if (response.success == true) {
+                            Toast.makeText(context, "them thanh cong", Toast.LENGTH_SHORT)
+
+                        } else {
+                            Toast.makeText(context, "them that bai", Toast.LENGTH_SHORT)
+
+                        }
+                    } catch (t: Throwable) {
+                    }
+                }
+            }
+
+            builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                Toast.makeText(
+                    context,
+                    android.R.string.no, Toast.LENGTH_SHORT
+                ).show()
+            }
+            builder.show()
+        }
 
     }
 
     override fun getLayout(): Int {
         return R.layout.item_people2
     }
+
+
 
 }
 

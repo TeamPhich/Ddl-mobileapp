@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.datapepleinsp
+import com.TeamPhich.deadline.responses.Space.group.chat.grchatmem.RowNotInGr
 import com.TeamPhich.deadline.saveToken.SharedPreference
 import com.TeamPhich.deadline.services.RetrofitClient
 import com.TeamPhich.deadline.ui.dashboard.custom_adapter.itemPeopleinSpace
@@ -26,10 +27,12 @@ class Addpeopletogroup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addpeopletogroup)
-        getListPeople()
+        val group_id = intent.getIntExtra("group_id", 0)
+        Log.d("sdfjsdjkf",group_id.toString())
+        getListPeople(group_id.toString())
     }
 
-    fun getListPeople() {
+    fun getListPeople(groupid:String) {
         val context: Context = this
         val sharedPreference: SharedPreference = SharedPreference(context)
 
@@ -37,10 +40,10 @@ class Addpeopletogroup : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.Main) {
             try {
                 val response =
-                    RetrofitClient.instance.getSpacemember(sharedPreference.getTokenSpace().toString())
+                    RetrofitClient.instance.getListppnotinspace(sharedPreference.getTokenSpace().toString(),groupid)
                         .await()
                 if (response.success == true) {
-                    loadlistpepple(response.data.rows)
+                    loadlistpepple(response.data.rows,groupid)
 
                 } else {
                     Toast.makeText(
@@ -56,43 +59,19 @@ class Addpeopletogroup : AppCompatActivity() {
 
         }
     }
-    fun loadlistpepple(list:List<datapepleinsp>){
+    fun loadlistpepple(list:List<RowNotInGr>,groupid: String){
         var adapter = GroupAdapter<ViewHolder>()
 
         list.forEach {
-            adapter.add(people(it,this))
+            adapter.add(people(it,this,list,groupid))
         }
-        adapter.setOnItemClickListener { item, view ->
-            dialoginsert()
-
-        }
-
 
 
         _reyclerview_list_peopleinspace2.adapter=adapter
+
     }
 
-    fun dialoginsert(){
 
-
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage("Ban se them nguoi nay vao space ?")
-
-
-        builder.setPositiveButton("YES"){dialog, which ->
-            Toast.makeText(applicationContext,"Ok, we change the app background.",Toast.LENGTH_SHORT).show()
-
-        }
-
-
-        builder.setNegativeButton("No"){dialog,which ->
-            Toast.makeText(applicationContext,"You are not agree.",Toast.LENGTH_SHORT).show()
-        }
-
-
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
 
 
 }
