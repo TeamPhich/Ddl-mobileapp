@@ -19,6 +19,7 @@ class changepassword : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.changepass)
+        _exitchagepass.setOnClickListener { finish() }
         _bchangepass.setOnClickListener {
             val oldpass=_ioldpass.toString().trim()
             val newpass=_inewpass.toString().trim()

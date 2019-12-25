@@ -30,6 +30,7 @@ class Addpeopletogroup : AppCompatActivity() {
         val group_id = intent.getIntExtra("group_id", 0)
         Log.d("sdfjsdjkf",group_id.toString())
         getListPeople(group_id.toString())
+        _exitaddpeople.setOnClickListener { finish() }
     }
 
     fun getListPeople(groupid:String) {

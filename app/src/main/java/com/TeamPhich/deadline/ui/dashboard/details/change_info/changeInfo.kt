@@ -63,6 +63,9 @@ class changeInfo : AppCompatActivity() {
 //            }
 //
 //        }
+        _backbuttonchange.setOnClickListener {
+            finish()
+        }
         setavatar()
         _changeinfo.setOnClickListener {
             val newemail = _iNeweMail.text.toString();
