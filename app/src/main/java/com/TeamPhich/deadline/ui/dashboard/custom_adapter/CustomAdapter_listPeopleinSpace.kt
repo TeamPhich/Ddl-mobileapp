@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.TeamPhich.deadline.R
 import com.TeamPhich.deadline.responses.Space.datapepleinsp
 import com.TeamPhich.deadline.saveToken.SharedPreference
@@ -26,6 +27,7 @@ class itemPeopleinSpace(val datapepleinsp: datapepleinsp, val context: Context) 
     Item<ViewHolder>() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
+        val sharedPreference: SharedPreference = SharedPreference(context)
         viewHolder.itemView._name_thispp.text = datapepleinsp.fullName
         Glide
             .with(context)
@@ -33,12 +35,13 @@ class itemPeopleinSpace(val datapepleinsp: datapepleinsp, val context: Context) 
             .centerCrop()
             .placeholder(R.drawable.ic_insert_photo)
             .into(viewHolder.itemView._avatar_thispp)
-        if (datapepleinsp.role_name == "admin") {
+        if (datapepleinsp.role_name == "admin"||datapepleinsp.role_name =="super admin") {
             viewHolder.itemView._isadmin.isChecked = true
         } else {
             viewHolder.itemView._isUser.isChecked = true
         }
-
+        Log.d("wfjeifwjid9",sharedPreference.getRole())
+        if ("super admin"!=sharedPreference.getRole()) viewHolder.itemView.radio_group.isVisible=false
         viewHolder.itemView.radio_group.setOnCheckedChangeListener(
             RadioGroup.OnCheckedChangeListener { group, checkedId ->
                 val radio: RadioButton = viewHolder.itemView.findViewById(checkedId)
@@ -48,7 +51,7 @@ class itemPeopleinSpace(val datapepleinsp: datapepleinsp, val context: Context) 
                 else nextRole = 2
                 GlobalScope.launch(Dispatchers.Main) {
                     try {
-                        val sharedPreference: SharedPreference = SharedPreference(context)
+
                         val response =
                             RetrofitClient.instance.updateRole(
                                 sharedPreference.getTokenSpace().toString(),

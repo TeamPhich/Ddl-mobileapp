@@ -182,7 +182,7 @@ class CustomAdapter_listviewtasks (var context : Context, var mangcongviec :Arra
     }
     fun gettextdatefromunix(unix: Long):String{
         val sdf = java.text.SimpleDateFormat("dd-MM-yyyy hh:mm")
-        val date = java.util.Date(unix * 1000-3600*7)
+        val date = java.util.Date(unix * 1000+1000*7*3600)
 
         return sdf.format(date)
     }

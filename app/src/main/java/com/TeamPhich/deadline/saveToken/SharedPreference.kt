@@ -47,4 +47,20 @@ class SharedPreference(val cont: Context) {
         editor.remove("tokenSpace")
     }
 
+
+    fun setRole(value: String?) {
+        val editor = SharedPreferences.edit()
+        editor.putString("Role", value)
+        editor.commit()
+    }
+
+    fun getRole(): String? {
+        return SharedPreferences.getString("Role", "")
+    }
+
+    fun resetRole() {
+        val editor = SharedPreferences.edit()
+        editor.remove("Role")
+    }
+
 }

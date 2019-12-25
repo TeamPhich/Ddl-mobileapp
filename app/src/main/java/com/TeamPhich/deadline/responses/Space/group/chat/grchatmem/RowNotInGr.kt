@@ -13,5 +13,7 @@ data class RowNotInGr(
     @SerializedName("role_id")
     val roleId: Int,
     @SerializedName("user_name")
-    val userName: String
+    val userName: String,
+    @SerializedName("spaces_member_id")
+    val spaces_member_id:Int
 )

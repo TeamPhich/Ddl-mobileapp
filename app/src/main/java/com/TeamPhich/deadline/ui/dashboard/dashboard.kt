@@ -193,6 +193,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                         sharedPreference.setTokenSpace(response.data.tokenSpace)
                         Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
                         Log.d("Tolen",sharedPreference.getToken().toString())
+                        getuserRole()
                         val groupFragment = GroupFragment.newInstance()
                         openFragment(groupFragment)
 
@@ -307,6 +308,7 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     sharedPreference.setTokenSpace(response.data.tokenSpace)
                     Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
                     Log.d("Tolen",sharedPreference.getToken().toString())
+                    getuserRole()
 
                 } else {
                     Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
@@ -321,5 +323,27 @@ class dashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     }
 
+    fun getuserRole(){
+        val sharedPreference:SharedPreference= SharedPreference(this)
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+
+                val response = RetrofitClient.instance.getuserprofile(
+                    sharedPreference.getTokenSpace().toString()).await()
+                if (response.success == true) {
+                    sharedPreference.setRole(response.data.profile[0].roleName)
+                    Log.d("Spacetoken",sharedPreference.getTokenSpace().toString())
+                    Log.d("Tolen",sharedPreference.getToken().toString())
+
+                } else {
+                    Toast.makeText(applicationContext, response.reason, Toast.LENGTH_SHORT)
+                        .show()
+                }
+            } catch (t: Throwable) {
+                Toast.makeText(applicationContext, t.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
 
 }
