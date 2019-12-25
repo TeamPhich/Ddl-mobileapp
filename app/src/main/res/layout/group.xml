@@ -25,21 +25,35 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="22dp"
         app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@+id/listview_group"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Search Here" />
 
 
-    <ListView
-        android:id="@+id/listview_group"
+<!--    <ListView-->
+<!--        android:id="@+id/listview_group"-->
+<!--        android:layout_width="380dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/search_view" />-->
+    <ScrollView
         android:layout_width="380dp"
         android:layout_height="0dp"
+        android:id="@+id/scrollview"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_view" />
-
+        app:layout_constraintTop_toBottomOf="@+id/search_view"
+        >
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listview_group"/>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
