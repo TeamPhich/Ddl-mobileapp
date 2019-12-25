@@ -3,12 +3,15 @@ package com.TeamPhich.deadline.ui.dashboard
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -37,7 +40,7 @@ class GroupFragment :Fragment() {
 
 
         view._addmoregroup.setOnClickListener {
-                dialogTool().callDialoginsertGroup(requireContext(),this)
+                callDialoginsertGroup(requireContext(),this)
 
         }
 
@@ -103,6 +106,52 @@ class GroupFragment :Fragment() {
 
         }
         dashboard().setListViewHeightBasedOnChildren(_listview)
+    }
+    fun callDialoginsertGroup(context: Context, fragment: GroupFragment) {
+        val dialogBuilder = AlertDialog.Builder(context).create()
+        val inflater = fragment.layoutInflater
+        val dialogView = inflater.inflate(com.TeamPhich.deadline.R.layout.dialog_newgroup, null)
+
+        val groupname = dialogView.findViewById(com.TeamPhich.deadline.R.id.edit_grname) as EditText
+        val Submit = dialogView.findViewById(com.TeamPhich.deadline.R.id.buttonSubmit) as Button
+        val Cancel = dialogView.findViewById(com.TeamPhich.deadline.R.id.buttonCancel) as Button
+        val sharedPreference: SharedPreference = SharedPreference(context)
+
+        Submit.setOnClickListener {
+            val grname = groupname.text.toString().trim()
+            if (grname.isEmpty()) {
+                groupname.error = "Group's name required"
+                groupname.requestFocus()
+                return@setOnClickListener
+            }
+
+            Log.d("tokenspace",sharedPreference.getTokenSpace().toString())
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+                    val response = RetrofitClient.instance.creategroup(
+                        sharedPreference.getTokenSpace().toString(),grname,    "0"
+                    ).await()
+                    if (response.success == true) {
+                        Toast.makeText(context, "OK", Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        Toast.makeText(context, response.reason, Toast.LENGTH_SHORT).show()
+                    }
+                } catch (t: Throwable) {
+                    Toast.makeText(context, t.toString(), Toast.LENGTH_SHORT).show()
+                }
+
+
+            }
+
+
+            dialogBuilder.dismiss()
+        }
+        Cancel.setOnClickListener {
+            dialogBuilder.dismiss()
+        }
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.show()
     }
 
 
