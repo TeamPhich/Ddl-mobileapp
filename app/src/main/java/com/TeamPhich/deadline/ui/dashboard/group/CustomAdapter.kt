@@ -164,51 +164,41 @@ class people(
             .into(viewHolder.itemView._avatar_peo);
         viewHolder.itemView._name_peo2.text = datapepleinsp.fullName
         viewHolder.itemView.textView456.setOnClickListener {
-            Toast.makeText(context, "them thanh cong", Toast.LENGTH_SHORT)
+            it.isVisible=false
 
-            val builder = AlertDialog.Builder(context)
+
+
             val sharedPreference: SharedPreference = SharedPreference(context)
-            fun vipo(){
-                it.isVisible=false
-            }
-
-            builder.setMessage("Xac nhan them")
-
-            builder.setPositiveButton(android.R.string.yes) { dialog, which ->
 
 
-                GlobalScope.launch(Dispatchers.Main) {
-                    try {
-                        val response =
-                            RetrofitClient.instance.importpptogroup(
-                                sharedPreference.getTokenSpace().toString(),
-                                L2ist[position].spaces_member_id.toString(),
-                                grid
-                            )
-                                .await()
-                        val cont=context!!
-                        if (response.success == true) {
-                            Log.d("sdfsdfsdfer34","sdfsdfwerwerew")
-                            Toast.makeText(cont as dashboard, "them thanh cong", Toast.LENGTH_SHORT)
-                            vipo()
 
-                        } else {
 
-                            Toast.makeText(cont as dashboard, "them thanh cong", Toast.LENGTH_SHORT)
 
-                        }
-                    } catch (t: Throwable) {
+
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+                    val response =
+                        RetrofitClient.instance.importpptogroup(
+                            sharedPreference.getTokenSpace().toString(),
+                            L2ist[position].spaces_member_id.toString(),
+                            grid
+                        )
+                            .await()
+                    val cont=context!!
+                    if (response.success == true) {
+                        Log.d("sdfsdfsdfer34","sdfsdfwerwerew")
+                        Toast.makeText(cont as dashboard, "them thanh cong", Toast.LENGTH_SHORT)
+
+
+                    } else {
+
+                        Toast.makeText(cont as dashboard, "them thanh cong", Toast.LENGTH_SHORT)
+
                     }
+                } catch (t: Throwable) {
                 }
             }
 
-            builder.setNegativeButton(android.R.string.no) { dialog, which ->
-                Toast.makeText(
-                    context,
-                    android.R.string.no, Toast.LENGTH_SHORT
-                ).show()
-            }
-            builder.show()
         }
 
     }
